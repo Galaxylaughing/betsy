@@ -11,8 +11,9 @@ CSV.open("db/product_seeds.csv", "w", :write_headers => true,
     photo_url = Faker::LoremPixel.image
     stock = rand(1...50)
     available = Faker::Boolean.boolean
+    user_id = rand(1..25)
     
-    csv << [name, description, price, photo_url, stock, available]
+    csv << [name, description, price, photo_url, stock, available, user_id]
   end
 end
 
@@ -33,7 +34,7 @@ CSV.open("db/order_seeds.csv", "w", :write_headers => true,
   25.times do
     email = Faker::Internet.email 
     address = Faker::Address.street_address
-    name = Faker::Internet.email 
+    name = Faker::Name.unique.name 
     cc_num = Faker::Business.credit_card_number
     cvv_code = rand(100..999)
     zip = Faker::Address.zip

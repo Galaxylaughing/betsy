@@ -67,6 +67,7 @@ CSV.foreach(PRODUCTS_FILE, :headers => true) do |row|
   product.photo_url = row['photo_url']
   product.stock = row['stock']
   product.available = row['available']
+  product.user_id = rand(1..25)
   
   successful = product.save
   if !successful

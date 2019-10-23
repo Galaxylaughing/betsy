@@ -7,6 +7,7 @@ orquid:
   stock: 100
   available: true
   user_id: 2
+  categories: specialty
 
 begonia:
   id: 3333
@@ -17,3 +18,114 @@ begonia:
   stock: 200
   available: true
   user_id: 2
+  categories: flower, specialty
+
+tarsha:
+  name: Tarsha Aufderhar
+  description: Et iste sed aut.
+  price: 66.31
+  photo_url: https://lorempixel.com/300/300
+  stock: 39
+  available: true
+  user_id: 13
+  categories: flower, specialty, annual
+
+brad:
+  name: Brad Crist DVM
+  description: Qui aut rerum totam.
+  price: 76.73
+  photo_url: https://lorempixel.com/300/300
+  stock: 47
+  available: true
+  user_id: 12
+  categories: gift
+
+loyd:
+  name: Loyd Toy Jr.
+  description: Tempore velit aut eaque.
+  price: 18.48
+  photo_url: https://lorempixel.com/300/300
+  stock: 18
+  available: true
+  user_id: 8
+  categories: evergreen
+
+christopher:
+  name: Christoper Cormier
+  description: Veritatis et qui sed.
+  price: 74.99
+  photo_url: https://lorempixel.com/300/300
+  stock: 16
+  available: true
+  user_id: 15
+  categories: houseplant
+
+wilfred:
+  name: Wilfred Tremblay
+  description: Vel et tempora recusandae.
+  price: 68.13
+  photo_url: https://lorempixel.com/300/300
+  stock: 21
+  available: true
+  user_id: 20
+  categories: flower, specialty
+
+tereasa:
+  name: Tereasa Kunze
+  description: Sint aliquam ipsum fugiat.
+  price: 71.73
+  photo_url: https://lorempixel.com/300/300
+  stock: 32
+  available: false
+  user_id: 24
+  categories: specialty
+
+sal:
+  name: Sal Considine
+  description: Dolor adipisci quia odit.
+  price: 51.89
+  photo_url: https://lorempixel.com/300/300
+  stock: 28
+  available: false
+  user_id: 6
+  categories: annual, specialty
+
+mario:
+  name: Mario Medhurst
+  description: In aut placeat iste.
+  price: 19.2
+  photo_url: https://lorempixel.com/300/300
+  stock: 6
+  available: true
+  user_id: 16
+  categories: flower, succulent
+
+kenda:
+  name: Kenda Barton
+  description: Vitae itaque esse non.
+  price: 81.25
+  photo_url: https://lorempixel.com/300/300
+  stock: 43
+  available: false
+  user_id: 2
+  categories: succulent
+
+palmer:
+  name: Palmer Terry III
+  description: Dolore asperiores magni qui.
+  price: 78.69
+  photo_url: https://lorempixel.com/300/300
+  stock: 1
+  available: false
+  user_id: 4
+  categories: flower, annual
+
+ester:
+  name: Mr. Ester Toy
+  description: Placeat nihil molestiae ad.
+  price: 87.74
+  photo_url: https://lorempixel.com/300/300
+  stock: 19
+  available: true
+  user_id: 25
+  categories: perrenial
