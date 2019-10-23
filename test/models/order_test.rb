@@ -15,6 +15,36 @@ describe Order do
       [:email, :address, :name, :cc_num, :cvv_code, :zip].each do |field|
         expect(order).must_respond_to field
       end
+    end 
+  
+    it "is not valid without an email" do
+      invalid_order = Order.new(name: "georgina", address: "bellevue", cc_num: "1111111111111111", cvv_code: "111", zip: "98003")
+      expect(invalid_order.valid?).must_equal false
+      expect(invalid_order.errors.messages).must_include :email
+    end
+
+    it "is not valid without an address" do
+      invalid_order = Order.new(email: "geob@gmail.com", name: "georgina", cc_num: "1111111111111111", cvv_code: "111", zip: "98003")
+      expect(invalid_order.valid?).must_equal false
+      expect(invalid_order.errors.messages).must_include :address
+    end
+
+    it "is not valid without an cc_num" do
+      invalid_order = Order.new(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", zip: "98003")
+      expect(invalid_order.valid?).must_equal false
+      expect(invalid_order.errors.messages).must_include :cc_num
+    end
+
+    it "is not valid without an cvv_code" do
+      invalid_order = Order.new(email: "geob@gmail.com", name: "georgina", cc_num: "1111111111111111", address: "bellevue", zip: "98003")
+      expect(invalid_order.valid?).must_equal false
+      expect(invalid_order.errors.messages).must_include :cvv_code
+    end
+
+    it "is not valid without an zip" do
+      invalid_order = Order.new(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", cc_num: "1111111111111111")
+      expect(invalid_order.valid?).must_equal false
+      expect(invalid_order.errors.messages).must_include :zip
     end
   end
 end
