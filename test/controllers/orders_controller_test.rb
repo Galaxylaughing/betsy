@@ -1,7 +1,13 @@
 require "test_helper"
 
 describe OrdersController do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  
+  describe "validation - logged in" do
+    it "is valid with an order_item" do
+      
+    end
+    
+    
+    
+  end
 end
