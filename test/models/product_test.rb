@@ -3,7 +3,7 @@ require "test_helper"
 describe Product do
   describe "validations" do 
     before do
-      @user = User.create(username: "test user", email: "test email")
+      @user = User.create(username: "test user", email: "test-email@example.com")
       @product = Product.create(user_id: @user.id, name: "test product", description: "cool product", price: 1.9, photo_url: "url", stock: 3)
     end
     
