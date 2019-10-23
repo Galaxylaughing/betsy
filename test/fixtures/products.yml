@@ -1,0 +1,19 @@
+orquid:
+  id: 2222
+  name: Ada Orquid
+  description: Cool
+  price: 12.99
+  photo_url: photo_url
+  stock: 100
+  available: true
+  user_id: 2
+
+begonia:
+  id: 3333
+  name: Begonia Flower
+  description: Cool
+  price: 8.99
+  photo_url: photo_url
+  stock: 200
+  available: true
+  user_id: 2
