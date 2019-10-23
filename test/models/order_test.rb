@@ -47,4 +47,22 @@ describe Order do
       expect(invalid_order.errors.messages).must_include :zip
     end
   end
+
+  describe "relationships" do
+    it "has many order_items" do
+      # Arrange
+      new_order.save
+      user = User.create(username: "georgina", email: "geor@gmail.com")
+      product_cactus = Product.create(user_id: user.id, name: "cactus", description: "cool product", price: 1.9, photo_url: "url", stock: 3)
+      product_flower = Product.create(user_id: user.id, name: "flower", description: "cool flower", price: 1.5, photo_url: "url", stock: 3)
+      order_items_1 = OrderItem.create(product_id: product_cactus.id, order_id: new_order.id, quantity: 3)
+      order_items_2 = OrderItem.create(product_id: product_flower.id, order_id: new_order.id, quantity: 1)
+      
+
+      expect(new_order.order_items.count).must_be :>, 0
+      new_order.order_items.each do |order|
+        expect(order).must_be_instance_of OrderItem
+      end
+    end
+  end
 end
