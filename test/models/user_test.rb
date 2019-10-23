@@ -13,7 +13,7 @@ describe User do
       merchant_id = merchant.id
       description = "a small fern"
       
-      small_fern = Product.create(description: description, price: 5.25, stock: 3, user_id: merchant_id, photo_url: photo_url)
+      small_fern = Product.create(name: "small fern", description: description, price: 5.25, stock: 3, user_id: merchant_id, photo_url: photo_url)
       saved_product = Product.find_by(description: description)
       
       expect(merchant.products).must_include saved_product
@@ -24,8 +24,8 @@ describe User do
       fern_description = "a small fern"
       cactus_description = "a large cactus"
       
-      small_fern = Product.create(description: fern_description, price: 5.25, stock: 3, user_id: merchant_id, photo_url: photo_url)
-      large_cactus = Product.create(description: cactus_description, price: 5.25, stock: 3, user_id: merchant_id, photo_url: photo_url)
+      small_fern = Product.create(name: "small fern", description: fern_description, price: 5.25, stock: 3, user_id: merchant_id, photo_url: photo_url)
+      large_cactus = Product.create(name: "large cactus", description: cactus_description, price: 5.25, stock: 3, user_id: merchant_id, photo_url: photo_url)
       
       saved_fern = Product.find_by(description: fern_description)
       saved_cactus = Product.find_by(description: cactus_description)
