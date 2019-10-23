@@ -81,7 +81,7 @@ describe Product do
   
   describe "relationships" do
     before do
-      @user = User.create(username: "test user", email: "test email") 
+      @user = User.create(username: "test user", email: "test-email@example.com") 
       @category1 = Category.create(name: "flower")
       @category2 = Category.create(name: "specialty")
       @product = Product.create(user_id: @user.id, name: "test product", description: "cool product", price: 1.9, photo_url: "url", stock: 3, categories: [@category1, @category2]) 
