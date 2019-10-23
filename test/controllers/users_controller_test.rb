@@ -8,7 +8,7 @@ describe UsersController do
       
       perform_login(user)
       
-      # must_redirect_to root_path
+      must_redirect_to root_path
       expect(session[:user_id]).must_equal user.id
       expect(flash[:success]).must_include "Successfully logged in as returning user"
       expect(User.count).must_equal start_count
@@ -22,7 +22,7 @@ describe UsersController do
       
       get callback_path(:github)
       
-      # must_redirect_to root_path
+      must_redirect_to root_path
       expect(session[:user_id]).must_equal User.last.id
       expect(flash[:success]).must_include "Successfully logged in as new user"
       expect(User.count).must_equal start_count + 1
@@ -36,7 +36,7 @@ describe UsersController do
       
       get callback_path(:github)
       
-      # must_redirect_to root_path
+      must_redirect_to root_path
       expect(flash[:error]).wont_be_nil
       expect(User.count).must_equal start_count
     end
@@ -53,7 +53,7 @@ describe UsersController do
       
       delete logout_path
       
-      # must_redirect_to root_path
+      must_redirect_to root_path
       expect(session[:user_id]).must_be_nil
       expect(flash[:success]).must_equal "Successfully logged out!"
       # make sure the user did not get deleted from the database
