@@ -30,13 +30,13 @@ describe User do
     it "is not valid without a username" do
       merchant = User.new(email: email)
       expect(merchant.valid?).must_equal false
-      user.errors.messages.must_include :email
+      merchant.errors.messages.must_include :username
     end
     
     it "is not valid without an email" do
       merchant = User.new(username: username)
       expect(merchant.valid?).must_equal false
-      user.errors.messages.must_include :username
+      merchant.errors.messages.must_include :email
     end
     
     it "is not valid without a unique username" do
