@@ -1,4 +1,4 @@
-name,description,price,photo_url,stock,available
+name,description,price,photo_url,stock,available,user_id
 Tarsha Aufderhar,Et iste sed aut.,66.31,https://lorempixel.com/300/300,39,true,13
 Brad Crist DVM,Qui aut rerum totam.,76.73,https://lorempixel.com/300/300,47,true,12
 Loyd Toy Jr.,Tempore velit aut eaque.,18.48,https://lorempixel.com/300/300,18,true,8
