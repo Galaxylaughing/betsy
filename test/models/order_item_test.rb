@@ -20,29 +20,27 @@ describe OrderItem do
   describe 'validations' do
     let(:product) { products(:begonia) }
     let(:order) { orders(:myrta_order) }
-    let(:order_item) {
-    OrderItem.new(quantity: 1, product_id: product.id, order_id: order.id)
-  }
-  
-  it 'is valid when a quantity of 1 or more is entered' do
-    # Default quantity is 1
-    expect(order_item.valid?).must_equal true
+    let(:order_item) { OrderItem.new(quantity: 1, product_id: product.id, order_id: order.id) }
     
-    order_item.quantity = 2
-    expect(order_item.valid?).must_equal true
-  end
-  
-  it 'is not valid when a quantity of less than 1 is entered' do
-    order_item.quantity = 0
-    expect(order_item.valid?).must_equal false
+    it 'is valid when a quantity of 1 or more is entered' do
+      # Default quantity is 1
+      expect(order_item.valid?).must_equal true
+      
+      order_item.quantity = 2
+      expect(order_item.valid?).must_equal true
+    end
     
-    order_item.quantity = -1
-    expect(order_item.valid?).must_equal false
+    it 'is not valid when a quantity of less than 1 is entered' do
+      order_item.quantity = 0
+      expect(order_item.valid?).must_equal false
+      
+      order_item.quantity = -1
+      expect(order_item.valid?).must_equal false
+    end
+    
+    it 'is not valid with a quantity that is not an integer' do
+      order_item.quantity = "three"
+      expect(order_item.valid?).must_equal false
+    end
   end
-  
-  it 'is not valid with a quantity that is not an integer' do
-    order_item.quantity = "three"
-    expect(order_item.valid?).must_equal false
-  end
-end
 end
