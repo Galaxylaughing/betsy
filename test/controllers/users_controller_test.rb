@@ -63,11 +63,22 @@ describe UsersController do
     end
     
     describe "index" do
-      let(:user) { users(:begonia) }
       it "can see the merchant index" do
+        user = users(:begonia)
+        
         perform_login(user)
         
         get users_path
+        
+        must_respond_with :success
+      end
+    end
+    
+    describe "show" do
+      it "can see the product-by-merchant list page" do
+        user = users(:begonia)
+        
+        get user_path(user)
         
         must_respond_with :success
       end
@@ -91,6 +102,16 @@ describe UsersController do
     describe "index" do
       it "can see the merchant index" do
         get users_path
+        
+        must_respond_with :success
+      end
+    end
+    
+    describe "show" do
+      it "can see the product-by-merchant list page" do
+        user = users(:begonia)
+        
+        get user_path(user)
         
         must_respond_with :success
       end
