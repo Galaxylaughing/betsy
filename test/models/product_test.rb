@@ -81,7 +81,7 @@ describe Product do
   
   describe "relationships" do
     before do
-      @user = User.create(username: "test user", email: "test_email@example.com") 
+      @user = User.create(username: "test user", email: "test-email@example.com") 
       @category1 = Category.create(name: "flower")
       @category2 = Category.create(name: "specialty")
       @product = Product.create(user_id: @user.id, name: "test product", description: "cool product", price: 1.9, photo_url: "url", stock: 3, categories: [@category1, @category2]) 
@@ -89,7 +89,7 @@ describe Product do
       @review1 = Review.create(product_id: @product.id, rating: 5, comment: "great product")
       @review2 = Review.create(product_id: @product.id, rating: 2, comment: "bad product")
       
-      @order = Order.create(email: "test email", address: "test address", name: "test user name", cc_num: 1234, zip: 98111)
+      @order = Order.create(email: "testemail@example.com", address: "test address", name: "test user name", cc_num: 1234, zip: 98111, cvv_code: 123)
       
       @order_item1 = OrderItem.create(product_id: @product.id, order_id: @order.id, quantity: 2)
       @order_item2 = OrderItem.create(product_id: @product.id, order_id: @order.id, quantity: 4)
