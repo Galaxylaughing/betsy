@@ -92,3 +92,24 @@ $whitegreen: #d6efc3;
   color: $darkgreen;
   color: $brightgreen;
 }
+
+.app_footer {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem;
+}
+
+.app_footer__buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.app_footer__offsite_buttons {
+  margin-left: auto;
+}
+
+.site_copywrite {
+  text-align: center;
+  padding-top: 1rem;
+}
