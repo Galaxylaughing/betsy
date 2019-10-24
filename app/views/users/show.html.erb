@@ -1,6 +1,6 @@
 <section>
   <h2>
-    Products by <%= @user.username %>
+    Products by <%= link_to @user.username, users_path(@user.id) %>
   </h2>
 
   <div class="list_tiles">
