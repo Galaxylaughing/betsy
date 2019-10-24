@@ -1,12 +1,12 @@
 require "test_helper"
 
-describe "Review" do
-  before do
-    @product = products(:begonia)
-    @review = Review.create!(rating: 4, comment: "I love the pretty flowers!", product_id: @product.id)
-  end
-  
+describe Review do
   describe 'relations' do
+    before do
+      @product = products(:begonia)
+      @review = Review.create!(rating: 4, comment: "I love the pretty flowers!", product_id: @product.id)
+    end
+    
     it 'belongs to a product' do
       expect(@review.product_id).must_equal @product.id
     end
@@ -14,7 +14,7 @@ describe "Review" do
   
   describe 'validations' do
     let(:product) { products(:begonia) }
-    let(:review) { Review.create!(rating: 4, comment: "I love the pretty flowers!", product_id: @product.id) }
+    let(:review) { Review.create!(rating: 4, comment: "I love the pretty flowers!", product_id: product.id) }
     
     it 'is invalid without a product_id' do
       review.product_id = nil
