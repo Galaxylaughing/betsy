@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # RESTful routes:
   root 'homepages#index'
   
-  resources :users
+  resources :users, only: [:index]
   resources :products
   resources :orders
   resources :reviews 
