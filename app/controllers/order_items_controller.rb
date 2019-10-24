@@ -1,2 +1,10 @@
 class OrderItemsController < ApplicationController
-end
+  
+  
+  def create
+    if session[:order_id].nil?
+      order = Order.create(status: "pending")
+      
+    end
+  end
+  
