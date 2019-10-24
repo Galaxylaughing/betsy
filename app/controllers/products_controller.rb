@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
   def index 
     @products = Product.all
+    
+    @specialty = Product.sort_by_category("specialty")
+    @flower = Product.sort_by_category("flower")
+    @annual = Product.sort_by_category("annual")
   end
   
   def show
@@ -32,50 +36,52 @@ class ProductsController < ApplicationController
     end
   end 
   
-  # def destroy
-  #   product_id = params[:id]
-  #   @product = Product.find_by(id: product_id)
+  def edit
+    @product = Product.find_by(id: params[:id])
+    
+    if @product.nil?
+      flash[:warning] = "Can't edit, invalid product."
+      redirect_to products_path
+      return
+    end
+  end
   
-  #   if @product.nil?
-  #     head :not_found
-  #     return
-  #   end
+  def update
+    @product= Product.find_by(id: params[:id])
+    
+    if @product.update(product_params)
+      flash[:success] = "Product successfully updated."
+      redirect_to product_path(@product.id)
+      return
+    else
+      flash[:warning] = "Can't update product."
+      render :edit
+      return
+    end
+  end
   
-  # def edit
-  #   @product = Product.find_by(id: params[:id])
+  def destroy
+    product_id = params[:id]
+    @product = Product.find_by(id: product_id)
+    
+    if @product.nil?
+      head :not_found
+      return
+    end
+    
+    if @product.destroy
+      flash[:success] = "Product successfully deleted."
+      # binding.pry
+      redirect_to products_path
+      return
+    else
+      flash[:warning] = "Can't delete product."
+      # binding.pry
+      redirect_to products_path
+    end 
+  end
   
-  #   if @product.nil?
-  #     flash[:warning] = "Can't edit, invalid product."
-  #     redirect_to products_path
-  #     return
-  #   end
-  # end
-  
-  # def update
-  #   @product= Product.find_by(id: params[:id])
-  
-  #   if @product.update(product_params)
-  #     flash[:success] = "Product successfully updated."
-  #     redirect_to product_path(@product.id)
-  #     return
-  #   else
-  #     flash[:warning] = "Can't update product."
-  #     render :edit
-  #     return
-  #   end
-  # end
-  
-  #   if @product.destroy
-  #     flash[:success] = "Product successfully deleted."
-  #     redirect_to products_path
-  #     return
-  #   else
-  #     flash[:warning] = "Can't delete product."
-  #     redirect_to products_path
-  #   end 
-  #   # end
-  
-  #   private
+  private
   
   def product_params
     return params.require(:product).permit(:name, :user_id, :description, :price, :photo_url, :stock, :available)

@@ -4,15 +4,15 @@
 
   <section class= "product-list">
     <% @products.each do |product| %>
-    <h4><%= product.name.capitalize %></h4>
+    <h4><%= link_to product.name.capitalize, product_path(product) %></h4>
       <ul>
         <li>Description: <%= product.description.capitalize %></li>
         <li>Price: $<%= product.price %></li>
         <li>Stock: <%= product.stock %> units</li>
         <li>Available: <%= product.available %></li>
         <li>User_id: <%= product.user_id %></li>
-        <li>photo_url</li>
-      </ul>
+        <img src= <%= product.photo_url %>
+      </ul>    
     <%end%>
   </section>
   </main>
