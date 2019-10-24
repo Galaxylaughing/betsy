@@ -71,12 +71,10 @@ class ProductsController < ApplicationController
     
     if @product.destroy
       flash[:success] = "Product successfully deleted."
-      # binding.pry
       redirect_to products_path
       return
     else
       flash[:warning] = "Can't delete product."
-      # binding.pry
       redirect_to products_path
     end 
   end
