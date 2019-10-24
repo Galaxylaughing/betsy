@@ -1,6 +1,5 @@
-orquid:
-  id: 2222
-  name: Ada Orquid
+orchid:
+  name: Ada Orchid
   description: Cool
   price: 12.99
   photo_url: photo_url
@@ -10,7 +9,6 @@ orquid:
   categories: specialty
 
 begonia:
-  id: 3333
   name: Begonia Flower
   description: Cool
   price: 8.99
