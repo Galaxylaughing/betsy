@@ -1,0 +1,50 @@
+<body>
+  <main>
+    <h2>Products by Category</h2>
+
+  <section class= "product-list">
+  <h4>Annual</h4>  
+    <% @product.categories each do |annual| %>   
+    <h4><%= product.name.capitalize %></h4>
+      <ul>
+        <li>Description: <%= product.description.capitalize %></li>
+        <li>Price: $<%= product.price %></li>
+        <li>Stock: <%= product.stock %> units</li>
+        <li>Available: <%= product.available %></li>
+        <li>User_id: <%= product.user_id %></li>
+        <li>photo_url</li>
+      </ul>
+    <%end%>
+  </section>
+
+  <section class= "product-list">
+  <h4>Flower</h4>  
+    <% @product.categories each do |flower| %>   
+    <h4><%= product.name.capitalize %></h4>
+      <ul>
+        <li>Description: <%= product.description.capitalize %></li>
+        <li>Price: $<%= product.price %></li>
+        <li>Stock: <%= product.stock %> units</li>
+        <li>Available: <%= product.available %></li>
+        <li>User_id: <%= product.user_id %></li>
+        <li>photo_url</li>
+      </ul>
+    <%end%>
+  </section>
+
+  <section class= "product-list">
+  <h4>Specialty</h4>  
+    <% @product.categories each do |specialty| %>   
+    <h4><%= product.name.capitalize %></h4>
+      <ul>
+        <li>Description: <%= product.description.capitalize %></li>
+        <li>Price: $<%= product.price %></li>
+        <li>Stock: <%= product.stock %> units</li>
+        <li>Available: <%= product.available %></li>
+        <li>User_id: <%= product.user_id %></li>
+        <li>photo_url</li>
+      </ul>
+    <%end%>
+  </section>
+  </main>
+</body>
