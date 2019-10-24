@@ -1,13 +1,13 @@
-<section>
-  <h2>
+<section class="show_page">
+  <h2 class="show_page__header">
     All Merchants
   </h2>
 
-  <div class="list_tiles">
+  <div class="show_page__tiles">
     <% @users.each do |user| %>
-      <div class="merchant_tile">
-        <%= link_to user.username, user_path(user.id) %>
-      </div>
+      <a href=<%= user_path(user.id) %> class="merchant_tile">
+        <%= user.username %>
+      </a>
     <% end %>
   </div>
 </section>

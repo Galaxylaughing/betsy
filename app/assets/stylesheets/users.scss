@@ -2,19 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.list_tiles {
+$lightgreen: #68a418;
+$darkgreen: #2e5e1a;
+$verydarkgreen: #174326;
+$brightgreen: #b7f702;
+
+.show_page {
+  margin-top: 3rem;
+}
+
+.show_page__header {
+  text-align: center;
+}
+
+.show_page__tiles {
   width: 90%;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 2rem;
+  margin-top: 2rem;
 }
 
 .merchant_tile {
   padding: 3rem;
   text-align: center;
-  // temporary background color
-  background-color: lightgreen;
+  background-color: $lightgreen;
+  font-size: 1.5em;
+  color: white;
+}
+
+.merchant_tile:hover {
+  background-color: $brightgreen;
+  color: $verydarkgreen;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .merchant_product_tile {

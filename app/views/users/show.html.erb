@@ -1,9 +1,9 @@
-<section>
-  <h2>
+<section class="show_page">
+  <h2 class="show_page__header">
     Products by <%= link_to @user.username, users_path(@user.id) %>
   </h2>
 
-  <div class="list_tiles">
+  <div class="show_page__tiles">
     <% @user.products.each do |product| %>
       <div class="merchant_product_tile">
         <img src=<%= product.photo_url%> alt=<%= product.name %>>
