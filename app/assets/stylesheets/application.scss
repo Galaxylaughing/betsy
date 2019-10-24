@@ -17,6 +17,17 @@
 /* Import scss content */
 @import "**/*";
 
+$green: #428625;
+$lightgreen: #68a418;
+$highlight_lightgreen: #5da22c;
+$midgreen: #428625;
+$darkgreen: #2e5e1a;
+$verydarkgreen: #174326;
+$brightgreen: #b7f702;
+$palegreen: #c8eaaf;
+$whitegreen: #d6efc3;
+
+
 .app_header {
   background-image: url(https://lh3.googleusercontent.com/i8VrQ6W2Gk-S8TvGyngqNVJMmoVRGqUljMHYqXyzUQC1hFmeey1eqVK3rE5WjvHrsyHROEnQaoLX67gP7G5NMRmsx1orzqR8fZmGv2LFrNeXqgRNlQYaZnLSKP2ccOaXDWpFJugmRA=w2400);
   padding: 2.5rem;
@@ -44,41 +55,40 @@
 }
 
 .page_nav .btn-primary {
-  background-color: #68a418;
-  border-color: #428625;
+  background-color: $lightgreen;
+  border-color: $green;
 }
 
 .page_nav .btn-primary:hover {
-  background-color: #428625;
+  background-color: $green;
 }
 
-
 .btn-light {
-  background-color: #c8eaaf;
-  border-color: #d6efc3;
+  background-color: $palegreen;
+  border-color: $whitegreen;
 }
 
 .btn-light:hover {
-  background-color: #68b631;
+  background-color: $lightgreen;
 }
 
 .shopping-cart:hover {
-  background-color: #5da22c;
+  background-color: $highlight_lightgreen;
 }
 
 .github-login {
-  color: #174326;
+  color: $verydarkgreen;
 }
 
 .fa-github {
-  color: #174326;
+  color: $verydarkgreen;
 }
 
 .fa-shopping-cart {
-  color: #428625;
+  color: $midgreen;
 }
 
 .btn-light:hover .fa-shopping-cart {
-  color: #2e5e1a;
-  color: #b7f702;
+  color: $darkgreen;
+  color: $brightgreen;
 }
