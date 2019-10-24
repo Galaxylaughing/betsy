@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe Review do
+describe "Review" do
   before do
     @product = products(:begonia)
     @review = Review.create!(rating: 4, comment: "I love the pretty flowers!", product_id: @product.id)
