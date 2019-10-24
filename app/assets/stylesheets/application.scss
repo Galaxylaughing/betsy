@@ -88,7 +88,7 @@ $whitegreen: #d6efc3;
   color: $midgreen;
 }
 
-.btn-light:hover .fa-shopping-cart {
+.btn-light:hover, .btn-light:hover .fa-shopping-cart {
   color: $darkgreen;
   color: $brightgreen;
 }
