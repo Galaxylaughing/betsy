@@ -3,7 +3,7 @@ require "date"
 require "csv"
 
 CSV.open("db/product_seeds.csv", "w", :write_headers => true,
-:headers => ["name", "description", "price", "photo_url", "stock", "available"]) do |csv|
+:headers => ["name", "description", "price", "photo_url", "stock", "available", "user_id"]) do |csv|
   25.times do
     name = Faker::Name.unique.name 
     description = Faker::Lorem.sentence
