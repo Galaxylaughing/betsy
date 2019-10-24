@@ -1,0 +1,31 @@
+georgina_order:
+  email: "geo@gmail.com"
+  address: "bellevue"
+  name: "Georgina"
+  cc_num: "1111111111111111"
+  cvv_code: "111"
+  zip: 98004
+
+sam_order:
+  email: "sam@gmail.com"
+  address: "seattle"
+  name: "Sam"
+  cc_num: "1111111111111111"
+  cvv_code: "222"
+  zip: 98005
+
+hallie_order:
+  email: "hall@gmail.com"
+  address: "redmond"
+  name: "Hallie"
+  cc_num: "1111111111111111"
+  cvv_code: "333"
+  zip: 98006
+
+sabrina_order:
+  email: "sab@gmail.com"
+  address: "kirkland"
+  name: "Sabrina"
+  cc_num: "1111111111111111"
+  cvv_code: "444"
+  zip: 98007
