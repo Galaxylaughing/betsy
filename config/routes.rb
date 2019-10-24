@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'homepages#index'
   
   resources :users
-  resources :products
+  resources :products 
   resources :orders
   resources :reviews 
   
@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "users#create", as: "callback"
   delete "/logout", to: "users#destroy", as: "logout"
   
+  post '/products/:product_id', to: 'order_items#create'
 end
