@@ -1,18 +1,20 @@
 <section class="show_page">
   <h2 class="show_page__header">
-    Products by <%= link_to @user.username, users_path(@user.id) %>
+    Products by <%= link_to @user.username, users_path(@user.id), class: "show_page__merchant" %>
   </h2>
 
   <div class="show_page__tiles">
     <% @user.products.each do |product| %>
       <div class="merchant_product_tile">
-        <img src=<%= product.photo_url%> alt=<%= product.name %>>
-        <h3 class="merchant_product_tile__title">
-          <%= link_to product.name, product_path(product.id) %>
-        </h3>
-        <div>
-          <p>$<%= product.price %></p>
-          <p><%= product.description %></p>
+        <img src=<%= product.photo_url%> alt=<%= product.name %> class="merchant_product_tile__img">
+        <div class="merchant_product_tile__data">
+          <h3 class="merchant_product_tile__title">
+            <%= link_to product.name, product_path(product.id) %>
+          </h3>
+          <div class="merchant_product_tile__details">
+            <p>$<%= product.price %></p>
+            <p><%= product.description %></p>
+          </div>
         </div>
       </div>
     <% end %>
