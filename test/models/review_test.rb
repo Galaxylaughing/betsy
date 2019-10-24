@@ -16,6 +16,11 @@ describe Review do
     let(:product) { products(:begonia) }
     let(:review) { Review.create!(rating: 4, comment: "I love the pretty flowers!", product_id: @product.id) }
     
+    it 'is invalid without a product_id' do
+      review.product_id = nil
+      expect(review.valid?).must_equal false
+    end
+    
     it 'is valid when there is a rating between 1 and 5 entered' do
       expect(review.valid?).must_equal true
       
@@ -42,6 +47,11 @@ describe Review do
     it 'is not valid when rating is not an integer' do
       review.rating = "three"
       expect(review.valid?).must_equal false
+    end
+    
+    it 'is still valid without a comment' do
+      review.comment = nil
+      expect(review.valid?).must_equal true
     end
   end
 end
