@@ -27,7 +27,21 @@ describe Review do
     end
     
     it 'is not valid with a rating that is not between 1 and 5' do
+      review.rating = 0
+      expect(review.valid?).must_equal false
       
+      review.rating = 6
+      expect(review.valid?).must_equal false
+    end
+    
+    it 'is not valid when rating is nil' do
+      review.rating = nil
+      expect(review.valid?).must_equal false
+    end
+    
+    it 'is not valid when rating is not an integer' do
+      review.rating = "three"
+      expect(review.valid?).must_equal false
     end
   end
 end
