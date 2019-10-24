@@ -1,31 +1,71 @@
+myrta_order:
+  email: darren@turcotte.io
+  address: 1950 Hugh Valley
+  name: Myrta Bauch
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 411
+  zip: 33515-6343
+
+geri_order:
+  email: mona@mohr.biz
+  address: 527 Gary Place
+  name: Geri Skiles
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 429
+  zip: 84847-0917
+
+anita_order:
+  email: serena.bauch@lynch.com
+  address: 9481 Padberg Inlet
+  name: Anita Deckow
+  cc_num: 1212-1221-1121-1234
+  cvv_code: 845
+  zip: 01196
+
+lona_order:
+  email: suzann@paucek.biz
+  address: 50288 Sanford Mission
+  name: Lona Block
+  cc_num: 1212-1221-1121-1234
+  cvv_code: 878
+  zip: 54170-6817
+
+ora_order:
+  email: ciera.wyman@purdymaggio.io
+  address: 73457 Grant Burgs
+  name: Ora Corkery
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 832
+  zip: 10824
+
 georgina_order:
-  email: "geo@gmail.com"
-  address: "bellevue"
-  name: "Georgina"
-  cc_num: "1111111111111111"
-  cvv_code: "111"
+  email: geo@gmail.com
+  address: bellevue
+  name: Georgina
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 111
   zip: 98004
 
 sam_order:
-  email: "sam@gmail.com"
-  address: "seattle"
-  name: "Sam"
-  cc_num: "1111111111111111"
-  cvv_code: "222"
+  email: sam@gmail.com
+  address: seattle
+  name: Sam
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 222
   zip: 98005
 
 hallie_order:
-  email: "hall@gmail.com"
-  address: "redmond"
-  name: "Hallie"
-  cc_num: "1111111111111111"
-  cvv_code: "333"
+  email: hall@gmail.com
+  address: redmond
+  name: Hallie
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 333
   zip: 98006
 
 sabrina_order:
-  email: "sab@gmail.com"
-  address: "kirkland"
-  name: "Sabrina"
-  cc_num: "1111111111111111"
-  cvv_code: "444"
+  email: sab@gmail.com
+  address: kirkland
+  name: Sabrina
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
   zip: 98007

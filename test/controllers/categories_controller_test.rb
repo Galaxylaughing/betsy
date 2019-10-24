@@ -1,7 +1,11 @@
 require "test_helper"
 
 describe CategoriesController do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  let ()
+  
+  describe "index" do
+    it "responds with success when there is at least one item in a category" do
+      
+    end
+  end
 end
