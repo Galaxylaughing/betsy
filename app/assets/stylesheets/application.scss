@@ -16,3 +16,69 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+.app_header {
+  background-image: url(https://lh3.googleusercontent.com/i8VrQ6W2Gk-S8TvGyngqNVJMmoVRGqUljMHYqXyzUQC1hFmeey1eqVK3rE5WjvHrsyHROEnQaoLX67gP7G5NMRmsx1orzqR8fZmGv2LFrNeXqgRNlQYaZnLSKP2ccOaXDWpFJugmRA=w2400);
+  padding: 2.5rem;
+}
+
+.app_header__title {
+  color: #ACDF87;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.top_nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.user_nav {
+  margin-left: auto;
+}
+
+
+.page_nav a {
+  color: white;
+}
+
+.page_nav .btn-primary {
+  background-color: #68a418;
+  border-color: #428625;
+}
+
+.page_nav .btn-primary:hover {
+  background-color: #428625;
+}
+
+
+.btn-light {
+  background-color: #c8eaaf;
+  border-color: #d6efc3;
+}
+
+.btn-light:hover {
+  background-color: #68b631;
+}
+
+.shopping-cart:hover {
+  background-color: #5da22c;
+}
+
+.github-login {
+  color: #174326;
+}
+
+.fa-github {
+  color: #174326;
+}
+
+.fa-shopping-cart {
+  color: #428625;
+}
+
+.btn-light:hover .fa-shopping-cart {
+  color: #2e5e1a;
+  color: #b7f702;
+}
