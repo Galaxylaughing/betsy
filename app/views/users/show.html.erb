@@ -8,7 +8,7 @@
       <div class="merchant_product_tile">
         <img src=<%= product.photo_url%> alt=<%= product.name %>>
         <h3 class="merchant_product_tile__title">
-          <%= product.name %>
+          <%= link_to product.name, product_path(product.id) %>
         </h3>
         <div>
           <p>$<%= product.price %></p>
