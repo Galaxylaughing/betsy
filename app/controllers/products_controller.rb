@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
   end
   
   def update
-    @product= Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id])
     
     if @product.update(product_params)
       flash[:success] = "Product successfully updated."
