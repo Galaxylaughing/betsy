@@ -55,7 +55,8 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  # gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 4.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -78,9 +79,13 @@ group :development do
   gem 'binding_of_caller'
   gem 'guard'
   gem 'guard-minitest'
+  gem 'dotenv-rails'
 end
 
 group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
 end
+
+gem "omniauth"
+gem "omniauth-github"
