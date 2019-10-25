@@ -1,26 +1,11 @@
 name,description,price,photo_url,stock,available,user_id
-Tarsha Aufderhar,Et iste sed aut.,66.31,https://lorempixel.com/300/300,39,true,13
-Brad Crist DVM,Qui aut rerum totam.,76.73,https://lorempixel.com/300/300,47,true,12
-Loyd Toy Jr.,Tempore velit aut eaque.,18.48,https://lorempixel.com/300/300,18,true,8
-Christoper Cormier,Veritatis et qui sed.,74.99,https://lorempixel.com/300/300,16,true,15
-Wilfred Tremblay,Vel et tempora recusandae.,68.13,https://lorempixel.com/300/300,21,true,20
-Tereasa Kunze,Sint aliquam ipsum fugiat.,71.73,https://lorempixel.com/300/300,32,false,24
-Sal Considine,Dolor adipisci quia odit.,51.89,https://lorempixel.com/300/300,28,false,6
-Mario Medhurst,In aut placeat iste.,19.2,https://lorempixel.com/300/300,6,true,16
-Kenda Barton,Vitae itaque esse non.,81.25,https://lorempixel.com/300/300,43,false,2
-Palmer Terry III,Dolore asperiores magni qui.,78.69,https://lorempixel.com/300/300,1,false,4
-Mr. Ester Toy,Placeat nihil molestiae ad.,87.74,https://lorempixel.com/300/300,19,true,25
-Rusty Christiansen,Similique sit autem voluptas.,14.43,https://lorempixel.com/300/300,6,false,10
-Mr. Wilda Stanton,Deserunt qui accusamus voluptas.,76.28,https://lorempixel.com/300/300,16,false,6
-Dr. Gaston Kovacek,Et possimus rerum at.,1.39,https://lorempixel.com/300/300,3,false,7
-Lincoln Crona,Voluptas omnis et amet.,25.09,https://lorempixel.com/300/300,10,false,5
-Mr. Faith Hilpert,Similique rem iure ut.,99.04,https://lorempixel.com/300/300,49,false,2
-Mr. Zack Mitchell,Eligendi enim suscipit sit.,82.59,https://lorempixel.com/300/300,13,false,8
-Cedric Hyatt PhD,Possimus ipsa dicta debitis.,51.66,https://lorempixel.com/300/300,17,true,7
-Charlsie Carter II,Quibusdam ipsum labore enim.,90.73,https://lorempixel.com/300/300,1,false,6
-Gaylord Kirlin,Sed quae aliquam non.,7.33,https://lorempixel.com/300/300,17,false,12
-Adell Ortiz,Sit rem impedit officia.,93.7,https://lorempixel.com/300/300,7,true,13
-Mr. Norris Kunde,Ut unde possimus eum.,96.53,https://lorempixel.com/300/300,34,true,22
-Una Klocko,Molestiae laudantium rem quaerat.,32.2,https://lorempixel.com/300/300,3,true,14
-Oliver Heller,Similique in et veniam.,54.67,https://lorempixel.com/300/300,3,true,8
-Tambra Braun,Vel perferendis dolorum nisi.,95.93,https://lorempixel.com/300/300,41,true,3
+Dracaena marginata,Fun and delicate with woven stems and spiky upright leaves.,33.31,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipOVQ74G7u7w25F7e-TL-RxgaHGP195TC5lbrg7h?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,39,true,1
+Crocodile fern,Tropical and unique with textured leaves.,18.48,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipN8RjiZ_9SsxjYckjP6sxe7DIiiFeEI0w3fhlXs?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,18,true,8
+Bird of paradise,Impressive and tropical with large glossy leaves.,42.49,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipNgVOXewDlQKIq01he96AZA9Q3PHwGGFdnPF34k?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,21,true,10
+Croton petra,Colorful and exotic.,19.2,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipMn4Jd0fH3atVhBq4AMAWrSEWz3c2pRi8uleY6z?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,6,true,9
+Burgundy rubber tree,Robust and dramatic with large glossy leaves.,22.34,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipNPmNGuKFFbSE873NQUKUJW1Lv7DTV7s8Tx5j_Q?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,12,true,5
+Spider plant,Fun and whimsical with long curved leaves.,15.99,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipMswOC268q6eUHr9jos3oM_J1JT-F1lGcwuUQRy?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,8,true,4
+Alocasia polly,Glossy dark leaves with silvery-green streaks.,29.45,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipNalha2tMmau_1Q4IF4NLp3z7-ghu15dIB4ISjG?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,12,true,3
+Philodendron heartleaf,A unique plant with heart-shaped leaves.,17.90,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipOMepvHf3faSBM5Pj14kYuXDXKW1gHwo9dTkDP6?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,10,true,2
+Parlor palm,Easy and graceful with lush dark green fronds.,14.19,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipPrp_hZraa9OhPcMcSSvuqL3G8OzVH18hcKcnqf?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,15,true,5
+Money tree,Graceful with large leaves and a braided trunk.,34.55,https://photos.google.com/share/AF1QipNxdpPTsqTw-B3iJbdBdpUwQyD-jPCxfAT-yEgmb21dd5HTIulE1IYcTQ0U0p_KxA/photo/AF1QipMi9Tzji1b2XHNo_QEobXY_Rp7OiviiMf8rBHjF?key=Zy01ZFJOUGp5RnAzbldpbUZuak8tSGNldWJUSWJR,12,true,9
