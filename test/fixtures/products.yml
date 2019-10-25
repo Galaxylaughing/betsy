@@ -2,7 +2,7 @@ orchid:
   name: Ada Orchid
   description: Cool
   price: 12.99
-  photo_url: photo_url
+  photo_url: https://lorempixel.com/300/300
   stock: 100
   available: true
   user_id: 2
@@ -12,7 +12,7 @@ begonia:
   name: Begonia Flower
   description: Cool
   price: 8.99
-  photo_url: photo_url
+  photo_url: https://lorempixel.com/300/300
   stock: 200
   available: true
   user_id: 2
