@@ -26,10 +26,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
-    if session[:order_id] != nil
-    end
-  end
 
 
 private
