@@ -7,28 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-ORDER_ITEM_FILE = Rails.root.join('db', 'order_item_seeds.csv')
-puts "Loading raw order_item data from #{ORDER_ITEM_FILE}"
-
-order_item_failures = []
-CSV.foreach(ORDER_ITEM_FILE, :headers => true) do |row|
-  order_item = OrderItem.new
-  order_item.quantity = row['quantity']
-  order_item.product_id = row['product_id']
-  order_item.order_id = row['order_id']
-  successful = order_item.save
-  if !successful
-    order_item_failures << order_item
-    puts "Failed to save order_item: #{order_item.inspect}"
-  else
-    puts "Created order_item: #{order_item.inspect}"
-  end
-end
-
-puts "Added #{OrderItem.count} order_item records"
-puts "#{order_item_failures.length} order_items failed to save"
-
-
 ORDERS_FILE = Rails.root.join('db', 'order_seeds.csv')
 puts "Loading raw orders data from #{ORDERS_FILE}"
 
@@ -53,6 +31,29 @@ end
 
 puts "Added #{Order.count} order records"
 puts "#{orders_failures.length} orders failed to save"
+
+
+USERS_FILE = Rails.root.join('db', 'user_seeds.csv')
+puts "Loading raw user data from #{USERS_FILE}"
+
+users_failures = []
+CSV.foreach(USERS_FILE, :headers => true) do |row|
+  user = User.new
+  user.username = row['username']
+  user.email = row['email']
+  
+  successful = user.save
+  if !successful
+    users_failures << user
+    puts "Failed to save user: #{user.inspect}"
+  else
+    puts "Created user: #{user.inspect}"
+  end
+end
+
+puts "Added #{User.count} user records"
+puts "#{users_failures.length} user failed to save"
+
 
 
 PRODUCTS_FILE = Rails.root.join('db', 'product_seeds.csv')
@@ -82,6 +83,28 @@ puts "Added #{Product.count} product records"
 puts "#{products_failures.length} products failed to save"
 
 
+ORDER_ITEM_FILE = Rails.root.join('db', 'order_item_seeds.csv')
+puts "Loading raw order_item data from #{ORDER_ITEM_FILE}"
+
+order_item_failures = []
+CSV.foreach(ORDER_ITEM_FILE, :headers => true) do |row|
+  order_item = OrderItem.new
+  order_item.quantity = row['quantity']
+  order_item.product_id = row['product_id']
+  order_item.order_id = row['order_id']
+  successful = order_item.save
+  if !successful
+    order_item_failures << order_item
+    puts "Failed to save order_item: #{order_item.inspect}"
+  else
+    puts "Created order_item: #{order_item.inspect}"
+  end
+end
+
+puts "Added #{OrderItem.count} order_item records"
+puts "#{order_item_failures.length} order_items failed to save"
+
+
 REVIEWS_FILE = Rails.root.join('db', 'review_seeds.csv')
 puts "Loading raw review data from #{REVIEWS_FILE}"
 
@@ -103,25 +126,3 @@ end
 
 puts "Added #{Review.count} review records"
 puts "#{reviews_failures.length} review failed to save"
-
-
-USERS_FILE = Rails.root.join('db', 'user_seeds.csv')
-puts "Loading raw user data from #{USERS_FILE}"
-
-users_failures = []
-CSV.foreach(USERS_FILE, :headers => true) do |row|
-  user = User.new
-  user.username = row['username']
-  user.email = row['email']
-  
-  successful = user.save
-  if !successful
-    users_failures << user
-    puts "Failed to save user: #{user.inspect}"
-  else
-    puts "Created user: #{user.inspect}"
-  end
-end
-
-puts "Added #{User.count} user records"
-puts "#{users_failures.length} user failed to save"
