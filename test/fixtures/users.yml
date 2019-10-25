@@ -8,3 +8,8 @@ orchid:
   uid: 424242
   email: ada@adadevelopersacademy.org
   username: awesome_orchid
+petunia:
+  provider: github
+  uid: 635635
+  email: pretty_petunia@example.com
+  username: pretty_petunia

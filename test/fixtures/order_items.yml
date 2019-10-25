@@ -1,0 +1,8 @@
+ducky_bellflower:
+  quantity: 1
+  order: ducky_orchid_bellflower
+  product: bellflower
+bear_hollyhock:
+  quantity: 2
+  order: bear_orchid_hollyhock
+  product: hollyhock

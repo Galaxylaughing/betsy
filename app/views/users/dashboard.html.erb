@@ -1,0 +1,136 @@
+<section class="dashboard">
+  <h2>
+    Dashboard
+  </h2>
+
+  <div class="dashboard__account_details">
+    <section>
+      <h3>
+        <%= @user.username %>
+      </h3>
+
+      <div>
+        email: <%= @user.email %>
+      </div>
+
+      <ul>
+        <li>
+          #<%= @user.products.count %> products
+        </li>
+        <li>
+          #<%# @user.order_count %> orders
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="dashboard__account_stats">
+    <section>
+      <h3>
+        Top Selling Product
+      </h3>
+
+      <%# top_product = @user.top_product %>
+      <ul>
+        <li><%# top_product.name %></li>
+        <li><%# top_product.num_sold %> sold</li>
+        <li><%# top_product.stock %> in stock</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>
+        Recent Reviews
+      </h3>
+
+      <%# recent_reviews = @user.recent_reviews %>
+      <ul>
+        <%# recent_reviews.each do |review| %>
+        <li>
+          <%# review.id %>: <%# review.rating %>
+        </li>
+        <%# end %>
+      </ul>
+    </section>
+  </div>
+
+  <%# see list of existing products %>
+  <section>
+    <h3>
+      My Products
+    </h3>
+
+    <table class="table">
+      <caption>List of my products</caption>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>See in Store</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Current Stock</th>
+          <th>Edit</th>
+          <th><a href="#retire_meaning">Retire Product</a></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.products.each do |product| %>
+          <tr>
+            <td>
+              <%= link_to product.name %>
+            </td>
+            <%# add nested user_product_path %>
+            <%# add classes %>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to product.name, product_path(product.id), class: "btn" %>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-truncate"><%= product.description %></td>
+          </tr>
+          <tr>
+            <td><%= product.price %></td>
+          </tr>
+          <tr>
+            <td><%= product.stock %></td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to "Edit" %>
+              <%# add nested user_product_edit_path %>
+              <%# add classes %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to "Retire" %>
+              <%# add retire_product_path %>
+              <%# add classes %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <small class="caption__more_info">
+      <a id="retire_meaning"></a>
+      <p>
+        Retiring a product marks it unavailable. 
+        A retired product will not be visible to customers, but will still be visible in this list. 
+        You can unretire a product at any time.
+      </p>
+    </small>
+  </section>
+
+  <%# see list of orders %>  
+  <section>
+    <h3>
+      My Orders
+    </h3>
+  
+  </section>
+
+</section>

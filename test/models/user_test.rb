@@ -219,4 +219,80 @@ describe User do
       expect(list.first).must_equal first_name
     end
   end
+  
+  describe "order count" do
+    it "returns count of orders containing this user's product" do
+      user = users(:orchid)
+      # orchid has two products
+      # for product 1, there is one order of one quantity
+      # for product 2, there is one order of two quantity
+      
+      order_count = user.order_count
+      
+      expect(order_count).must_equal 2
+    end
+    
+    it "returns zero if the user has no products" do
+      user = users(:petunia)
+      # petunia has no products
+      
+      order_count = user.order_count
+      
+      expect(order_count).must_equal 0
+    end
+    
+    it "returns zero if there are no associated orders" do
+      user = users(:begonia)
+      # begonia has one product
+      # it does not have any orders
+      
+      order_count = user.order_count
+      
+      expect(order_count).must_equal 0
+    end
+  end
+  
+  describe "top_product" do
+    it "can find a users's top-selling product" do
+      # grab a user
+      # check fixtures for product with most items sold
+      #   (highest quantity across orders)
+      # top = this fixture
+      
+      # top_product = user.top_product
+      
+      # expect(top_product).must_equal top
+    end
+    
+    it "returns the most order-items product if quantity tie" do
+      # grab user
+      # get two products with the same overall quantity,
+      #   but one has more order-items than the other
+      # top = fixture with more order-items
+      
+      # top_product = user.top_product
+      
+      # expect(top_product).must_equal top
+    end
+    
+    it "returns nil if the user has no products" do
+      # grab a user
+      # user.products.each do |product|
+      #   product.destroy
+      # end
+      
+      # top_product = user.top_product
+      
+      # expect(top_product).must_be_nil
+    end
+    
+    it "returns nil if the user hasn't sold any products" do
+      # grab a user without any products with order-items
+      
+      # top_product = user.top_product
+      
+      # expect(top_product).must_be_nil
+    end
+  end
+  
 end

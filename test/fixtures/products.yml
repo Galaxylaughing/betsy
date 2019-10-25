@@ -127,3 +127,33 @@ ester:
   available: true
   user_id: 25
   categories: perrenial
+
+hollyhock:
+  name: Alcea rosea
+  description: Sun-loving, flowering plant that grows from 4 to 6 feet tall.
+  price: 12.75
+  photo_url: https://lorempixel.com/300/300
+  stock: 5
+  available: true
+  user: orchid
+  categories: perennial
+
+bellflower:
+  name: Campanula spp.
+  description: A short, easy-growing plant with lovely blue flowers.
+  price: 12.75
+  photo_url: https://lorempixel.com/300/300
+  stock: 5
+  available: true
+  user: orchid
+  categories: perennial
+
+treeivy:
+  name: Fatshedera spp.
+  description: A fun houseplant with ivy-like leaves and an upright, shrubby growth orientation.
+  price: 12.75
+  photo_url: https://lorempixel.com/300/300
+  stock: 5
+  available: true
+  user: begonia
+  categories: houseplant
