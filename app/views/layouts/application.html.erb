@@ -30,5 +30,21 @@
     </header>
 
     <%= yield %>
+
+    <footer class="footer">
+      <div class="footer__site_buttons">
+        <%= link_to "About Us", root_path, class: "btn btn-secondary" %>
+        <%= link_to "Register as Merchant", root_path, class: "btn btn-secondary" %>
+      </div>
+      <div class="footer__offsite_buttons">
+        <i class="fab fa-instagram btn btn-secondary"></i>
+        <i class="fab fa-facebook btn btn-secondary"></i>
+        <i class="fab fa-pinterest btn btn-secondary"></i>
+        <i class="fab fa-twitter-square btn btn-secondary"></i>
+      </div>
+      <div class="footer__site_copywrite">
+        © Ada Orchids 2019
+      </div>
+    </footer>
   </body>
 </html>
