@@ -126,6 +126,9 @@
       <% status_opts.each do |status| %>
         <% products = @user.products.where(status: status) %>
 
+        <%# for each product, %>
+        <%# product.total_revenue(status) %>
+
         <section>
           <h4>
             <%= status.capitalize %>
