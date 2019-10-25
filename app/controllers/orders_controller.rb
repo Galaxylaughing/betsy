@@ -8,36 +8,35 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
   end
+  
+  def show ; end
 
-  # def create
-  #   if session[:user_id].nil?
-  #     flash[:failure] = {general:"A problem occurred: You must log in to do that"}
-  #     redirect_to works_path
-  #   else
-  #     vote_info = {
-  #       date: Time.now,
-  #       user_id: session[:user_id],
-  #       work_id: work_id
-  #     }
-  #     if Vote.where(user_id: session[:user_id], work_id: work_id).exists?
-  #       flash[:failure] = {general:"A problem occurred: Could not upvote", user: "user: has already voted for this work"}
-  #       redirect_to works_path
-  #     else
-  #       @vote = Vote.new(vote_info) 
-  #       if @vote.save
-  #         flash[:success] = "Successfully upvoted" 
-  #         redirect_to works_path
-  #         return
-  #       else
-  #         render :new
-  #         return
-  #       end
-  #     end
-  #   end
-  # end
+  def edit ; end
+
+  def create
+    @order = Order.new(order_params) 
+    if @order.save
+      session[:order_id] = @order.id
+      flash[:success] = "Your order has been processed" 
+      redirect_to root_path
+      return
+    else
+      render :new
+      return
+    end
+  end
+
+  def update
+    if session[:order_id] != nil
+      
+  end
 
 
 private
+  def order_params
+    params.require(:order).permit(:email, :address, :name, :cc_num, :cvv_code, :zip)
+  end
+
   def find_order
     @order = Order.find_by_id(params[:id])
   end
