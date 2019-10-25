@@ -8,10 +8,11 @@ $darkgreen: #2e5e1a;
 $verydarkgreen: #174326;
 $brightgreen: #b7f702;
 $midgreen: #428625;
-
-
 $palegreen: #c8eaaf;
-$whitegreen: #d6efc3;
+
+caption {
+  display: none;
+}
 
 .show_page {
   margin-top: 3rem;
@@ -103,6 +104,11 @@ $whitegreen: #d6efc3;
   background-color: $palegreen;
 }
 
+.dashboard__user_data ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 .top_product__details {
   display: flex;
   flex-flow: row wrap;
@@ -122,9 +128,4 @@ $whitegreen: #d6efc3;
     padding: 2rem;
     margin-top: 0;
   }
-}
-
-.dashboard__user_data ul {
-  list-style: none;
-  padding-left: 0;
 }
