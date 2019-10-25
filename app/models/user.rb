@@ -13,4 +13,8 @@ class User < ApplicationRecord
     
     return user
   end
+  
+  def self.list 
+    return User.all.order(username: :asc)
+  end
 end
