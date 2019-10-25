@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  
+  before_action :find_order_item, only: [:show, :edit, :update, :destroy]
   
   def create
     if session[:order_id].nil?
@@ -23,9 +23,34 @@ class OrderItemsController < ApplicationController
       render :new
     end
   end
+
+  #Delete is going to be "remove products from my cart."
+
+  def destroy
+    @order_item.destroy
+
+    redirect_to products_path
+  end
+
+  #Update is going to change the quantity of my cart."
+
+  def update
+    if @order_item.update(order_items_params)
+      redirect_to root_path 
+      return
+    else 
+      render :edit
+      return
+    end
+  end
+
   
   private
   def order_items_params
     params.require(:order_item).permit(:quantity, :product_id, :order_id)
+  end
+
+  def find_order_item
+    @order_item = OrderItem.find_by(id: params[:id])
   end
 end

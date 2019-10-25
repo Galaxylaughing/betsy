@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "users#create", as: "callback"
   delete "/logout", to: "users#destroy", as: "logout"
   
-  post '/products/:product_id', to: 'order_items#create'
+  post '/order_items/', to: 'order_items#create'
 end

@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 
   def update
     if session[:order_id] != nil
-      
+    end
   end
 
 
