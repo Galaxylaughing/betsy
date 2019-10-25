@@ -9,6 +9,10 @@ $verydarkgreen: #174326;
 $brightgreen: #b7f702;
 $midgreen: #428625;
 
+
+$palegreen: #c8eaaf;
+$whitegreen: #d6efc3;
+
 .show_page {
   margin-top: 3rem;
 }
@@ -83,4 +87,44 @@ $midgreen: #428625;
 .show_page__merchant:hover {
   color: $brightgreen;
   text-decoration: none;
+}
+
+.dashboard__user_data {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+}
+
+.dashboard__user_data > * {
+  padding: 2rem;
+  margin-top: 1rem;
+  background-color: $palegreen;
+}
+
+.top_product__details {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+@media only screen and (max-width: 800px) {
+  .dashboard__user_data {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 2rem;
+  }
+
+  .dashboard__user_data > * {
+    padding: 2rem;
+    margin-top: 0;
+  }
+}
+
+.dashboard__user_data ul {
+  list-style: none;
+  padding-left: 0;
 }

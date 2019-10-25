@@ -3,8 +3,8 @@
     Dashboard
   </h2>
 
-  <div class="dashboard__account_details">
-    <section>
+  <div class="dashboard__user_data">
+    <section class="dashboard__account_details">
       <h3>
         <%= @user.username %>
       </h3>
@@ -15,42 +15,30 @@
 
       <ul>
         <li>
-          #<%= @user.products.count %> products
+          <%= @user.products.count %> products
         </li>
         <li>
-          #<%# @user.order_count %> orders
+          <%# @user.order_count %> orders
         </li>
       </ul>
     </section>
-  </div>
 
-  <div class="dashboard__account_stats">
-    <section>
+    <section class="dashboard__account_stats">
       <h3>
         Top Selling Product
       </h3>
 
       <%# top_product = @user.top_product %>
-      <ul>
-        <li><%# top_product.name %></li>
-        <li><%# top_product.num_sold %> sold</li>
-        <li><%# top_product.stock %> in stock</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>
-        Recent Reviews
-      </h3>
-
-      <%# recent_reviews = @user.recent_reviews %>
-      <ul>
-        <%# recent_reviews.each do |review| %>
-        <li>
-          <%# review.id %>: <%# review.rating %>
-        </li>
-        <%# end %>
-      </ul>
+      <div class="top_product">
+        <p>TempName<%# top_product.name %></p>
+        <div class="top_product__details">
+          <img src=<%# top_product.photo_url %>>
+          <ul>
+            <li><%# top_product.num_sold %> sold</li>
+            <li><%# top_product.stock %> in stock</li>
+          </ul>
+        </div>
+      </div>
     </section>
   </div>
 
