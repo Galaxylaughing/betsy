@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show]
   get '/users/:id/dashboard', to: "users#dashboard", as: "dashboard"
+  
+  resources :users do
+    resources :products, only: [:show]
+  end 
+  
   resources :products
   resources :orders
   resources :reviews 

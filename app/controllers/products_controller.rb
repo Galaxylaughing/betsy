@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   def index 
     @products = Product.all
-    
     @specialty = Product.sort_by_category("specialty")
     @flower = Product.sort_by_category("flower")
     @annual = Product.sort_by_category("annual")
@@ -16,6 +15,10 @@ class ProductsController < ApplicationController
       redirect_to products_path
       return
     end   
+    
+    if session[:user_id] && session[:user_id] == @product.user_id
+      render :user_show
+    end
   end
   
   def new
