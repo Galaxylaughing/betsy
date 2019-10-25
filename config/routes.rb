@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   resources :products 
   resources :orders
   resources :reviews 
+  resources :order_items, only: [:create, :destroy, :update]
   
   get "/auth/github", as: "github_login"
   get "/auth/:provider/callback", to: "users#create", as: "callback"
   delete "/logout", to: "users#destroy", as: "logout"
   
   post '/order_items/', to: 'order_items#create'
+  
 end
