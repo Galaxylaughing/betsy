@@ -116,11 +116,42 @@
   </section>
 
   <%# see list of orders %>  
-  <section>
+  <section class="user_orders">
     <h3>
       My Orders
     </h3>
-  
+
+    <div class="user_orders_by_status">
+      <% status_opts = ["pending", "paid", "cancelled", "complete"] %>
+      <% status_opts.each do |status| %>
+        <% products = @user.products.where(status: status) %>
+
+        <section>
+          <h4>
+            <%= status.capitalize %>
+          </h4>
+
+          <p>
+            total revenue: <%# total revenue by status %>
+          </p>
+          <p>
+            total orders: <%# total number of orders by status %>
+          </p>
+
+          <%# find all orders %>
+          <div>
+          </div>
+        </section>
+      <% end %>
+    </div>
+
+    <section>
+      <h4>
+        All Orders
+      </h4>
+
+      <%# for each order %>
+    </section>
   </section>
 
 </section>
