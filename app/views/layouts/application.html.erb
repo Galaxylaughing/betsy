@@ -14,13 +14,13 @@
     <header class="app_header">
       <!-- <img src='https://lh3.googleusercontent.com/ozqDFFoNBgyNr_FNVVZFP9zH2K6iKsBcw1waZgVdAwGg3PelWXoNv1qChiviBAVuvIBgn9E17M7535YsqqTbJkHH3Axf3oN3K4x_6m4xNIc4oneHRAossp6YLrkF3WkRkVNgZzUojg=w2400' /> -->
       <h1 class="app_header__title">
-        Plantsy
+        <%= link_to "Plantsy", root_path %>
       </h1>
       <nav class="top_nav">
         <div class="btn-group page_nav">
           <%= link_to "Products", root_path, class: "btn btn-primary" %>
           <%= link_to "Categories", root_path, class: "btn btn-primary" %>
-          <%= link_to "Merchants", root_path, class: "btn btn-primary" %>
+          <%= link_to "Merchants", users_path, class: "btn btn-primary" %>
         </div>
         <div class="user_nav">
           <a href=<%= root_path %> class="btn btn-light"><i class="fab fa-github"></i>  Login with Github</a>
