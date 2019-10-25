@@ -1,3 +1,82 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$green: #428625;
+$lightgreen: #68a418;
+$darkgreen: #2e5e1a;
+$verydarkgreen: #174326;
+$brightgreen: #b7f702;
+$midgreen: #428625;
+
+.show_page {
+  margin-top: 3rem;
+  margin-bottom: 4.5rem;
+}
+
+.show_page__header {
+  text-align: center;
+}
+
+.show_page__tiles {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 2rem;
+  margin-top: 3rem;
+}
+
+.merchant_tile {
+  padding: 3rem;
+  text-align: center;
+  background-color: $lightgreen;
+  font-size: 1.5em;
+  color: white;
+}
+
+.merchant_tile:hover {
+  background-color: $brightgreen;
+  color: $verydarkgreen;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.merchant_product_tile {
+  text-align: center;
+  position: relative;
+}
+
+.merchant_product_tile__img {
+  width: 100%;
+  height: auto;
+  opacity: 0.8;
+}
+
+// overlap positioning from https://www.w3schools.com/css/css_positioning.asp
+.merchant_product_tile__data {
+  background-color: rgba(66,134,37,0.9);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+.merchant_product_tile__title a {
+  color: $brightgreen;
+}
+
+.merchant_product_tile__title a:hover {
+  color: $verydarkgreen;
+  text-decoration: none;
+}
+
+.show_page__merchant {
+  color: $darkgreen;
+}
+
+.show_page__merchant:hover {
+  color: $brightgreen;
+  text-decoration: none;
+}
