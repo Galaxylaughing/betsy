@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :get_user, only: [:show, :dashboard]
   
   def create
     auth_hash = request.env["omniauth.auth"]
@@ -43,4 +44,47 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
   
+  def dashboard
+    # the person logged in
+    logged_in_id = logged_in?
+    # the person to whom the dashboard belongs
+    user = get_user
+    
+    # if the dashboard owner and the logged-in user are the same
+    if logged_in_id && (user.id == logged_in_id)
+      @user = user
+    elsif logged_in_id
+      # don't let a merchant see the dashboard of another merchant
+      flash[:error] = "Permission denied: you cannot view another merchant's dashboard"
+      redirect_to users_path
+    else
+      # don't let a guest see a merchant dashboard
+      flash[:error] = "Permission denied: please log in to view your dashboard"
+      redirect_to users_path
+    end
+  end
+  
+  private
+  
+  def get_user
+    user = User.find_by(id: params[:id])
+    
+    if user.nil?
+      flash[:error] = "Could not find user with id: #{params[:id]}"
+      redirect_to users_path
+      return
+    end
+    
+    return user
+  end
+  
+  def logged_in?
+    user_id = session[:user_id]
+    
+    if user_id.nil?
+      return false
+    end
+    
+    return user_id
+  end
 end

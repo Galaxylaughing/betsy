@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'homepages#index'
   
   resources :users, only: [:index, :show]
+  get '/users/:id/dashboard', to: "users#dashboard", as: "dashboard"
   resources :products
   resources :orders
   resources :reviews 
