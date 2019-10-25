@@ -8,6 +8,9 @@ class User < ApplicationRecord
     order_total = 0
     self.products.each do |product|
       
+      # come back to this and extract it to a Product method    
+      # call this instead:
+      # orders = product.orders
       orders = {}
       product.order_items.each do |order_item|
         if orders[order_item.order_id].nil?
