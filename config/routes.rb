@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   root 'homepages#index'
   
   resources :users
+  resources :users do
+    resources :products, only: [:show]
+  end 
+  
   resources :products
   resources :orders
   resources :reviews 
