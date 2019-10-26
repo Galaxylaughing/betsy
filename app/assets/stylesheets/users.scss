@@ -4,11 +4,13 @@
 
 $green: #428625;
 $lightgreen: #68a418;
+$highlight_lightgreen: #5da22c;
+$midgreen: #428625;
 $darkgreen: #2e5e1a;
 $verydarkgreen: #174326;
 $brightgreen: #b7f702;
-$midgreen: #428625;
 $palegreen: #c8eaaf;
+$whitegreen: #d6efc3;
 
 caption {
   display: none;
@@ -90,42 +92,117 @@ caption {
   text-decoration: none;
 }
 
-.dashboard__user_data {
-  width: 90%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 2rem;
+
+// DASHBOARD
+
+.line-break {
+  border-top: 2px solid $green;
+  margin-bottom: 0.5rem;
 }
 
-.dashboard__user_data > * {
-  padding: 2rem;
-  margin-top: 1rem;
+.dashboard {
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.dashboard__header {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.dashboard__header ul {
+  list-style: none;
+  font-style: italic;
+}
+
+.dashboard__header_title {
+  color: $darkgreen;
+}
+
+.dashboard_options {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 1rem;
+}
+
+.dashboard_options__account_option, .dashboard_options__account_option a {
+  color: $lightgreen;
+}
+
+.dashboard_options__account_option + .dashboard_options__account_option::before {
+  content: "|";
+}
+
+.dashboard_options__account_option a:hover {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.dashboard_options > *:last-child {
+  margin-left: auto;
+}
+
+.btn-primary.dropdown-toggle {
+  border-color: $green;
+
+  .fa-angle-down {
+    display: none;
+  }
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  background-color: $darkgreen;
+  border-color: $verydarkgreen;
+
+  // toggle between carets
+  .fa-angle-down {
+    display: inline;
+  }
+
+  .fa-angle-left {
+    display: none;
+  }
+}
+
+.dropdown-menu {
   background-color: $palegreen;
 }
 
-.dashboard__user_data ul {
-  list-style: none;
-  padding-left: 0;
+.dropdown-item:hover {
+  color: white;
+  background-color: $lightgreen;
 }
 
-.top_product__details {
-  display: flex;
-  flex-flow: row wrap;
+// dont' show bootstrap's default caret
+.btn-primary.dropdown-toggle::after {
+  display: none;
 }
 
-@media only screen and (max-width: 800px) {
-  .dashboard__user_data {
-    width: 90%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    row-gap: 2rem;
-  }
+.dashboard__sections_nav.breadcrumb {
+  border-radius: 0;
+  background-color: rgba(214,239,195,0.6);
+}
 
-  .dashboard__user_data > * {
-    padding: 2rem;
-    margin-top: 0;
-  }
+.breadcrumb-item {
+  color: $midgreen;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "|";
+  color: $midgreen;
+}
+
+.breadcrumb-item:hover {
+  color: $midgreen;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.breadcrumb-item:hover::before {
+  font-weight: normal;
+}
+
+.badge-primary {
+  background-color: $highlight_lightgreen;
 }

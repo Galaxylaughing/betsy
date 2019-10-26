@@ -1,160 +1,121 @@
-<section class="dashboard">
-  <h2>
-    Dashboard
-  </h2>
-
-  <div class="dashboard__user_data">
-    <section class="dashboard__account_details">
-      <h3>
+<main>
+  <section class="dashboard">
+    <section class="dashboard__header">
+      <h2 class="dashboard__header_title">
         <%= @user.username %>
-      </h3>
-
-      <div>
-        email: <%= @user.email %>
-      </div>
-
+      </h2>
       <ul>
-        <li>
-          <%= @user.products.count %> products
-        </li>
-        <li>
-          <%# @user.order_count %> orders
-        </li>
+        <li><%= @user.email %></li>
       </ul>
-
-      <%= link_to "See my shop", user_path(@user.id) %>
     </section>
 
-    <section class="dashboard__account_stats">
-      <h3>
-        Top Selling Product
-      </h3>
+    <hr class="line-break"/>
 
-      <%# top_product = @user.top_product %>
-      <div class="top_product">
-        <p>TempName<%# top_product.name %></p>
-        <div class="top_product__details">
-          <img src=<%# top_product.photo_url %>>
-          <ul>
-            <li><%# top_product.num_sold %> sold</li>
-            <li><%# top_product.stock %> in stock</li>
-          </ul>
+    <div class="dashboard_options">
+      <span class="dashboard_options__account">
+        <span class="dashboard_options__account_option">
+          <%# change path to edit_user_path %>
+          <%= link_to "edit my profile", user_path(@user.id) %>
+        </span>
+        <span class="dashboard_options__account_option">
+          <%= link_to "see my shop", user_path(@user.id) %>
+        </span>
+      </span>
+      <span class="dashboard__add_dropdown_container">
+        <div class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          add <i class="fas fa-angle-left"></i><i class="fas fa-angle-down"></i>
         </div>
-      </div>
-    </section>
-  </div>
-
-  <%# see list of existing products %>
-  <section>
-    <h3>
-      My Products
-    </h3>
-
-    <table class="table">
-      <caption>List of my products</caption>
-      <thead>
-        <tr>
-          <th>Product Name</th>
-          <th>See in Store</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Current Stock</th>
-          <th>Edit</th>
-          <th><a href="#retire_meaning">Retire Product</a></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @user.products.each do |product| %>
-          <tr>
-            <td>
-              <%= link_to product.name %>
-            </td>
-            <%# add nested user_product_path %>
-            <%# add classes %>
-          </tr>
-          <tr>
-            <td>
-              <%= link_to product.name, product_path(product.id), class: "btn" %>
-            </td>
-          </tr>
-          <tr>
-            <td class="text-truncate"><%= product.description %></td>
-          </tr>
-          <tr>
-            <td><%= product.price %></td>
-          </tr>
-          <tr>
-            <td><%= product.stock %></td>
-          </tr>
-          <tr>
-            <td>
-              <%= link_to "Edit" %>
-              <%# add nested user_product_edit_path %>
-              <%# add classes %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= link_to "Retire" %>
-              <%# add retire_product_path %>
-              <%# add classes %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <small class="caption__more_info">
-      <a id="retire_meaning"></a>
-      <p>
-        Retiring a product marks it unavailable. 
-        A retired product will not be visible to customers, but will still be visible in this list. 
-        You can unretire a product at any time.
-      </p>
-    </small>
-  </section>
-
-  <%# see list of orders %>  
-  <section class="user_orders">
-    <h3>
-      My Orders
-    </h3>
-
-    <div class="user_orders_by_status">
-      <% status_opts = ["pending", "paid", "cancelled", "complete"] %>
-      <% status_opts.each do |status| %>
-        <% products = @user.products.where(status: status) %>
-
-        <%# for each product, %>
-        <%# product.total_revenue(status) %>
-
-        <section>
-          <h4>
-            <%= status.capitalize %>
-          </h4>
-
-          <p>
-            total revenue: <%# total revenue by status %>
-          </p>
-          <p>
-            total orders: <%# total number of orders by status %>
-          </p>
-
-          <%# find all orders %>
-          <div>
-          </div>
-        </section>
-      <% end %>
+        <div class="dropdown-menu dropdown-menu-right">
+          <%# come back to this and add new_category_path %>
+          <%= link_to "Add Category", root_path, class: "dropdown-item" %>
+          <%= link_to "Add Product", new_product_path, class: "dropdown-item" %>
+        </div>
+      </span>
     </div>
 
-    <section>
-      <h4>
-        All Orders
-      </h4>
+    <div class="dashboard__sections_container">
+      <nav class="dashboard__sections_nav breadcrumb">
+        <a href="#products" class="breadcrumb-item">
+          <span>my products</span>
+          <span class="badge badge-primary badge-pill"><%= @user.products.count %></span>
+        </a>
+        <a href="#orders" class="breadcrumb-item">
+          <span>my orders</span>
+          <span class="badge badge-primary badge-pill">#</span>
+        </a>
+      </nav>
 
-      <%# for each order %>
-    </section>
+      <section>
+        <a id="products"><h3>Products</h3></a>
+
+        <section class="product_spotlight">
+          <h4>Top Selling Product</h4>
+
+          <%# top_product = @user.top_product %>
+          <div class="product_spotlight__top_product">
+            <h5>Name<%# top_product.name %></h5>
+            <ul class="product_spotlight__product_details">
+              <li>#<%# top_product.num_sold %> sold</li>
+              <li>#<%# top_product.stock %> in stock</li>
+            </ul>
+          </div>
+        </section>
+
+        <% @user.products.each do |product| %>
+          <div class="dashboard__user_product">
+
+            <div class="dashboard__user_product__basic_info">
+              <span><%= product.name %></span>
+              <span><%= product.stock %> in stock</span>
+
+              <span><i class="fas fa-toggle-off"></i></span>
+              <span><i class="fas fa-toggle-on"></i></span>
+            </div>
+
+            <div class="dashboard__user_product__more_info">
+              <div>
+                <%= link_to "edit product", edit_product_path(product.id) %>
+              </div>
+
+              <section>
+                <h4>Description</h4>
+                <div>
+                  <%= product.description %>
+                </div>
+              </section>
+
+              <section>
+                <h4>Price</h4>
+                <div>
+                  $<%= product.price %>
+                </div>
+              </section>
+
+              <section>
+                <h4>Categories</h4>
+                <% product.categories.each do |category| %>
+                  <div><%= category.name %></div>
+                <% end %>
+              </section>
+
+              <% if product.available %>
+                <div>
+                  Currently Available
+                </div>
+              <% else %>
+                <div>
+                  Retired
+                </div>
+              <% end %>
+            </div>
+
+          </div>
+        <% end %>
+      </section>
+
+      <section>
+        <a id="orders"><h3>Orders</h3></a>
+      </section>
+    </div>
   </section>
-
-</section>
+</main>
