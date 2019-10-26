@@ -48,7 +48,7 @@
       <section>
         <div class="dashboard__section">
           <a id="products"><h3>Products</h3></a>
-          <hr class="dashboard_section__break"/>
+          <hr class="dashboard__line_break dashboard_section__break"/>
         </div>
 
         <div class="product_spotlight_container">
@@ -66,62 +66,76 @@
           </section>
         </div>
 
-        <% @user.products.each do |product| %>
-          <div class="dashboard__user_product">
+        <div class="dashboard__products_container">
+          <% @user.products.each do |product| %>
+            <hr class="dashboard__line_break dashboard__product__break"/>
 
-            <div class="dashboard__user_product__basic_info">
-              <span><%= product.name %></span>
-              <span><%= product.stock %> in stock</span>
+            <div class="dashboard__user_product">
 
-              <span><i class="fas fa-toggle-off"></i></span>
-              <span><i class="fas fa-toggle-on"></i></span>
-            </div>
+              <div class="dashboard__user_product__basic_info">
+                <div class="dashboard__user_product__basic_info__header">
+                  <span class="basic_info__header_item"><%= product.name %></span>
+                  <span class="basic_info__header_item"><%= product.stock %> in stock</span>
+                </div>
 
-            <div class="dashboard__user_product__more_info">
-              <div>
-                <%= link_to "edit product", edit_product_path(product.id) %>
+                <div class="dashboard__user_product__basic_info__buttons">
+                  <span><i class="fas fa-toggle-off"></i></span>
+                  <span><i class="fas fa-toggle-on"></i></span>
+
+                  <div>
+                    <%= link_to "edit product", edit_product_path(product.id) %>
+                  </div>
+                </div>
               </div>
 
-              <section>
-                <h4>Description</h4>
-                <div>
-                  <%= product.description %>
-                </div>
-              </section>
+              <div class="dashboard__user_product__more_info">
 
-              <section>
-                <h4>Price</h4>
-                <div>
-                  $<%= product.price %>
-                </div>
-              </section>
+                <section class="more_info__description_container">
+                  <h4 class="more_info__header">Description</h4>
+                  <div>
+                    <%= product.description %>
+                  </div>
+                </section>
 
-              <section>
-                <h4>Categories</h4>
-                <% product.categories.each do |category| %>
-                  <div><%= category.name %></div>
-                <% end %>
-              </section>
+                <div class="dashboard__user_product__details_container">
+                  <div class="dashboard__user_product__details">
+                    <section class="more_info__price_container">
+                      <h4 class="more_info__header">Price</h4>
+                      <div>
+                        $<%= product.price %>
+                      </div>
+                    </section>
 
-              <% if product.available %>
-                <div>
-                  Currently Available
+                    <% if product.available %>
+                      <div>
+                        Currently Available
+                      </div>
+                    <% else %>
+                      <div>
+                        Retired
+                      </div>
+                    <% end %>
+                  </div> 
+
+                  <section class="dashboard__user_product__categories">
+                    <h4 class="more_info__header">Categories</h4>
+                    <% product.categories.each do |category| %>
+                      <div><%= category.name %></div>
+                    <% end %>
+                  </section>
                 </div>
-              <% else %>
-                <div>
-                  Retired
-                </div>
-              <% end %>
+              </div>
+
             </div>
-
-          </div>
-        <% end %>
+          <% end %>
+        </div>
+        <hr class="dashboard__line_break dashboard__product__break"/>
       </section>
 
       <section>
         <div class="dashboard__section">
           <a id="orders"><h3>Orders</h3></a>
-          <hr class="dashboard_section__break"/>
+          <hr class="dashboard__line_break dashboard_section__break"/>
         </div>
       </section>
     </div>
