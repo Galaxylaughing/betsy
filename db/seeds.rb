@@ -150,3 +150,26 @@ end
 
 puts "Added #{Category.count} category records"
 puts "#{category_failures.length} category failed to save"
+
+#------------------------------------------------------------
+# Connect products and categories via join table
+products = Product.all
+categories = Category.all
+index = 0
+
+products.each do |product|
+  if index == 5 # This should match the number of categories in the category.yml. If we have five categories, restart the counter.
+    index = 0
+  end
+  if index % 2 != 0 # if it's an odd number, give it two categories - must have an odd number of categories for this to work properly.
+    2.times {
+    product.categories << categories[index]
+    index += 1
+  }
+else
+  product.categories << categories[index]
+  index += 1
+end
+end
+
+#------------------------------------------------------------

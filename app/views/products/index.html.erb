@@ -1,17 +1,20 @@
-  <main>
-    <h2>All Products</h2>
+<main>
+<section class="show_page">
+  <h2 class="page_header">
+    All Products
+  </h2>
 
-  <section class= "product-list">
-    <% @products.each do |product| %>
-    <h4><%= link_to product.name.capitalize, product_path(product) %></h4>
-      <ul>
-        <li>Description: <%= product.description.capitalize %></li>
-        <li>Price: $<%= product.price %></li>
-        <li>Stock: <%= product.stock %> units</li>
-        <li>Available: <%= product.available %></li>
-        <li>User_id: <%= product.user_id %></li>
-        <img src= <%= product.photo_url %> alt=<%= product.name %> height="200" width="200">
-      </ul>    
-    <%end%>
-  </section>
-  </main>
+<section class="product-container">
+  <div class="show_page__tiles">
+  <% @products.each do |product| %>
+    <%= link_to product.name, product_path(product.id), class: "show_page_product" %>
+    Description: <%= product.description %>
+    Price: $<%= product.price %>
+
+    <img src= <%= product.photo_url %> alt=<%= product.name %> class="product_image">
+  <% end %>
+  </div>
+</section>
+
+</section>
+</main>

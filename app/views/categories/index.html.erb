@@ -1,50 +1,25 @@
-<body>
-  <main>
-    <h2>Products by Category</h2>
+<main>
+  <section class="show_page">
+    <h2 class="show_page__header">
+    Products by Category
+    </h2>
+    
+    <% @categories.each do |category| %>
+    <h4><%= category.name.capitalize %></h4>  
+    
+    <% category.products.each do |product| %>  
+    <%= link_to product.name, product_path(product.id) %>
+        <p>Description: <%= product.description.capitalize %></p>
+        <p>Price: $<%= product.price %></p>
+        <p>Stock: <%= product.stock %> units</p>
+      <%#<p>Available: <%= product.available %>
+      <%#<p>User_id: <%= product.user_id %>
 
-  <section class= "product-list">
-  <h4>Annual</h4>  
-    <% @product.categories each do |annual| %>   
-    <h4><%= product.name.capitalize %></h4>
-      <ul>
-        <li>Description: <%= product.description.capitalize %></li>
-        <li>Price: $<%= product.price %></li>
-        <li>Stock: <%= product.stock %> units</li>
-        <li>Available: <%= product.available %></li>
-        <li>User_id: <%= product.user_id %></li>
-        <li>photo_url</li>
-      </ul>
+      <div class="merchant_product_title">
+        <img src= <%= product.photo_url %> alt=<%= product.name %> class="category_product_img">
+      </div>
     <%end%>
-  </section>
-
-  <section class= "product-list">
-  <h4>Flower</h4>  
-    <% @product.categories each do |flower| %>   
-    <h4><%= product.name.capitalize %></h4>
-      <ul>
-        <li>Description: <%= product.description.capitalize %></li>
-        <li>Price: $<%= product.price %></li>
-        <li>Stock: <%= product.stock %> units</li>
-        <li>Available: <%= product.available %></li>
-        <li>User_id: <%= product.user_id %></li>
-        <li>photo_url</li>
-      </ul>
     <%end%>
+  </div>
   </section>
-
-  <section class= "product-list">
-  <h4>Specialty</h4>  
-    <% @product.categories each do |specialty| %>   
-    <h4><%= product.name.capitalize %></h4>
-      <ul>
-        <li>Description: <%= product.description.capitalize %></li>
-        <li>Price: $<%= product.price %></li>
-        <li>Stock: <%= product.stock %> units</li>
-        <li>Available: <%= product.available %></li>
-        <li>User_id: <%= product.user_id %></li>
-        <li>photo_url</li>
-      </ul>
-    <%end%>
-  </section>
-  </main>
-</body>
+</main>
