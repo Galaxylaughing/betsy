@@ -26,7 +26,7 @@ tarsha:
   stock: 39
   available: true
   user_id: 13
-  categories: flower, specialty, annual
+  categories: flower, specialty, full_sun
 
 brad:
   name: Brad Crist DVM
@@ -36,7 +36,7 @@ brad:
   stock: 47
   available: true
   user_id: 12
-  categories: gift
+  categories: shade
 
 loyd:
   name: Loyd Toy Jr.
