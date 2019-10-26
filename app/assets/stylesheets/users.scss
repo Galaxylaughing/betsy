@@ -96,7 +96,7 @@ caption {
 
 // DASHBOARD
 
-.line-break {
+.dashboard__line_break {
   border-top: 2px solid $green;
   margin-bottom: 0.5rem;
 }
@@ -206,4 +206,43 @@ caption {
 
 .badge-primary {
   background-color: $highlight_lightgreen;
+}
+
+.dashboard__section {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: $darkgreen;
+}
+
+.dashboard_section__break {
+  width: 50%;
+  border-top: 2px solid $green;
+  margin-bottom: 0.5rem;
+}
+
+.product_spotlight_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.product_spotlight {
+  background-color: $whitegreen;
+  padding: 2em 3em;
+}
+
+.product_spotlight__top_product {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.product_spotlight__top_product > * {
+  height: max-content;
+  align-self: center;
+  margin-bottom: 0;
 }

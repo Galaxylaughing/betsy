@@ -9,7 +9,7 @@
       </ul>
     </section>
 
-    <hr class="line-break"/>
+    <hr class="dashboard__line_break"/>
 
     <div class="dashboard_options">
       <span class="dashboard_options__account">
@@ -46,20 +46,25 @@
       </nav>
 
       <section>
-        <a id="products"><h3>Products</h3></a>
+        <div class="dashboard__section">
+          <a id="products"><h3>Products</h3></a>
+          <hr class="dashboard_section__break"/>
+        </div>
 
-        <section class="product_spotlight">
-          <h4>Top Selling Product</h4>
+        <div class="product_spotlight_container">
+          <section class="product_spotlight">
+            <h4>Top Selling Product</h4>
 
-          <%# top_product = @user.top_product %>
-          <div class="product_spotlight__top_product">
-            <h5>Name<%# top_product.name %></h5>
-            <ul class="product_spotlight__product_details">
-              <li>#<%# top_product.num_sold %> sold</li>
-              <li>#<%# top_product.stock %> in stock</li>
-            </ul>
-          </div>
-        </section>
+            <%# top_product = @user.top_product %>
+            <div class="product_spotlight__top_product">
+              <h5>Name<%# top_product.name %></h5>
+              <ul class="product_spotlight__product_details">
+                <li>#<%# top_product.num_sold %> sold</li>
+                <li>#<%# top_product.stock %> in stock</li>
+              </ul>
+            </div>
+          </section>
+        </div>
 
         <% @user.products.each do |product| %>
           <div class="dashboard__user_product">
@@ -114,7 +119,10 @@
       </section>
 
       <section>
-        <a id="orders"><h3>Orders</h3></a>
+        <div class="dashboard__section">
+          <a id="orders"><h3>Orders</h3></a>
+          <hr class="dashboard_section__break"/>
+        </div>
       </section>
     </div>
   </section>
