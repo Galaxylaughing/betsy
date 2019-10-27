@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe ProductsController do
+
   before do
     @user = User.create(username: "test user", email: "test_email@example.com") 
     @category1 = Category.create(name: "flower")
