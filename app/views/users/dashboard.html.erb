@@ -197,7 +197,8 @@
                     <% order.order_items.each do |oi| %>
                       <tr>
                         <td>
-                          <%= oi.name %>
+                          <% product = Product.find_by(id: oi.product_id) %>
+                          <%= product.name %>
                         </td>
                         <td>
                           <%= link_to "mark completed" %>
@@ -229,7 +230,7 @@
                       <%= order.address + order.zip %>
                     </li>
                     <li>
-                      last 4 digits of cc <%# order.cc_num %>
+                      <%= mask_cc(order.cc_num) %>
                     </li>
                     <li>
                       cc expiration date <%# order.cc_expiration %>
