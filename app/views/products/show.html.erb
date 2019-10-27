@@ -1,0 +1,18 @@
+<main>
+<section class="show_page_product">
+  <div class="product_image">
+    <img src= <%= @product.photo_url %> alt=<%= @product.name %> height="200" width="200">
+  </div>
+  
+  <div class="product_data">
+    <p><strong>Name: <%= @product.name %></strong></p>
+    <p>Description: <%= @product.description.capitalize %></p>
+    <p>Price: $<%= @product.price %></p>
+  </div>
+
+  <div class="extra_data">
+    <p><strong>free shipping</strong></p>
+    <p>Free shipping in all orders above $20</p>     
+  </div>
+</section>
+</main>
