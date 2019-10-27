@@ -5,10 +5,10 @@
   </h2>
 </section>
 
-  <section class="index_page_product-container">
-  <% @products.each do |product| %>
-  
-  <section class="product_data_index">
+<section class="index_page_product-container">
+<% @products.each do |product| %>
+
+  <section class="product_data_index">  
     <div>
       <img src= <%= product.photo_url %> alt=<%= product.name %> class="product_image">
     </div>
@@ -19,8 +19,6 @@
       Price: $<%= product.price %>
     </div>  
   </section>
-  <% end %>
-
-  </section>
+<% end %>
 </section>
 </main>

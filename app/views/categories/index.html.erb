@@ -1,21 +1,30 @@
 <main>
-  <section class="show_page">
-    <h2 class="show_page__header">
+<section class="show_page">
+  <h2 class="show_page__header">
     Products by Category
-    </h2>
+  </h2>
+</section>
     
-    <% @categories.each do |category| %>
-    <h4><%= category.name.capitalize %></h4>  
+<% @categories.each do |category| %>
+<div class="category_title">
+  <h3><%= category.name.capitalize %></h3>  
+</div>
+  
+<section class="index_page_category-container">  
+<% category.products.each do |product| %>   
     
-    <% category.products.each do |product| %>  
-    <%= link_to product.name, product_path(product.id) %>
-        <p>Description: <%= product.description.capitalize %></p>
-        
-      <div class="merchant_product_title">
-        <img src= <%= product.photo_url %> alt=<%= product.name %> class="category_product_img">
-      </div>
-    <%end%>
-    <%end%>
-  </div>
+  <section class="category_data_index">
+    <div>
+      <img src= <%= product.photo_url %> alt=<%= product.name %> class="product_image_category">
+    </div>
+    
+    <div class="category_text">
+      <h4><%= link_to product.name, product_path(product.id) %></h4>
+      <%= product.description.capitalize %>
+    </div>
   </section>
+<%end%>
+</section>
+
+<%end%>
 </main>

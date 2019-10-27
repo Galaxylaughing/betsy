@@ -15,6 +15,7 @@ $midgreen: #428625;
   margin-bottom: 10%;
   margin-left: 5%;
   border-radius: 20%;
+  opacity: 0.9;
 }
 
 .show_page_product {
@@ -24,6 +25,10 @@ $midgreen: #428625;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+// .show_page__header {
+//   border: 2px solid #2e5e1a;
+// }
 
 .submit-button {
   margin-left: 4%;
@@ -58,7 +63,7 @@ a:hover {
   height: 300px;
   border-radius: 20%;
   margin-left: 5%;
-  // margin-bottom: 2%;
+  opacity: 0.9;
 }
 
 .product_text {
