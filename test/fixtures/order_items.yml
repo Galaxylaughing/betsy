@@ -6,3 +6,7 @@ bear_hollyhock:
   quantity: 2
   order: bear_orchid_hollyhock
   product: hollyhock
+bear_treeivy:
+  quantity: 3
+  order: bear_orchid_hollyhock
+  product: treeivy

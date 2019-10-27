@@ -54,6 +54,11 @@ class User < ApplicationRecord
   #   end
   # end
   
+  def find_orders
+    matching_orders = self.products.map{ |prod| prod.order_items }.flatten.map{ |oi| oi.order }.uniq
+    return matching_orders
+  end
+  
   def self.build_from_github(auth_hash)
     user = User.new
     user.uid = auth_hash[:uid]

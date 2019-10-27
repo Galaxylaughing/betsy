@@ -157,3 +157,13 @@ treeivy:
   available: true
   user: begonia
   categories: houseplant
+
+teddybearvine:
+  name: Cyanotis kewensis
+  description: A unique houseplant with trailing stems decorated with teardrop-shaped fuzzy leaves.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 2
+  available: true
+  user: rose
+  categories: houseplant

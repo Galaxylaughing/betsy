@@ -13,3 +13,8 @@ petunia:
   uid: 635635
   email: pretty_petunia@example.com
   username: pretty_petunia
+rose:
+  provider: github
+  uid: 999888
+  email: ruby_rose@example.com
+  username: ruby_rose
