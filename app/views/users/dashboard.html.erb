@@ -40,7 +40,7 @@
         </a>
         <a href="#orders" class="breadcrumb-item">
           <span>my orders</span>
-          <span class="badge badge-primary badge-pill">#</span>
+          <span class="badge badge-primary badge-pill"><%= @user.order_count %></span>
         </a>
       </nav>
 
@@ -136,6 +136,116 @@
           <a id="orders"><h3>Orders</h3></a>
           <hr class="dashboard__line_break dashboard_section__break"/>
         </div>
+
+        <nav class="dashboard__products_by_status breadcrumb">
+          <a href="#all_products" class="breadcrumb-item">
+            <span class="breadcrumb-item">all products</span>
+            <span class="badge badge-primary badge-pill">#</span>
+          </a>
+          <% statuses = ["pending", "paid", "cancelled", "complete"] %>
+          <% statuses.each do |status| %>
+            <a href="#<%= status %>" class="breadcrumb-item">
+              <span><%= status %></span>
+              <span class="badge badge-primary badge-pill">#</span>
+            </a>
+          <% end %>
+        </nav>
+
+        <% all_orders = @user.find_orders %>
+
+        <div class="orders__totals_per_status">
+          <h4 class="orders__total_rev__title">
+            Total Revenue
+          </h4>
+          <div class="orders__total orders__total_rev">
+            $#.##
+          </div>
+
+          <h4 class="orders__total_orders__title">
+            Number of Orders
+          </h4>
+          <div class="orders__total orders__total_orders">
+            <%= all_orders.length %>
+          </div>
+        </div>
+
+        <div>
+          <% if all_orders.length > 0 %>
+            <% all_orders.each do |order| %>
+              <article>
+                <div>
+                  <h5>
+                    <span>Order #<%= order.id %></span>
+                    <span>datetime placed</span>
+                  </h5>
+                  <div>
+                    status
+                  </div>
+                </div>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">order item</th>
+                      <th scope="col">mark completed</th>
+                      <th scope="col">quantity</th>
+                      <th scope="col">subtotal</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% order.order_items.each do |oi| %>
+                      <tr>
+                        <td>
+                          <%= oi.name %>
+                        </td>
+                        <td>
+                          <%= link_to "mark completed" %>
+                        </td>
+                        <td>
+                          <%= oi.quantity %>
+                        </td>
+                        <td>
+                          $ subtotal <%# oi.subtotal %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+
+                <%# total box %>
+
+                <section class="order__buyer_info_container">
+                  <h6>Buyer</h6>
+
+                  <ul>
+                    <li>
+                      <%= order.name %>
+                    </li>
+                    <li>
+                      <%= order.email %>
+                    </li>
+                    <li>
+                      <%= order.address + order.zip %>
+                    </li>
+                    <li>
+                      last 4 digits of cc <%# order.cc_num %>
+                    </li>
+                    <li>
+                      cc expiration date <%# order.cc_expiration %>
+                    </li>
+                  <ul>
+                </section>
+
+              </article>
+            <% end %>
+          <% else %>
+            <div class="order__no_orders">
+              You do not yet have any orders
+            </div>
+          <% end %>
+        </div>
+
       </section>
     </div>
   </section>

@@ -188,7 +188,7 @@ caption {
   display: none;
 }
 
-.dashboard__sections_nav.breadcrumb {
+.breadcrumb {
   border-radius: 0;
   background-color: rgba(214,239,195,0.6);
 }
@@ -297,4 +297,62 @@ caption {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+}
+
+.dashboard__products_by_status {
+  justify-content: center;
+}
+
+.orders__totals_per_status {
+  width: 60%;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 6rem;
+  text-align: center;
+  align-items: end;
+
+  margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .orders__totals_per_status {
+    width: 80%;
+    column-gap: 4rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .orders__totals_per_status {
+    width: 90%;
+    column-gap: 2rem;
+  }
+}
+
+.orders__total_rev__title {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.orders__total_rev {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.orders__total {
+  padding: 1rem;
+  background-color: $lightgreen;
+  border: 1px solid $green;
+  color: white;
+  border-radius: 3em;
+}
+
+.order__no_orders {
+  text-align: center;
 }
