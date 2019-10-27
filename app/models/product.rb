@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   validates :available, presence: true
   validates :user_id, presence: true
   
-  def self.sort_by_category(categories)
-    self.where(category: categories)
-  end
+  # def self.sort_by_category(category)
+  #   self.where(category: category)
+  # end
 end

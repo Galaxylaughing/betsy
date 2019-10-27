@@ -1,9 +1,6 @@
 class ProductsController < ApplicationController
   def index 
     @products = Product.all
-    @specialty = Product.sort_by_category("specialty")
-    @flower = Product.sort_by_category("flower")
-    @annual = Product.sort_by_category("annual")
   end
   
   def show
@@ -63,24 +60,24 @@ class ProductsController < ApplicationController
     end
   end
   
-  def destroy
-    product_id = params[:id]
-    @product = Product.find_by(id: product_id)
-    
-    if @product.nil?
-      head :not_found
-      return
-    end
-    
-    if @product.destroy
-      flash[:success] = "Product successfully deleted."
-      redirect_to products_path
-      return
-    else
-      flash[:warning] = "Can't delete product."
-      redirect_to products_path
-    end 
-  end
+  # def destroy
+  #   product_id = params[:id]
+  #   @product = Product.find_by(id: product_id)
+  
+  #   if @product.nil?
+  #     head :not_found
+  #     return
+  #   end
+  
+  #   if @product.destroy
+  #     flash[:success] = "Product successfully deleted."
+  #     redirect_to products_path
+  #     return
+  #   else
+  #     flash[:warning] = "Can't delete product."
+  #     redirect_to products_path
+  #   end 
+  # end
   
   private
   
