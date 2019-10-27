@@ -5,7 +5,17 @@
 .product_image {
   width: 200px;
   height: 200px;
+  margin-bottom: 2%;
 }
+
+.product_image_show {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10%;
+  margin-left: 5%;
+  border-radius: 20%;
+}
+
 
 .show_page_product {
   margin-left: 1%;
@@ -16,5 +26,21 @@
 }
 
 .product_data {
-  margin-left: 2%;
+  margin-left: 5%;
+}
+
+.index_page_product {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product_data_index {
+  margin-left: 10%;
+  margin-bottom: 2%;
+  margin-inline: 3%;
+}
+
+.submit-button {
+  margin-left: 4%;
 }
