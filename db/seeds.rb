@@ -32,6 +32,7 @@ end
 puts "Added #{Order.count} order records"
 puts "#{orders_failures.length} orders failed to save"
 
+#------------------------------------------------------------
 
 USERS_FILE = Rails.root.join('db', 'user_seeds.csv')
 puts "Loading raw user data from #{USERS_FILE}"
@@ -54,7 +55,7 @@ end
 puts "Added #{User.count} user records"
 puts "#{users_failures.length} user failed to save"
 
-
+#------------------------------------------------------------
 
 PRODUCTS_FILE = Rails.root.join('db', 'product_seeds.csv')
 puts "Loading raw product data from #{PRODUCTS_FILE}"
@@ -82,6 +83,7 @@ end
 puts "Added #{Product.count} product records"
 puts "#{products_failures.length} products failed to save"
 
+#------------------------------------------------------------
 
 ORDER_ITEM_FILE = Rails.root.join('db', 'order_item_seeds.csv')
 puts "Loading raw order_item data from #{ORDER_ITEM_FILE}"
@@ -104,6 +106,7 @@ end
 puts "Added #{OrderItem.count} order_item records"
 puts "#{order_item_failures.length} order_items failed to save"
 
+#------------------------------------------------------------
 
 REVIEWS_FILE = Rails.root.join('db', 'review_seeds.csv')
 puts "Loading raw review data from #{REVIEWS_FILE}"
@@ -126,3 +129,47 @@ end
 
 puts "Added #{Review.count} review records"
 puts "#{reviews_failures.length} review failed to save"
+
+#------------------------------------------------------------
+
+CATEGORY_FILE = Rails.root.join('db', 'category_seeds.csv')
+puts "Loading raw category data from #{CATEGORY_FILE}"
+
+category_failures = []
+CSV.foreach(CATEGORY_FILE, :headers => true) do |row|
+  category = Category.new
+  category.name = row['name']
+  successful = category.save
+  if !successful
+    category_failures << category
+    puts "Failed to save category: #{category.inspect}"
+  else
+    puts "Created category: #{category.inspect}"
+  end
+end
+
+puts "Added #{Category.count} category records"
+puts "#{category_failures.length} category failed to save"
+
+#------------------------------------------------------------
+# Connect products and categories via join table
+products = Product.all
+categories = Category.all
+index = 0
+
+products.each do |product|
+  if index == 5 # This should match the number of categories in the category.yml. If we have five categories, restart the counter.
+    index = 0
+  end
+  if index % 2 != 0 # if it's an odd number, give it two categories - must have an odd number of categories for this to work properly.
+    2.times {
+    product.categories << categories[index]
+    index += 1
+  }
+else
+  product.categories << categories[index]
+  index += 1
+end
+end
+
+#------------------------------------------------------------

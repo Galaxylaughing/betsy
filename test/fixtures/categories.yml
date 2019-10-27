@@ -15,8 +15,8 @@ full_sun:
   products: tarsha
 
 houseplant:
-name: houseplant
-products: christopher
+  name: houseplant
+  products: christopher
 
 shade:
   name: Shade
