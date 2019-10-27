@@ -5,22 +5,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   
   def order_count
-    order_total = 0
-    self.products.each do |product|
-      
-      # come back to this and extract it to a Product method    
-      # call this instead:
-      # orders = product.orders
-      orders = {}
-      product.order_items.each do |order_item|
-        if orders[order_item.order_id].nil?
-          orders[order_item.order_id] = true
-        end
-      end
-      
-      order_total += orders.count
-    end
-    return order_total
+    orders = self.find_orders
+    return orders.count
   end
   
   # do I really care if there's a tie?
