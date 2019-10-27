@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # RESTful routes:
   root 'homepages#index'
   
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :edit]
   get '/users/:id/dashboard', to: "users#dashboard", as: "dashboard"
   
   resources :users do
