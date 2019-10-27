@@ -35,6 +35,35 @@
       </nav>
     </header>
 
+    <% if flash.any? %>
+      <section>
+        <% if flash[:success] %>
+          <div class="flash alert alert-success">
+            <%= flash[:success] %>
+          </div>
+        <% elsif flash[:error] && flash.keys.count > 1 %>
+          <div class="flash alert alert-warning">
+            <div>
+              A problem occurred: <%= flash[:error] %>
+            </div>
+            <ul>
+              <% flash.each do |name, message| %>
+                <% unless name == "error" %>
+                  <li><%= name %>: <%= message %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        <% else %>
+          <div class="flash alert alert-warning">
+            <% flash.each do |name, message| %>
+              <%= name.capitalize %>: <%= message %>
+            <% end %>
+          </div>
+        <% end %>
+      </section>
+    <% end %>
+
     <%= yield %>
 
     <footer class="footer">
