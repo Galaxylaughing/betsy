@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.product_image {
-  width: 300px;
-  height: 300px;
-  border-radius: 20%;
-  margin-bottom: 2%;
-}
+$green: #428625;
+$lightgreen: #68a418;
+$darkgreen: #2e5e1a;
+$verydarkgreen: #174326;
+$brightgreen: #b7f702;
+$midgreen: #428625;
 
 .product_image_show {
   width: 200px;
@@ -17,7 +17,6 @@
   border-radius: 20%;
 }
 
-
 .show_page_product {
   margin-left: 1%;
   margin-top: 2%;
@@ -26,22 +25,44 @@
   flex-wrap: wrap;
 }
 
+.submit-button {
+  margin-left: 4%;
+}
+
 .product_data {
   margin-left: 5%;
 }
 
-.index_page_product {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.product_data_index {
+.index_page_product-container {  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   margin-left: 10%;
-  margin-bottom: 2%;
-  margin-inline: 3%;
+  margin-right: 10%;
+  margin-bottom: 4%;
+  // border: 2px solid #431c5d;
 }
 
-.submit-button {
-  margin-left: 4%;
+a {
+  text-decoration: none;
+  color: $darkgreen;
+}
+
+a:hover {
+  text-decoration: none;
+  color: $lightgreen;
+}
+
+.product_image {
+  width: 300px;
+  height: 300px;
+  border-radius: 20%;
+  margin-left: 5%;
+  // margin-bottom: 2%;
+}
+
+.product_text {
+  // margin-left: 5%;
+  margin-bottom: 10%;
+  text-align: center;
 }
