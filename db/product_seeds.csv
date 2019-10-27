@@ -1,26 +1,11 @@
 name,description,price,photo_url,stock,available,user_id
-Tarsha Aufderhar,Et iste sed aut.,66.31,https://lorempixel.com/300/300,39,true,13
-Brad Crist DVM,Qui aut rerum totam.,76.73,https://lorempixel.com/300/300,47,true,12
-Loyd Toy Jr.,Tempore velit aut eaque.,18.48,https://lorempixel.com/300/300,18,true,8
-Christoper Cormier,Veritatis et qui sed.,74.99,https://lorempixel.com/300/300,16,true,15
-Wilfred Tremblay,Vel et tempora recusandae.,68.13,https://lorempixel.com/300/300,21,true,20
-Tereasa Kunze,Sint aliquam ipsum fugiat.,71.73,https://lorempixel.com/300/300,32,false,24
-Sal Considine,Dolor adipisci quia odit.,51.89,https://lorempixel.com/300/300,28,false,6
-Mario Medhurst,In aut placeat iste.,19.2,https://lorempixel.com/300/300,6,true,16
-Kenda Barton,Vitae itaque esse non.,81.25,https://lorempixel.com/300/300,43,false,2
-Palmer Terry III,Dolore asperiores magni qui.,78.69,https://lorempixel.com/300/300,1,false,4
-Mr. Ester Toy,Placeat nihil molestiae ad.,87.74,https://lorempixel.com/300/300,19,true,25
-Rusty Christiansen,Similique sit autem voluptas.,14.43,https://lorempixel.com/300/300,6,false,10
-Mr. Wilda Stanton,Deserunt qui accusamus voluptas.,76.28,https://lorempixel.com/300/300,16,false,6
-Dr. Gaston Kovacek,Et possimus rerum at.,1.39,https://lorempixel.com/300/300,3,false,7
-Lincoln Crona,Voluptas omnis et amet.,25.09,https://lorempixel.com/300/300,10,false,5
-Mr. Faith Hilpert,Similique rem iure ut.,99.04,https://lorempixel.com/300/300,49,false,2
-Mr. Zack Mitchell,Eligendi enim suscipit sit.,82.59,https://lorempixel.com/300/300,13,false,8
-Cedric Hyatt PhD,Possimus ipsa dicta debitis.,51.66,https://lorempixel.com/300/300,17,true,7
-Charlsie Carter II,Quibusdam ipsum labore enim.,90.73,https://lorempixel.com/300/300,1,false,6
-Gaylord Kirlin,Sed quae aliquam non.,7.33,https://lorempixel.com/300/300,17,false,12
-Adell Ortiz,Sit rem impedit officia.,93.7,https://lorempixel.com/300/300,7,true,13
-Mr. Norris Kunde,Ut unde possimus eum.,96.53,https://lorempixel.com/300/300,34,true,22
-Una Klocko,Molestiae laudantium rem quaerat.,32.2,https://lorempixel.com/300/300,3,true,14
-Oliver Heller,Similique in et veniam.,54.67,https://lorempixel.com/300/300,3,true,8
-Tambra Braun,Vel perferendis dolorum nisi.,95.93,https://lorempixel.com/300/300,41,true,3
+Roseum,Fun and delicate with spiky upright leaves.,33.31,https://lh3.googleusercontent.com/zRJkmU9KfCjQQuCr1bBY-qOT11FLEdnuGaK9hWPVOheCQKrOe0UV85lLHNRDUgpiWyo0CtW8JTGasmJ6-tPxFfth5pfd9T1IvVhsR4XYSnCmmCyuiBQDM49EZR0U4qCcmIiwBhGeVw=w2400,119,true,1
+Sempervivum tectorum,Unique with textured leaves.,18.48,https://lh3.googleusercontent.com/Cop0jWwuZArwddNDi7MRhEqVfbtqBnX1bdy9gXkNi4Iur9Unu8CT2v4_AeEWiw43SRyKc6swKm62PH9MF2fG3qz40zNotcR9Bhgkpxoce03zvRzSq3O392Vd0HTxPa8uXX4RBjOeRA=w2400,118,true,8
+Echeveria pulvinata,Impressive and tropical with glossy leaves.,42.49,https://lh3.googleusercontent.com/mQo-KSH87OJOlSysFERiX1R-Z_-FL0qaZzqMkBRJiW1W5oiktaA7CvRVkcsAXR3z3zKBCVKDpdr35wExLRazV8LlbBbxincX49505cbnvhx6D_EMl20S25jd_GSgorzc4swhAfRHMw=w2400,121,true,7
+Cotyledon orbiculata,Colorful and exotic.,19.2,https://lh3.googleusercontent.com/52cfkxN0IGP625BRBvIOwu5aioAfCmpH4dYNM3svJsnXAtkSVi-oXX4leBhS5bppntR837IsTYIEL1anRANUg5slexO2ZxFrV7aQID5WkS-YyGUfFisDjjB6P7p5X1SiEu8LgCcmSw=w2400,116,true,9
+Aeonium arboreum,Robust and dramatic with glossy leaves.,22.34,https://lh3.googleusercontent.com/6FZLp3TJP1B6uoCXrFJ1qRGo815FcOFYA4quxV0hD43U9JIK1il0BXw5Uzh4T5FT6idVZJUfxecmistGZK_J7Gt81ZetgCegDNw9KeUrGOZW5YQx6jkIO5chVPaNn2OrLoA3tTq-IA=w2400,112,true,5
+Echeveria spp,Fun and whimsical with long curved leaves.,15.99,https://lh3.googleusercontent.com/p_VNXLedv3zOBb9YzskwKRJ2JnDjFBF6uFI52eqHPqeRyNaG_5wZtfYqUgkxK-0jHYDcSLntQHFux4OBzYa9ls_D9EeQ9bmsm_Xm0S5OLVxHdBVzI6GQqZPYg4qPstIpXOxCyGnB6w=w2400,118,true,4
+Aeonium davidbramwellii,Glossy colorful with silvery-green streaks.,29.45,https://lh3.googleusercontent.com/yk3A-Ihugp9SyYcYZCyUFiaYdaJ5tVYPdSKxg0J7jMgWaaS9YAmDjMTkFaEozHoAoQ-uR6G9f_gKiMpQ0YSqKjE9LmMP9xKObHUp2Il1aLPZLHibhOxDjDK3gOLPvi_v-I7B6eeMhw=w2400,112,true,3
+Parodia magnifica,A unique plant with exotic leaves.,17.90,https://lh3.googleusercontent.com/rgf3dpdqj9mB37SE_k0xOISLINv0zMgO3ksXB8ySN_q09cYTmgstvzzvHumnFGSQTbK1Ozcf1039io_zl0PVYO0zPOjaMOO-IZ0Zb4wLG-vWMWupLUsk3P66sCDRG-PN-HZwFVBM-g=w2400,110,true,2
+Haworthia fasciata,Easy and graceful.,14.19,https://lh3.googleusercontent.com/KJQzhkpQjo7Z_-H3tSfSDJwEMq4eFx1TaVcaq6C-ebfHvreoOaLig21n2rn5K2i_Jj3X0IERb3C7b-G9m9ChcUSaiAznL3D9Ct0QiWlZgN5QziZi3wVN_vJPydZ6MSiqxyqJhcK15w=w2400,115,true,5
+Sansevieria trifasciata,Graceful combo with small leaves.,34.55,https://lh3.googleusercontent.com/9uyXRAcu6FTDI6dgZtXETZ6l_l5yhXAwKJrCkO6InV-U_F0x8V2fTpXSGj2pinEFfGy42Rv1StmK5GXcz74a1qX4xQqONeIPLaYw8tIqXTzA6R2gjziKMRwUg49G5xAugE_mGLrWdw=w2400,112,true,9

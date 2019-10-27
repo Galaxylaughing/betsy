@@ -2,9 +2,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # RESTful routes:
   root 'homepages#index'
+ 
+  resources :users do
+    resources :products, only: [:show]
+  end 
   
-  resources :users
-  resources :products 
+  resources :categories do 
+    resources :products, only: [:show]
+  end 
+  
+  resources :products
   resources :orders
   resources :reviews 
   resources :order_items, only: [:create, :destroy, :update]

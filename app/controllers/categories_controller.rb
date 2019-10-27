@@ -1,15 +1,11 @@
 class CategoriesController < ApplicationController
-  
   def index
-    @categories = Category.all
+    @categories = Category.order(:name)
   end
   
   def edit
-    
   end
   
   def create
-    
   end
-  
 end

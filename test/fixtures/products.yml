@@ -2,7 +2,7 @@ orchid:
   name: Ada Orchid
   description: Cool
   price: 12.99
-  photo_url: photo_url
+  photo_url: https://lorempixel.com/300/300
   stock: 100
   available: true
   user_id: 2
@@ -12,7 +12,7 @@ begonia:
   name: Begonia Flower
   description: Cool
   price: 8.99
-  photo_url: photo_url
+  photo_url: https://lorempixel.com/300/300
   stock: 200
   available: true
   user_id: 2
@@ -26,7 +26,7 @@ tarsha:
   stock: 39
   available: true
   user_id: 13
-  categories: flower, specialty, annual
+  categories: flower, specialty, full_sun
 
 brad:
   name: Brad Crist DVM
@@ -36,7 +36,7 @@ brad:
   stock: 47
   available: true
   user_id: 12
-  categories: gift
+  categories: shade
 
 loyd:
   name: Loyd Toy Jr.

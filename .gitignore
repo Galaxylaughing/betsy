@@ -29,3 +29,6 @@
 
 # ignore github secrets
 .env
+
+# ignore simplecov coveragecoverage
+/coverage

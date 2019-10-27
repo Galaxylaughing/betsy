@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
-  has_many :order_items
-  has_many :reviews
+  has_many :order_items, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   belongs_to :user
   has_and_belongs_to_many :categories
   
@@ -11,4 +11,8 @@ class Product < ApplicationRecord
   validates :stock, presence: true, numericality: {only_integer: true}
   validates :available, presence: true
   validates :user_id, presence: true
+  
+  # def self.sort_by_category(category)
+  #   self.where(category: category)
+  # end
 end

@@ -1,0 +1,25 @@
+<main>
+<section class="show_page_product">
+  
+  <div>
+    <img src= <%= @product.photo_url %> alt=<%= @product.name %> class="product_image_show">
+  </div>
+  
+  <div class="product_data">
+    <h4><strong><%= @product.name %></strong></h4>
+    <p>Description: <%= @product.description.capitalize %></p>
+    <p>Stock: <%= @product.stock %> units</p>
+    <p>Price: $<%= @product.price %></p>
+  </div>
+
+  <div class="submit-button">
+    Quantity: <input required="required" min="1" max="8" type="number" name="item[quantity]" id="item_quantity">
+    <a class="btn btn-primary" <%= link_to "ADD TO CART", product_path, method: :post %>
+    </br>
+    </br>
+    </br>
+    <p><strong>Free shipping</strong></p>
+    <p>Free shipping in all orders above $20</p>  
+  </div>
+</section>
+</main>

@@ -198,4 +198,25 @@ describe User do
       end
     end
   end
+  
+  describe "list" do
+    let(:list) {
+      User.list
+    }
+    it "returns a list of all users" do
+      expect(list.length).must_equal User.count
+      
+      list.each do |item|
+        expect(item).must_be_instance_of User
+      end
+    end
+    
+    it "returns an alphabetized list" do
+      # relies on "awesome_orchid" being 
+      # the alphabetical first name in test database
+      first_name = users(:orchid)
+      
+      expect(list.first).must_equal first_name
+    end
+  end
 end

@@ -1,0 +1,24 @@
+<main>
+<section class="show_page">
+  <h2 class="show_page__header">
+    All Products
+  </h2>
+</section>
+
+  <section class="index_page_product">
+  <% @products.each do |product| %>
+  
+  <div class="product_data_index">
+    <img src= <%= product.photo_url %> alt=<%= product.name %> class="product_image">
+  </div>
+    
+  <div class="product_data_index">
+    <%= link_to product.name, product_path(product.id) %>
+    Description: <%= product.description %>
+    Price: $<%= product.price %>
+  </div>
+
+<% end %>
+</section>
+</section>
+</main>
