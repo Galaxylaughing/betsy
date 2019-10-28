@@ -77,6 +77,31 @@ class UsersController < ApplicationController
     end
   end
   
+  def login_form
+    @user = User.new
+  end
+  
+  def login
+    username = params[:user][:username]
+    
+    user = User.find_by(username: username)
+    if user
+      session[:user_id] = user.id
+      flash[:success] = "Successfully logged in as returning user #{username}"
+    else
+      flash[:error] = "Please try again"
+      redirect_to root_path
+      return
+    end
+    
+    redirect_to dashboard_path(user.id)
+  end
+  
+  def logout
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+  
   private
   
   def get_user

@@ -6,7 +6,7 @@ orchid:
   stock: 100
   available: true
   user_id: 2
-  categories: specialty
+  categories:
 
 begonia:
   name: Begonia Flower
@@ -16,7 +16,7 @@ begonia:
   stock: 200
   available: true
   user_id: 2
-  categories: flower, specialty
+  categories:
 
 tarsha:
   name: Tarsha Aufderhar
@@ -26,7 +26,7 @@ tarsha:
   stock: 39
   available: true
   user_id: 13
-  categories: flower, specialty, full_sun
+  categories:
 
 brad:
   name: Brad Crist DVM
@@ -36,7 +36,7 @@ brad:
   stock: 47
   available: true
   user_id: 12
-  categories: shade
+  categories:
 
 loyd:
   name: Loyd Toy Jr.
@@ -46,7 +46,7 @@ loyd:
   stock: 18
   available: true
   user_id: 8
-  categories: evergreen
+  categories:
 
 christopher:
   name: Christoper Cormier
@@ -56,7 +56,7 @@ christopher:
   stock: 16
   available: true
   user_id: 15
-  categories: houseplant
+  categories:
 
 wilfred:
   name: Wilfred Tremblay
@@ -66,7 +66,7 @@ wilfred:
   stock: 21
   available: true
   user_id: 20
-  categories: flower, specialty
+  categories:
 
 tereasa:
   name: Tereasa Kunze
@@ -76,7 +76,7 @@ tereasa:
   stock: 32
   available: false
   user_id: 24
-  categories: specialty
+  categories:
 
 sal:
   name: Sal Considine
@@ -86,7 +86,7 @@ sal:
   stock: 28
   available: false
   user_id: 6
-  categories: annual, specialty
+  categories:
 
 mario:
   name: Mario Medhurst
@@ -96,7 +96,7 @@ mario:
   stock: 6
   available: true
   user_id: 16
-  categories: flower, succulent
+  categories:
 
 kenda:
   name: Kenda Barton
@@ -106,7 +106,7 @@ kenda:
   stock: 43
   available: false
   user_id: 2
-  categories: succulent
+  categories: 
 
 palmer:
   name: Palmer Terry III
@@ -116,7 +116,7 @@ palmer:
   stock: 1
   available: false
   user_id: 4
-  categories: flower, annual
+  categories:
 
 ester:
   name: Mr. Ester Toy
@@ -126,7 +126,7 @@ ester:
   stock: 19
   available: true
   user_id: 25
-  categories: perrenial
+  categories: 
 
 hollyhock:
   name: Alcea rosea
@@ -136,7 +136,7 @@ hollyhock:
   stock: 5
   available: true
   user: orchid
-  categories: perennial
+  categories: 
 
 bellflower:
   name: Campanula spp.
@@ -146,7 +146,7 @@ bellflower:
   stock: 5
   available: true
   user: orchid
-  categories: perennial
+  categories: 
 
 treeivy:
   name: Fatshedera spp.
@@ -156,7 +156,7 @@ treeivy:
   stock: 5
   available: true
   user: begonia
-  categories: houseplant
+  categories: 
 
 teddybearvine:
   name: Cyanotis kewensis
@@ -166,4 +166,4 @@ teddybearvine:
   stock: 2
   available: true
   user: rose
-  categories: houseplant
+  categories: 
