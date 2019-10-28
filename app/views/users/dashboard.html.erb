@@ -222,7 +222,11 @@
                           <%= product.name %>
                         </td>
                         <td>
-                          <%= link_to "mark completed" %>
+                          <% if oi.status != "complete" %>
+                            <%= link_to "mark completed", mark_complete_path(oi.id), method: :post %>
+                          <% else %>
+                            <%= oi.status %>
+                          <% end %>
                         </td>
                         <td>
                           <%= oi.quantity %>
