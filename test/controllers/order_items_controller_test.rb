@@ -159,6 +159,20 @@ describe OrderItemsController do
         must_redirect_to dashboard_path(user.id)
         expect(OrderItem.find_by(id: oi.id).status).must_equal "complete"
       end
+      
+      it "is idempotent" do
+        user = users(:orchid)
+        perform_login(user)
+        
+        oi = order_items(:bear_treeivy)
+        oi_status = oi.status
+        
+        post mark_complete_path(oi.id)
+        post mark_complete_path(oi.id)
+        
+        must_redirect_to dashboard_path(user.id)
+        expect(OrderItem.find_by(id: oi.id).status).must_equal "complete"
+      end
     end
   end
 end
