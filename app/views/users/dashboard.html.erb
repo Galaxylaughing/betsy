@@ -85,10 +85,6 @@
                 <span class="basic_info__header_item header_item__subtitle"><%= product.stock %> in stock</span>
               </div>
 
-              <div class="hover__product_link">
-                More Info
-              </div>
-
               <input type="checkbox" id=<%= toggle %>>
               <label for=<%= toggle %> class="toggle__show_more">
                 <p>more info</p>
@@ -96,50 +92,52 @@
                 <span class="toggle_to_off"><i class="fas fa-toggle-on"></i></span>
               </label>
 
-              <div class="dashboard__user_product__more_info">
-                <div class="dashboard__edit_product">
-                  <%= link_to "edit product", edit_product_path(product.id), class: "btn btn-light edit_product_button" %>
-                </div>
+              <div class="more_info__container">
+                <img src=<%= product.photo_url %> alt=<%= product.name %> class="merchant_product_image">
+                <div class="dashboard__user_product__more_info">
 
-                <section class="more_info__description_container">
-                  <h4 class="more_info__header">Description</h4>
-                  <div>
-                    <%= product.description %>
+                  <div class="more_info__description_container">
+                    <div>
+                      <%= product.description %>
+                    </div>
+                    <div>
+                      <%= link_to "edit product", edit_product_path(product.id), class: "btn btn-light edit_product_button" %>
+                    </div>
                   </div>
-                </section>
 
-                <div class="dashboard__user_product__details_container">
-                  <div class="dashboard__user_product__details">
-                    <section class="more_info__price_container">
-                      <h4 class="more_info__header">Price</h4>
-                      <div>
-                        $<%= product.price %>
-                      </div>
+                  <div class="dashboard__user_product__details_container">
+                    <div class="dashboard__user_product__details">
+                      <section class="more_info__price_container">
+                        <h4 class="more_info__header">Price</h4>
+                        <div>
+                          $<%= product.price %>
+                        </div>
+                      </section>
+
+                      <% if product.available %>
+                        <div class="availability btn btn-primary currently_available">
+                          Currently Available
+                        </div>
+                        <div class="availability btn btn-danger mark_retired">
+                          Retire Product?
+                        </div>
+                      <% else %>
+                        <div class="availability btn btn-warning unavailable">
+                          Retired
+                        </div>
+                        <div class="availability btn btn-danger mark_available">
+                          Mark Available?
+                        </div>
+                      <% end %>
+                    </div> 
+
+                    <section class="dashboard__user_product__categories">
+                      <h4 class="more_info__header">Categories</h4>
+                      <% product.categories.each do |category| %>
+                        <div class="product_category"><%= category.name %></div>
+                      <% end %>
                     </section>
-
-                    <% if product.available %>
-                      <div class="availability btn btn-primary currently_available">
-                        Currently Available
-                      </div>
-                      <div class="availability btn btn-danger mark_retired">
-                        Retire Product?
-                      </div>
-                    <% else %>
-                      <div class="availability btn btn-warning unavailable">
-                        Retired
-                      </div>
-                      <div class="availability btn btn-danger mark_available">
-                        Mark Available?
-                      </div>
-                    <% end %>
-                  </div> 
-
-                  <section class="dashboard__user_product__categories">
-                    <h4 class="more_info__header">Categories</h4>
-                    <% product.categories.each do |category| %>
-                      <div class="product_category"><%= category.name %></div>
-                    <% end %>
-                  </section>
+                  </div>
                 </div>
               </div>
 
@@ -151,6 +149,8 @@
         </div>
         <hr class="dashboard__line_break dashboard__product__break"/>
       </section>
+
+
 
       <section>
         <div class="dashboard__section">
@@ -210,7 +210,7 @@
                   </div>
                 </div>
 
-                <table class="table">
+                <table class="table table-responsive-lg">
                   <thead>
                     <tr>
                       <th scope="col">order item</th>
@@ -244,12 +244,15 @@
                         </tr>
                       <% end %>
                     <% end %>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <%# order.total_cost %>
+                      <td>$ total</td>
+                    </tr>
                   </tbody>
                 </table>
-
-                <div class="order__total_cost">
-                  <%# order.total_cost %>
-                </div>
 
                 <section class="order__buyer_info_container">
                   <h6>Buyer</h6>
