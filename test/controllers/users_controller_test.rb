@@ -2,19 +2,19 @@ require "test_helper"
 
 describe UsersController do
   describe "create" do
-    it "logs in an existing user and redirects to the root route" do
+    it "logs in an existing user and redirects to the dashboard" do
       start_count = User.count
       user = users(:begonia)
       
       perform_login(user)
       
-      must_redirect_to root_path
+      must_redirect_to dashboard_path(user.id)
       expect(session[:user_id]).must_equal user.id
       expect(flash[:success]).must_include "Successfully logged in as returning user"
       expect(User.count).must_equal start_count
     end
     
-    it "creates an account for a new user and redirects to the root route" do
+    it "creates an account for a new user and redirects to the dashboard" do
       start_count = User.count
       new_user = User.new(provider: "github", uid: 888444, username: "newbie", email: "test@example.com")
       
@@ -22,7 +22,7 @@ describe UsersController do
       
       get callback_path(:github)
       
-      must_redirect_to root_path
+      must_redirect_to dashboard_path(User.last.id)
       expect(session[:user_id]).must_equal User.last.id
       expect(flash[:success]).must_include "Successfully logged in as new user"
       expect(User.count).must_equal start_count + 1
