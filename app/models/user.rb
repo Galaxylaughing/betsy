@@ -42,6 +42,18 @@ class User < ApplicationRecord
     return matching_orders
   end
   
+  def total_revenue
+    orders = self.find_orders
+    
+    total_cost = 0.0
+    orders.each do |order|
+      # I need an order.total_cost method
+      # total_cost += order.total_cost
+    end
+    
+    return total_cost
+  end
+  
   def self.build_from_github(auth_hash)
     user = User.new
     user.uid = auth_hash[:uid]

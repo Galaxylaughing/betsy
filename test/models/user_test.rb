@@ -344,4 +344,47 @@ describe User do
     end
   end
   
+  describe "total revenue" do
+    it "calculates the user's total revenue" do
+      # orchid has two orders
+      user = users(:orchid)
+      
+      # hollyhock:
+      #   price: 12.75
+      # bellflower:
+      #   price: 12.75
+      
+      # ducky_bellflower:
+      #   quantity: 1
+      #   product: bellflower
+      #   => total: 12.75
+      # bear_hollyhock:
+      #   quantity: 2
+      #   product: hollyhock
+      #   => total: 25.5
+      
+      result = user.total_revenue
+      
+      expect(result).must_equal 25.50
+    end
+    
+    it "returns zero if there are no orders" do
+      # rose has one product with no orders
+      user = users(:rose)
+      
+      result = user.total_revenue
+      
+      expect(result).must_equal 0.00
+    end
+    
+    it "returns zero if there are no products" do
+      # petunia has no products
+      user = users(:petunia)
+      
+      result = user.total_revenue
+      
+      expect(result).must_equal 0.00
+    end
+  end
+  
 end

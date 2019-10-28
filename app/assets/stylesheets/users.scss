@@ -35,6 +35,8 @@ caption {
   margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  justify-content: center;
+  align-items: center;
   grid-gap: 2rem;
   margin-top: 3rem;
 }
@@ -57,11 +59,16 @@ caption {
 .merchant_product_tile {
   text-align: center;
   position: relative;
+  align-self: center;
+
+  width: 30em;
+  height: 30em;
 }
 
 .merchant_product_tile__img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   opacity: 0.8;
 }
 
