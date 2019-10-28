@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe ProductsController do
-
+  
   before do
     @user = User.create(username: "test user", email: "test_email@example.com") 
     @category1 = Category.create(name: "flower")
@@ -16,75 +16,75 @@ describe ProductsController do
     @order_item2 = OrderItem.create(product_id: @product.id, order_id: @order.id, quantity: 4)
   end
   
-  # describe "Logged in users" do
-  #   # before do
-  #   #   perform_login(users(:grace))
-  #   # end
-  
-  describe "index" do
-    it "gives back success when products saved" do
-      get products_path
-      must_respond_with :success
-    end 
-    
-    it "can get the root path" do
-      get root_path
-      must_respond_with :success
+  describe "Logged in users" do
+    before do
+      perform_login(users(:begonia))
     end
     
-    it "responds with sucess when no products saved" do
-      Product.destroy_all
+    describe "index" do
+      it "gives back success when products saved" do
+        get products_path
+        must_respond_with :success
+      end 
       
-      expect(Product.count).must_equal 0
-      get products_path
-      must_respond_with :success
-    end
-  end 
-  
-  describe "show" do
-    it "can get a valid product" do 
-      get product_path(@product.id)
-      must_respond_with :success
+      it "can get the root path" do
+        get root_path
+        must_respond_with :success
+      end
+      
+      it "responds with sucess when no products saved" do
+        Product.destroy_all
+        
+        expect(Product.count).must_equal 0
+        get products_path
+        must_respond_with :success
+      end
     end 
     
-    it "will redirect for an invalid product id" do
-      get product_path(-1111)
-      must_respond_with :redirect
+    describe "show" do
+      it "can get a valid product" do 
+        get product_path(@product.id)
+        must_respond_with :success
+      end 
+      
+      it "will redirect for an invalid product id" do
+        get product_path(-1111)
+        must_respond_with :redirect
+      end
+    end  
+    
+    describe "new" do 
+      it "can get the new product page" do
+        get new_product_path
+        must_respond_with :success
+      end
     end
-  end  
-  
-  describe "new" do 
-    it "can get the new product page" do
-      get new_product_path
-      must_respond_with :success
-    end
-  end
-  
-  describe "create" do
-    it "can create a new product with valid information" do 
-      product_hash = {
-      product: {
-      user_id: @user.id,
-      name: "new product",
-      description: "new description",
-      price: 1.99,
-      stock: 49,
-      photo_url: "new_photo url"
+    
+    describe "create" do
+      it "can create a new product with valid information" do 
+        product_hash = {
+        product: {
+        user_id: @user.id,
+        name: "new product",
+        description: "new description",
+        price: 1.99,
+        stock: 49,
+        photo_url: "new_photo url"
+      }
     }
-  }
+    
+    expect {
+    post products_path, params: product_hash
+  }.must_change "Product.count", 1
   
-  expect {
-  post products_path, params: product_hash
-}.must_change "Product.count", 1
-
-new_product = Product.find_by(name: product_hash[:product][:name])  
-expect(new_product.price).must_equal product_hash[:product][:price]
-expect(new_product.stock).must_equal product_hash[:product][:stock]
-expect(new_product.photo_url).must_equal product_hash[:product][:photo_url]
-expect(new_product.description).must_equal product_hash[:product][:description]
-
-must_respond_with :redirect
-must_redirect_to product_path(new_product.id)
+  new_product = Product.find_by(name: product_hash[:product][:name])  
+  expect(new_product.price).must_equal product_hash[:product][:price]
+  expect(new_product.stock).must_equal product_hash[:product][:stock]
+  expect(new_product.photo_url).must_equal product_hash[:product][:photo_url]
+  expect(new_product.description).must_equal product_hash[:product][:description]
+  
+  must_respond_with :redirect
+  must_redirect_to product_path(new_product.id)
 end 
 end 
 
@@ -162,7 +162,8 @@ end
 #   end
 # end
 
-# describe "Guest users" do
-#   # before do
-#   # end
+describe "Guest users" do
+  
+  # before do
+  # end
 end
