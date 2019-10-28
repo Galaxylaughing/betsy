@@ -43,4 +43,12 @@ describe OrderItem do
       expect(order_item.valid?).must_equal false
     end
   end
+  
+  describe 'subtotal' do
+    let(:order_item) { order_items(:bear_hollyhock) }
+    
+    it 'calcualtes the correct subtotal' do
+      expect(order_item.subtotal).must_equal 25.5
+    end
+  end
 end
