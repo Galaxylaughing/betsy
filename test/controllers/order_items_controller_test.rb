@@ -156,6 +156,7 @@ describe OrderItemsController do
           post mark_complete_path(oi.id)
         }.wont_differ "OrderItem.count"
         
+        must_redirect_to dashboard_path(user.id)
         expect(OrderItem.find_by(id: oi.id).status).must_equal "complete"
       end
     end

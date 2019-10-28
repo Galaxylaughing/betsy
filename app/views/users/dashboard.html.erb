@@ -216,25 +216,27 @@
 
                   <tbody>
                     <% order.order_items.each do |oi| %>
-                      <tr>
-                        <td>
-                          <% product = Product.find_by(id: oi.product_id) %>
-                          <%= product.name %>
-                        </td>
-                        <td>
-                          <% if oi.status != "complete" %>
-                            <%= link_to "mark completed", mark_complete_path(oi.id), method: :post %>
-                          <% else %>
-                            <%= oi.status %>
-                          <% end %>
-                        </td>
-                        <td>
-                          <%= oi.quantity %>
-                        </td>
-                        <td>
-                          $ subtotal <%# oi.subtotal %>
-                        </td>
-                      </tr>
+                      <% product = Product.find_by(id: oi.product_id) %>
+                      <% if product.user_id == @user.id %>
+                        <tr>
+                          <td>
+                            <%= product.name %>
+                          </td>
+                          <td>
+                            <% if oi.status != "complete" %>
+                              <%= link_to "mark completed", mark_complete_path(oi.id), method: :post %>
+                            <% else %>
+                              <%= oi.status %>
+                            <% end %>
+                          </td>
+                          <td>
+                            <%= oi.quantity %>
+                          </td>
+                          <td>
+                            $ subtotal <%# oi.subtotal %>
+                          </td>
+                        </tr>
+                      <% end %>
                     <% end %>
                   </tbody>
                 </table>

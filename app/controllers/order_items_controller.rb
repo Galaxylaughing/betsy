@@ -47,13 +47,15 @@ class OrderItemsController < ApplicationController
   end
   
   def complete
-    if logged_in?
+    user_id = logged_in?
+    if user_id
       oi_id = params[:id]
       oi = OrderItem.find_by(id: oi_id)
       
       oi.status = "complete"
       oi.save
       
+      redirect_to dashboard_path(user_id)
       return
     end
   end
