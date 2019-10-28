@@ -8,7 +8,7 @@ describe Order do
     it 'is valid when all fields are present' do
       expect(orders(:georgina_order).valid?).must_equal true
     end
-
+    
     it "will have the required fields" do
       new_order.save
       order = Order.first
@@ -16,38 +16,38 @@ describe Order do
         expect(order).must_respond_to field
       end
     end 
-  
+    
     it "is not valid without an email" do
       invalid_order = Order.new(name: "georgina", address: "bellevue", cc_num: "1111111111111111", cvv_code: "111", zip: "98003")
       expect(invalid_order.valid?).must_equal false
       expect(invalid_order.errors.messages).must_include :email
     end
-
+    
     it "is not valid without an address" do
       invalid_order = Order.new(email: "geob@gmail.com", name: "georgina", cc_num: "1111111111111111", cvv_code: "111", zip: "98003")
       expect(invalid_order.valid?).must_equal false
       expect(invalid_order.errors.messages).must_include :address
     end
-
+    
     it "is not valid without an cc_num" do
       invalid_order = Order.new(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", zip: "98003")
       expect(invalid_order.valid?).must_equal false
       expect(invalid_order.errors.messages).must_include :cc_num
     end
-
+    
     it "is not valid without an cvv_code" do
       invalid_order = Order.new(email: "geob@gmail.com", name: "georgina", cc_num: "1111111111111111", address: "bellevue", zip: "98003")
       expect(invalid_order.valid?).must_equal false
       expect(invalid_order.errors.messages).must_include :cvv_code
     end
-
+    
     it "is not valid without an zip" do
       invalid_order = Order.new(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", cc_num: "1111111111111111")
       expect(invalid_order.valid?).must_equal false
       expect(invalid_order.errors.messages).must_include :zip
     end
   end
-
+  
   describe "relationships" do
     it "has many order_items" do
       # Arrange
@@ -58,11 +58,19 @@ describe Order do
       order_items_1 = OrderItem.create(product_id: product_cactus.id, order_id: new_order.id, quantity: 3)
       order_items_2 = OrderItem.create(product_id: product_flower.id, order_id: new_order.id, quantity: 1)
       
-
+      
       expect(new_order.order_items.count).must_be :>, 0
       new_order.order_items.each do |order|
         expect(order).must_be_instance_of OrderItem
       end
+    end
+  end
+  
+  describe 'total' do
+    let(:order) { orders(:bear_orchid_hollyhock)}
+    
+    it "calculates the correct total for an order" do
+      expect(order.total).must_equal 63.75
     end
   end
 end
