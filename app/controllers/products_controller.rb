@@ -13,9 +13,9 @@ class ProductsController < ApplicationController
       return
     end   
     
-    if session[:user_id] && session[:user_id] == @product.user_id
-      render :user_show
-    end
+    # if session[:user_id] && session[:user_id] == @product.user_id
+    #   render :user_show
+    # end
   end
   
   def new
