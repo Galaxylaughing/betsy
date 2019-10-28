@@ -174,11 +174,17 @@
         <div>
           <% if all_orders.length > 0 %>
             <% all_orders.each do |order| %>
-              <article>
-                <div>
-                  <h5>
-                    <span>Order #<%= order.id %></span>
-                    <span><%= render_date(order.created_at) %></span>
+              <article class="order">
+                <hr class="dashboard__line_break"/>
+
+                <div class="order__header">
+                  <h5 class="order__header_title">
+                    <span class="order__header_title__item">
+                      Order #<%= order.id %>
+                    </span>
+                    <span class="order__header_title__item">
+                      <%= render_date(order.created_at) %>
+                    </span>
                   </h5>
                   <div>
                     <%= order.status %>
@@ -244,6 +250,8 @@
 
               </article>
             <% end %>
+            <hr class="dashboard__line_break"/>
+            
           <% else %>
             <div class="order__no_orders">
               You do not yet have any orders

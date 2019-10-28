@@ -368,3 +368,16 @@ caption {
 .order__no_orders {
   text-align: center;
 }
+
+.order__header {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.order__header > *:last-child {
+  margin-left: auto;
+}
+
+.order__header_title__item + .order__header_title__item::before {
+  content: "|";
+}
