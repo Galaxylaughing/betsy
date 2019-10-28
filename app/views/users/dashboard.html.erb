@@ -68,28 +68,38 @@
         <% end %>
 
         <div class="dashboard__products_container">
+
+          <%# toggle %>
+          <% toggle_num = 0 %>
+
           <% @user.products.each do |product| %>
             <hr class="dashboard__line_break dashboard__product__break"/>
+
+            <%# toggle %>
+            <% toggle = "toggle_" + toggle_num.to_s %>
 
             <div class="dashboard__user_product">
 
               <div class="dashboard__user_product__basic_info">
-                <div class="dashboard__user_product__basic_info__header">
-                  <span class="basic_info__header_item"><%= product.name %></span>
-                  <span class="basic_info__header_item"><%= product.stock %> in stock</span>
-                </div>
-
-                <div class="dashboard__user_product__basic_info__buttons">
-                  <span><i class="fas fa-toggle-off"></i></span>
-                  <span><i class="fas fa-toggle-on"></i></span>
-
-                  <div>
-                    <%= link_to "edit product", edit_product_path(product.id) %>
-                  </div>
-                </div>
+                <span class="basic_info__header_item"><%= product.name %></span>
+                <span class="basic_info__header_item header_item__subtitle"><%= product.stock %> in stock</span>
               </div>
 
+              <div class="hover__product_link">
+                More Info
+              </div>
+
+              <input type="checkbox" id=<%= toggle %>>
+              <label for=<%= toggle %> class="toggle__show_more">
+                <p>more info</p>
+                <span class="toggle_to_on"><i class="fas fa-toggle-off"></i></span>
+                <span class="toggle_to_off"><i class="fas fa-toggle-on"></i></span>
+              </label>
+
               <div class="dashboard__user_product__more_info">
+                <div class="dashboard__edit_product">
+                  <%= link_to "edit product", edit_product_path(product.id), class: "btn btn-light edit_product_button" %>
+                </div>
 
                 <section class="more_info__description_container">
                   <h4 class="more_info__header">Description</h4>
@@ -108,26 +118,29 @@
                     </section>
 
                     <% if product.available %>
-                      <div>
-                        Currently Available
+                      <div class="availability btn btn-primary currently_available">
+                        <%# content filled with pseudo-selectors %>
                       </div>
                     <% else %>
-                      <div>
-                        Retired
-                      </div>
+                      <div class="availability btn btn-warning unavailable">
+                      <%# content filled with pseudo-selectors %>
+                    </div>
                     <% end %>
                   </div> 
 
                   <section class="dashboard__user_product__categories">
                     <h4 class="more_info__header">Categories</h4>
                     <% product.categories.each do |category| %>
-                      <div><%= category.name %></div>
+                      <div class="product_category"><%= category.name %></div>
                     <% end %>
                   </section>
                 </div>
               </div>
 
             </div>
+
+            <%# toggle %>
+            <% toggle_num += 1 %>
           <% end %>
         </div>
         <hr class="dashboard__line_break dashboard__product__break"/>
@@ -251,7 +264,7 @@
               </article>
             <% end %>
             <hr class="dashboard__line_break"/>
-            
+
           <% else %>
             <div class="order__no_orders">
               You do not yet have any orders

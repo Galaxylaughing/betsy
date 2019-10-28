@@ -274,21 +274,28 @@ caption {
   margin: auto;
 }
 
+.dashboard__user_product {
+  padding: 1rem;
+}
+
 .dashboard__user_product__basic_info {
   display: flex;
   flex-flow: row wrap;
 }
 
+.dashboard__user_product__basic_info > *:first-child {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.header_item__subtitle {
+  font-size: 1em;
+}
+
 .basic_info__header_item + .basic_info__header_item::before {
+  font-size: 1.2em;
   content: "| ";
-}
-
-.dashboard__user_product__basic_info > *:last-child {
-  margin-left: auto;
-}
-
-.dashboard__user_product__basic_info__buttons {
-  text-align: right;
+  margin-left: 0.3em;
 }
 
 .more_info__header {
@@ -301,7 +308,73 @@ caption {
 }
 
 .dashboard__line_break.dashboard__product__break {
-  margin-top: 2rem;
+  margin-top: 0;
+}
+
+
+// Untoggled State
+.toggle__show_more {
+  // float: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  // hard-coded; tweak to fix alignment with product header
+  margin-top: -1.5rem;
+}
+
+// hide toggle name from visual user
+input[type=checkbox], input[type=checkbox] ~ label > *:first-child {
+  display: none;
+}
+
+// hide toggle checkbox (so the font-awesome icons appear as the button)
+input[type=checkbox] ~ div {
+  display: none;
+}
+
+input[type=checkbox] ~ label > .toggle_to_off {
+  display: none;
+}
+
+/* Toggled State */
+input[type=checkbox]:checked ~ label > .toggle_to_on {
+  display: none;
+}
+
+input[type=checkbox]:checked ~ label > .toggle_to_off {
+  display: inline-block;
+}
+
+input[type=checkbox]:checked ~ div {
+  animation: 1.5s ease-in 0s 1 fadeIn;
+
+  display: grid;
+}
+
+.dashboard__edit_product {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  clear: right;
+}
+
+.edit_product_button {
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+}
+
+.hover__product_link {
+  display: none;
+}
+
+// .dashboard__user_product:hover .hover__product_link{
+//   display: block;
+// }
+
+.dashboard__user_product__more_info {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 1rem;
 }
 
 .dashboard__user_product__details_container {
@@ -309,6 +382,47 @@ caption {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+}
+
+// Availability buttons
+.availability {
+  padding: 1em;
+  border-radius: 0.5rem;
+}
+
+.currently_available::after {
+  content: "Currently Available";
+}
+.currently_available:hover::after {
+  content: "Retire Product?";
+}
+
+.btn-primary.currently_available:hover, .unavailable:hover{
+  background-color: #dc3545;
+  color: white;
+  border-color: darkred;
+}
+
+.unavailable::after {
+  content: "Retired";
+}
+.unavailable:hover::after {
+  content: "Mark Available?";
+}
+
+
+.more_info__header {
+  margin-bottom: 0.5em;
+}
+
+.product_category {
+  background-color: yellowgreen;
+  padding: 0.2em;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .dashboard__products_by_status {
