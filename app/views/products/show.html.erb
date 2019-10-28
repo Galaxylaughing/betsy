@@ -7,22 +7,28 @@
   
   <div class="product_data">
     <h4><strong><%= @product.name %></strong></h4>
+    </br>
     <p>Description: <%= @product.description.capitalize %></p>
     <p>Stock: <%= @product.stock %> units</p>
     <p>Price: $<%= @product.price %></p>
     </br>
-    </br>
-  </div>
-
-  <div class="submit-button">
     <%= form_with model: @order_items, url: product_order_items_path(@product.id) do |f| %>
       <%= f.select :quantity, (1..10) %>
       <%= f.submit "ADD TO CART", class:"btn btn-primary" %>
     <%end%>
-
-  <div class="product_data-extra">
+  </div>
+  
+  <div class="product_data_extra">
+    <a class="btn btn-primary" <%= link_to "CONTINUE SHOPPING", products_path, method: :get %>
+    </br>
+    </br>
+    <a class="btn btn-primary" <%= link_to "GO TO CART", products_path, method: :get %>
+    </br>
+    </br>
+    </br>
     <p><strong>Free shipping</strong></p>
     <p>Free shipping in all orders above $50</p>  
   </div>
+
 </section>
 </main>

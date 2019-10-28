@@ -9,50 +9,50 @@ class OrderItemsController < ApplicationController
     end
     
     order_items = {
-      product_id: params[:product_id],
-      quantity: params[:quantity],
-      order_id: session[:order_id],
-    }
-    
-    order_item = OrderItem.new(order_items)
-    if order_item.save
-      flash[:success] = "Successfully added item to your cart."
-      redirect_to products_path
-    else
-      
-      flash.now[:failure] = "Failure: Item could not be added to your cart."
-      redirect_to product_path(order_items[:product_id])
-    end
-    
-  end
-
-  #Delete is going to be "remove products from my cart."
-
-  def destroy
-    @order_item.destroy
-
-    redirect_to products_path
-  end
-
-  #Update is going to change the quantity of my cart."
-
-  def update
-    if @order_item.update(order_items_params)
-      redirect_to root_path 
-      return
-    else 
-      render :edit
-      return
-    end
-  end
-
+    product_id: params[:product_id],
+    quantity: params[:quantity],
+    order_id: session[:order_id],
+  }
   
-  private
-  def order_items_params
-    params.require(:order_item).permit(:quantity, :product_id, :order_id)
+  order_item = OrderItem.new(order_items)
+  if order_item.save
+    flash[:success] = "Successfully added item to your cart."
+    redirect_to product_path(order_items[:product_id])
+  else
+    
+    flash.now[:failure] = "Failure: Item could not be added to your cart."
+    redirect_to product_path(order_items[:product_id])
   end
+  
+end
 
-  def find_order_item
-    @order_item = OrderItem.find_by(id: params[:id])
+#Delete is going to be "remove products from my cart."
+
+def destroy
+  @order_item.destroy
+  
+  redirect_to products_path
+end
+
+#Update is going to change the quantity of my cart."
+
+def update
+  if @order_item.update(order_items_params)
+    redirect_to root_path 
+    return
+  else 
+    render :edit
+    return
   end
+end
+
+
+private
+def order_items_params
+  params.require(:order_item).permit(:quantity, :product_id, :order_id)
+end
+
+def find_order_item
+  @order_item = OrderItem.find_by(id: params[:id])
+end
 end
