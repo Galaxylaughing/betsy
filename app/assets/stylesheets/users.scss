@@ -41,6 +41,11 @@ caption {
   margin-top: 3rem;
 }
 
+.merchant_show__tiles {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .merchant_tile {
   padding: 3rem;
   text-align: center;
