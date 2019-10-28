@@ -2,7 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.category_product_img {
+$green: #428625;
+$lightgreen: #68a418;
+$darkgreen: #2e5e1a;
+$verydarkgreen: #174326;
+$brightgreen: #b7f702;
+$midgreen: #428625;
+
+.category_title {
+  text-align: center;
+  margin-bottom: 3%;
+  color: $verydarkgreen;
+  border: 2px solid #2e5e1a;
+}
+
+.index_page_category-container {  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 2%;
+  // border: 2px solid #431c5d;
+}
+
+.category_text {
+  text-align: center;
+  color: $lightgreen;
+  margin-bottom: 5%;
+}
+
+.product_image_category {
   width: 300px;
   height: 300px;
+  border-radius: 20%;
+  margin-left: 10%;
+  opacity: 0.9;
 }
+
