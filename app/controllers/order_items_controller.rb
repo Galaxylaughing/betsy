@@ -25,17 +25,17 @@ class OrderItemsController < ApplicationController
     end
     
   end
-
+  
   #Delete is going to be "remove products from my cart."
-
+  
   def destroy
     @order_item.destroy
-
+    
     redirect_to products_path
   end
-
+  
   #Update is going to change the quantity of my cart."
-
+  
   def update
     if @order_item.update(order_items_params)
       redirect_to root_path 
@@ -45,14 +45,36 @@ class OrderItemsController < ApplicationController
       return
     end
   end
-
+  
+  def complete
+    if logged_in?
+      oi_id = params[:id]
+      oi = OrderItem.find_by(id: oi_id)
+      
+      oi.status = "complete"
+      oi.save
+      
+      return
+    end
+  end
+  
   
   private
   def order_items_params
     params.require(:order_item).permit(:quantity, :product_id, :order_id)
   end
-
+  
   def find_order_item
     @order_item = OrderItem.find_by(id: params[:id])
+  end
+  
+  def logged_in?
+    user_id = session[:user_id]
+    
+    if user_id.nil?
+      return false
+    end
+    
+    return user_id
   end
 end
