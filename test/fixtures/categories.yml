@@ -12,7 +12,7 @@ flower:
 
 full_sun:
   name: Full Sun
-  products: tarsha
+  products: 
 
 houseplant:
   name: houseplant
@@ -30,6 +30,6 @@ succulent:
   name: succulent
   products: mario, kenda
 
-perrenial: 
-  name: perrenial
+perennial: 
+  name: perennial
   products: ester

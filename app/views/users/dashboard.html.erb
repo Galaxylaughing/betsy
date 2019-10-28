@@ -1,0 +1,265 @@
+<main>
+  <section class="dashboard">
+    <section class="dashboard__header">
+      <h2 class="dashboard__header_title">
+        <%= @user.username %>
+      </h2>
+      <ul>
+        <li><%= @user.email %></li>
+      </ul>
+    </section>
+
+    <hr class="dashboard__line_break"/>
+
+    <div class="dashboard_options">
+      <span class="dashboard_options__account">
+        <span class="dashboard_options__account_option">
+          <%= link_to "edit my profile", edit_user_path(@user.id) %>
+        </span>
+        <span class="dashboard_options__account_option">
+          <%= link_to "see my shop", user_path(@user.id) %>
+        </span>
+      </span>
+      <span class="dashboard__add_dropdown_container">
+        <div class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          add <i class="fas fa-angle-left"></i><i class="fas fa-angle-down"></i>
+        </div>
+        <div class="dropdown-menu dropdown-menu-right">
+          <%# come back to this and add new_category_path %>
+          <%= link_to "Add Category", root_path, class: "dropdown-item" %>
+          <%= link_to "Add Product", new_product_path, class: "dropdown-item" %>
+        </div>
+      </span>
+    </div>
+
+    <div class="dashboard__sections_container">
+      <nav class="dashboard__sections_nav breadcrumb">
+        <a href="#products" class="breadcrumb-item">
+          <span>my products</span>
+          <span class="badge badge-primary badge-pill"><%= @user.products.count %></span>
+        </a>
+        <a href="#orders" class="breadcrumb-item">
+          <span>my orders</span>
+          <span class="badge badge-primary badge-pill"><%= @user.order_count %></span>
+        </a>
+      </nav>
+
+      <section>
+        <div class="dashboard__section">
+          <a id="products"><h3>Products</h3></a>
+          <hr class="dashboard__line_break dashboard_section__break"/>
+        </div>
+
+        <% top_product = @user.top_product %>
+        <% if top_product %>
+          <div class="product_spotlight_container">
+            <section class="product_spotlight">
+              <h4>Top Selling Product</h4>
+
+              <div class="product_spotlight__top_product">
+                <h5><%= top_product.name %></h5>
+                <ul class="product_spotlight__product_details">
+                  <li>#<%# top_product.total_sold %> sold</li>
+                  <li><%= top_product.stock %> in stock</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        <% end %>
+
+        <div class="dashboard__products_container">
+          <% @user.products.each do |product| %>
+            <hr class="dashboard__line_break dashboard__product__break"/>
+
+            <div class="dashboard__user_product">
+
+              <div class="dashboard__user_product__basic_info">
+                <div class="dashboard__user_product__basic_info__header">
+                  <span class="basic_info__header_item"><%= product.name %></span>
+                  <span class="basic_info__header_item"><%= product.stock %> in stock</span>
+                </div>
+
+                <div class="dashboard__user_product__basic_info__buttons">
+                  <span><i class="fas fa-toggle-off"></i></span>
+                  <span><i class="fas fa-toggle-on"></i></span>
+
+                  <div>
+                    <%= link_to "edit product", edit_product_path(product.id) %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dashboard__user_product__more_info">
+
+                <section class="more_info__description_container">
+                  <h4 class="more_info__header">Description</h4>
+                  <div>
+                    <%= product.description %>
+                  </div>
+                </section>
+
+                <div class="dashboard__user_product__details_container">
+                  <div class="dashboard__user_product__details">
+                    <section class="more_info__price_container">
+                      <h4 class="more_info__header">Price</h4>
+                      <div>
+                        $<%= product.price %>
+                      </div>
+                    </section>
+
+                    <% if product.available %>
+                      <div>
+                        Currently Available
+                      </div>
+                    <% else %>
+                      <div>
+                        Retired
+                      </div>
+                    <% end %>
+                  </div> 
+
+                  <section class="dashboard__user_product__categories">
+                    <h4 class="more_info__header">Categories</h4>
+                    <% product.categories.each do |category| %>
+                      <div><%= category.name %></div>
+                    <% end %>
+                  </section>
+                </div>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+        <hr class="dashboard__line_break dashboard__product__break"/>
+      </section>
+
+      <section>
+        <div class="dashboard__section">
+          <a id="orders"><h3>Orders</h3></a>
+          <hr class="dashboard__line_break dashboard_section__break"/>
+        </div>
+
+        <nav class="dashboard__products_by_status breadcrumb">
+          <a href="#all_products" class="breadcrumb-item">
+            <span class="breadcrumb-item">all products</span>
+            <span class="badge badge-primary badge-pill">#</span>
+          </a>
+          <% statuses = ["pending", "paid", "cancelled", "complete"] %>
+          <% statuses.each do |status| %>
+            <a href="#<%= status %>" class="breadcrumb-item">
+              <span><%= status %></span>
+              <span class="badge badge-primary badge-pill">#</span>
+            </a>
+          <% end %>
+        </nav>
+
+        <% all_orders = @user.find_orders %>
+
+        <div class="orders__totals_per_status">
+          <h4 class="orders__total_rev__title">
+            Total Revenue
+          </h4>
+          <div class="orders__total orders__total_rev">
+            $#.##
+          </div>
+
+          <h4 class="orders__total_orders__title">
+            Number of Orders
+          </h4>
+          <div class="orders__total orders__total_orders">
+            <%= all_orders.length %>
+          </div>
+        </div>
+
+        <div>
+          <% if all_orders.length > 0 %>
+            <% all_orders.each do |order| %>
+              <article class="order">
+                <hr class="dashboard__line_break"/>
+
+                <div class="order__header">
+                  <h5 class="order__header_title">
+                    <span class="order__header_title__item">
+                      Order #<%= order.id %>
+                    </span>
+                    <span class="order__header_title__item">
+                      <%= render_date(order.created_at) %>
+                    </span>
+                  </h5>
+                  <div>
+                    <%= order.status %>
+                  </div>
+                </div>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">order item</th>
+                      <th scope="col">mark completed</th>
+                      <th scope="col">quantity</th>
+                      <th scope="col">subtotal</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% order.order_items.each do |oi| %>
+                      <tr>
+                        <td>
+                          <% product = Product.find_by(id: oi.product_id) %>
+                          <%= product.name %>
+                        </td>
+                        <td>
+                          <%= link_to "mark completed" %>
+                        </td>
+                        <td>
+                          <%= oi.quantity %>
+                        </td>
+                        <td>
+                          $ subtotal <%# oi.subtotal %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+
+                <div class="order__total_cost">
+                  <%# order.total_cost %>
+                </div>
+
+                <section class="order__buyer_info_container">
+                  <h6>Buyer</h6>
+
+                  <ul>
+                    <li>
+                      <%= order.name %>
+                    </li>
+                    <li>
+                      <%= order.email %>
+                    </li>
+                    <li>
+                      <%= order.address + order.zip %>
+                    </li>
+                    <li>
+                      <%= mask_cc(order.cc_num) %>
+                    </li>
+                    <li>
+                      cc expiration date <%# order.cc_expiration %>
+                    </li>
+                  <ul>
+                </section>
+
+              </article>
+            <% end %>
+            <hr class="dashboard__line_break"/>
+            
+          <% else %>
+            <div class="order__no_orders">
+              You do not yet have any orders
+            </div>
+          <% end %>
+        </div>
+
+      </section>
+    </div>
+  </section>
+</main>

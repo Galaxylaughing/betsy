@@ -2,19 +2,19 @@ require "test_helper"
 
 describe UsersController do
   describe "create" do
-    it "logs in an existing user and redirects to the root route" do
+    it "logs in an existing user and redirects to the dashboard" do
       start_count = User.count
       user = users(:begonia)
       
       perform_login(user)
       
-      must_redirect_to root_path
+      must_redirect_to dashboard_path(user.id)
       expect(session[:user_id]).must_equal user.id
       expect(flash[:success]).must_include "Successfully logged in as returning user"
       expect(User.count).must_equal start_count
     end
     
-    it "creates an account for a new user and redirects to the root route" do
+    it "creates an account for a new user and redirects to the dashboard" do
       start_count = User.count
       new_user = User.new(provider: "github", uid: 888444, username: "newbie", email: "test@example.com")
       
@@ -22,7 +22,7 @@ describe UsersController do
       
       get callback_path(:github)
       
-      must_redirect_to root_path
+      must_redirect_to dashboard_path(User.last.id)
       expect(session[:user_id]).must_equal User.last.id
       expect(flash[:success]).must_include "Successfully logged in as new user"
       expect(User.count).must_equal start_count + 1
@@ -83,6 +83,54 @@ describe UsersController do
         must_respond_with :success
       end
     end
+    
+    describe "dashboard" do
+      it "can be viewed by its own merchant" do
+        user = users(:begonia)
+        perform_login(user)
+        
+        get dashboard_path(user)
+        
+        must_respond_with :success
+      end
+      
+      it "can't be viewed by another merchant" do
+        begonia = users(:begonia)
+        orchid = users(:orchid)
+        
+        perform_login(begonia)
+        
+        get dashboard_path(orchid)
+        
+        must_respond_with :redirect
+        must_redirect_to users_path
+        expect(flash[:error]).must_equal "Permission denied: you cannot view another merchant's dashboard"
+      end
+    end
+    
+    describe "edit" do
+      it "can be seen by a logged in user" do
+        user = users(:begonia)
+        perform_login(user)
+        
+        get edit_user_path(user)
+        
+        must_respond_with :success
+      end
+      
+      it "can't be seen by a different logged-in user" do
+        user = users(:begonia)
+        other_user = users(:orchid)
+        
+        perform_login(user)
+        
+        get edit_user_path(other_user)
+        
+        must_respond_with :redirect
+        must_redirect_to root_path
+        expect(flash[:error]).must_equal "Permission denied: you cannot edit another merchant's profile"
+      end
+    end
   end
   
   describe "Guest users" do
@@ -114,6 +162,30 @@ describe UsersController do
         get user_path(user)
         
         must_respond_with :success
+      end
+    end
+    
+    describe "dashboard" do
+      it "cannot be viewed by a guest" do
+        user = users(:begonia)
+        
+        get dashboard_path(user)
+        
+        must_respond_with :redirect
+        must_redirect_to users_path
+        expect(flash[:error]).must_equal "Permission denied: please log in to view your dashboard"
+      end
+    end
+    
+    describe "edit" do
+      it "can't be seen by a guest user'" do
+        user = users(:begonia)
+        
+        get edit_user_path(user)
+        
+        must_respond_with :redirect
+        must_redirect_to root_path
+        expect(flash[:error]).must_equal "Permission denied: please log in"
       end
     end
   end

@@ -90,8 +90,18 @@ $whitegreen: #d6efc3;
   border-color: $midgreen;
 }
 
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
+  background-color: $lightgreen;
+  border-color: $lightgreen;
+}
+
 .shopping-cart:hover {
   background-color: $highlight_lightgreen;
+}
+
+.shopping-cart:hover .badge {
+  background-color: $palegreen;
+  color: $midgreen;
 }
 
 .github-login {

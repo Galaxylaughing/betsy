@@ -219,4 +219,172 @@ describe User do
       expect(list.first).must_equal first_name
     end
   end
+  
+  describe "order count" do
+    it "returns count of orders containing this user's product" do
+      user = users(:orchid)
+      # orchid has two products
+      # for product 1, there is one order of one quantity
+      # for product 2, there is one order of two quantity
+      
+      order_count = user.order_count
+      
+      expect(order_count).must_equal 2
+    end
+    
+    it "returns zero if the user has no products" do
+      user = users(:petunia)
+      # petunia has no products
+      
+      order_count = user.order_count
+      
+      expect(order_count).must_equal 0
+    end
+    
+    it "returns zero if there are no associated orders" do
+      user = users(:rose)
+      # rose has one product
+      # it does not have any orders
+      
+      order_count = user.order_count
+      
+      expect(order_count).must_equal 0
+    end
+  end
+  
+  describe "find_orders" do
+    it "returns a list of orders for a given merchant" do
+      user = users(:orchid)
+      
+      # there are two orders that contain orchid's products
+      
+      # order's for orchid's products:
+      #   ducky_orchid_bellflower
+      #   bear_orchid_hollyhock
+      
+      # each has one of orchid's order-item:
+      #   ducky_bellflower:
+      #     quantity: 1
+      #   bear_hollyhock:
+      #     quantity: 2
+      
+      # one order also has one of begonia's products
+      # bear_orchid_hollyhock
+      #   bear_treeivy:
+      #     quantity: 3
+      
+      orders = user.find_orders
+      
+      expect(orders).wont_be_nil
+      expect(orders.length).must_equal 2
+      
+      first_order = orders.first
+      expect(first_order.order_items).wont_be_nil
+      # begonia's product should not be filtered out
+      # the view will filter what the merchant should see
+      expect(first_order.order_items.length).must_equal 2
+      
+      last_order = orders.last
+      expect(last_order.order_items).wont_be_nil
+      expect(last_order.order_items.length).must_equal 1
+    end
+    
+    it "returns an empty list if there are no orders" do
+      user = users(:rose)
+      
+      # rose has one product with no orders
+      
+      orders = user.find_orders
+      
+      expect(orders).wont_be_nil
+      expect(orders.empty?).must_equal true
+    end
+    
+    it "returns an empty list if there are no products" do
+      user = users(:petunia)
+      
+      # petunia has no products
+      
+      orders = user.find_orders
+      
+      expect(orders).wont_be_nil
+      expect(orders.empty?).must_equal true
+    end
+  end
+  
+  describe "top_product" do
+    it "can find a users's top-selling product" do
+      user = users(:orchid)
+      # orchid has two orders
+      # one with one bellflower
+      # and one with two hollyhock
+      top = products(:hollyhock)
+      
+      top_product = user.top_product
+      
+      expect(top_product).must_equal top
+    end
+    
+    it "returns nil if the user has no products" do
+      user = users(:petunia)
+      # petunia has no products
+      
+      top_product = user.top_product
+      
+      expect(top_product).must_be_nil
+    end
+    
+    it "returns nil if the user hasn't sold any products" do
+      # rose has one product with no orders
+      user = users(:rose)
+      
+      top_product = user.top_product
+      
+      expect(top_product).must_be_nil
+    end
+  end
+  
+  describe "total revenue" do
+    it "calculates the user's total revenue" do
+      # orchid has two orders
+      user = users(:orchid)
+      
+      # hollyhock:
+      #   price: 12.75
+      # bellflower:
+      #   price: 12.75
+      
+      # ducky_bellflower:
+      #   quantity: 1
+      #   product: bellflower
+      #   => total: 12.75
+      # bear_hollyhock:
+      #   quantity: 2
+      #   product: hollyhock
+      #   => total: 25.5
+      
+      result = user.total_revenue
+      
+      expect(result).must_equal 25.50
+    end
+    
+    it "returns zero if there are no orders" do
+      # rose has one product with no orders
+      user = users(:rose)
+      
+      result = user.total_revenue
+      
+      expect(result).must_equal 0.00
+    end
+    
+    it "returns zero if there are no products" do
+      # petunia has no products
+      user = users(:petunia)
+      
+      result = user.total_revenue
+      
+      expect(result).must_equal 0.00
+    end
+  end
+  
 end
