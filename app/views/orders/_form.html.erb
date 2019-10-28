@@ -16,19 +16,19 @@
       </div>
       <div class="form-group">
         <label>Credit Card Number</label>
-        <%= form.text_area :cc_num, class:"form-control" %>
+        <%= form.text_field :cc_num, class:"form-control" %>
       </div>
       <div class="form-group">
         <label>Expiration Date</label>
-        <%= form.text_area :exp_date, class:"form-control" %>
+        <%= form.text_field :exp_date, class:"form-control" %>
       </div>
             <div class="form-group">
         <label>CCV</label>
-        <%= form.text_area :cvv_code, class:"form-control" %>
+        <%= form.text_field :cvv_code, class:"form-control" %>
       </div>
             <div class="form-group">
         <label>Billing Zip Code</label>
-        <%= form.text_area :zip, class:"form-control" %>
+        <%= form.text_field :zip, class:"form-control" %>
       </div>
       <div class="form-group">
         <%= form.submit "Complete Order", class: 'btn btn-primary' %>
