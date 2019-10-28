@@ -385,30 +385,30 @@ input[type=checkbox]:checked ~ div {
 }
 
 // Availability buttons
-.availability {
-  padding: 1em;
-  border-radius: 0.5rem;
-}
+// .availability {
+//   padding: 1em;
+//   border-radius: 0.5rem;
+// }
 
-.currently_available::after {
-  content: "Currently Available";
-}
-.currently_available:hover::after {
-  content: "Retire Product?";
-}
+// .currently_available::after {
+//   content: "Currently Available";
+// }
+// .currently_available:hover::after {
+//   content: "Retire Product?";
+// }
 
-.btn-primary.currently_available:hover, .unavailable:hover{
-  background-color: #dc3545;
-  color: white;
-  border-color: darkred;
-}
+// .btn-primary.currently_available:hover, .unavailable:hover{
+//   background-color: #dc3545;
+//   color: white;
+//   border-color: darkred;
+// }
 
-.unavailable::after {
-  content: "Retired";
-}
-.unavailable:hover::after {
-  content: "Mark Available?";
-}
+// .unavailable::after {
+//   content: "Retired";
+// }
+// .unavailable:hover::after {
+//   content: "Mark Available?";
+// }
 
 
 .more_info__header {

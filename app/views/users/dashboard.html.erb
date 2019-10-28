@@ -119,12 +119,18 @@
 
                     <% if product.available %>
                       <div class="availability btn btn-primary currently_available">
-                        <%# content filled with pseudo-selectors %>
+                        Currently Available
+                      </div>
+                      <div class="availability btn btn-danger mark_retired">
+                        Retire Product?
                       </div>
                     <% else %>
                       <div class="availability btn btn-warning unavailable">
-                      <%# content filled with pseudo-selectors %>
-                    </div>
+                        Retired
+                      </div>
+                      <div class="availability btn btn-danger mark_available">
+                        Mark Available?
+                      </div>
                     <% end %>
                   </div> 
 
