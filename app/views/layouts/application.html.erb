@@ -32,7 +32,12 @@
           <% else %>
             <a href=<%= github_login_path %> class="btn btn-light"><i class="fab fa-github"></i>  Login with Github</a>
           <% end %>
-          <a href=<%= root_path %> class="btn btn-light shopping-cart"><i class="fas fa-shopping-cart"></i></a>
+          <a href=<%= root_path %> class="btn btn-light shopping-cart">
+            <i class="fas fa-shopping-cart"></i>
+            <%# badge will show count of items in cart %>
+            <%# badge should only show up if there is at least one item in cart %>
+            <span class="badge badge-primary badge-pill">#</span>
+          </a>
         </div>
       </nav>
     </header>

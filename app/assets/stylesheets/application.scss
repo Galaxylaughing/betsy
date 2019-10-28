@@ -94,6 +94,11 @@ $whitegreen: #d6efc3;
   background-color: $highlight_lightgreen;
 }
 
+.shopping-cart:hover .badge {
+  background-color: $palegreen;
+  color: $midgreen;
+}
+
 .github-login {
   color: $verydarkgreen;
 }
