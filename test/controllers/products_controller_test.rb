@@ -162,8 +162,10 @@ end
 #   end
 # end
 
-describe "Guest users" do
-  
-  # before do
-  # end
-end
+# describe "Guest users" do
+
+#   # before do
+#   # end
+# end
+end 
+end 
