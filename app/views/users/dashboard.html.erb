@@ -250,13 +250,13 @@
                       <%= order.email %>
                     </li>
                     <li>
-                      <%= order.address + order.zip %>
+                      <%= order.address %>
                     </li>
                     <li>
                       <%= mask_cc(order.cc_num) %>
                     </li>
                     <li>
-                      cc expiration date <%# order.cc_expiration %>
+                      Card expires on <%= order.exp_date %>
                     </li>
                   <ul>
                 </section>
