@@ -178,7 +178,7 @@
                 <div>
                   <h5>
                     <span>Order #<%= order.id %></span>
-                    <span>datetime placed</span>
+                    <span><%= render_date(order.created_at) %></span>
                   </h5>
                   <div>
                     <%= order.status %>
