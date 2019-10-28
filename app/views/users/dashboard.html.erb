@@ -50,20 +50,22 @@
           <hr class="dashboard__line_break dashboard_section__break"/>
         </div>
 
-        <div class="product_spotlight_container">
-          <section class="product_spotlight">
-            <h4>Top Selling Product</h4>
+        <% top_product = @user.top_product %>
+        <% if top_product %>
+          <div class="product_spotlight_container">
+            <section class="product_spotlight">
+              <h4>Top Selling Product</h4>
 
-            <%# top_product = @user.top_product %>
-            <div class="product_spotlight__top_product">
-              <h5>Name<%# top_product.name %></h5>
-              <ul class="product_spotlight__product_details">
-                <li>#<%# top_product.num_sold %> sold</li>
-                <li>#<%# top_product.stock %> in stock</li>
-              </ul>
-            </div>
-          </section>
-        </div>
+              <div class="product_spotlight__top_product">
+                <h5><%= top_product.name %></h5>
+                <ul class="product_spotlight__product_details">
+                  <li>#<%# top_product.total_sold %> sold</li>
+                  <li><%= top_product.stock %> in stock</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        <% end %>
 
         <div class="dashboard__products_container">
           <% @user.products.each do |product| %>

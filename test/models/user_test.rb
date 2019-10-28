@@ -314,44 +314,33 @@ describe User do
   
   describe "top_product" do
     it "can find a users's top-selling product" do
-      # grab a user
-      # check fixtures for product with most items sold
-      #   (highest quantity across orders)
-      # top = this fixture
+      user = users(:orchid)
+      # orchid has two orders
+      # one with one bellflower
+      # and one with two hollyhock
+      top = products(:hollyhock)
       
-      # top_product = user.top_product
+      top_product = user.top_product
       
-      # expect(top_product).must_equal top
-    end
-    
-    it "returns the most order-items product if quantity tie" do
-      # grab user
-      # get two products with the same overall quantity,
-      #   but one has more order-items than the other
-      # top = fixture with more order-items
-      
-      # top_product = user.top_product
-      
-      # expect(top_product).must_equal top
+      expect(top_product).must_equal top
     end
     
     it "returns nil if the user has no products" do
-      # grab a user
-      # user.products.each do |product|
-      #   product.destroy
-      # end
+      user = users(:petunia)
+      # petunia has no products
       
-      # top_product = user.top_product
+      top_product = user.top_product
       
-      # expect(top_product).must_be_nil
+      expect(top_product).must_be_nil
     end
     
     it "returns nil if the user hasn't sold any products" do
-      # grab a user without any products with order-items
+      # rose has one product with no orders
+      user = users(:rose)
       
-      # top_product = user.top_product
+      top_product = user.top_product
       
-      # expect(top_product).must_be_nil
+      expect(top_product).must_be_nil
     end
   end
   
