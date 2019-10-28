@@ -10,11 +10,7 @@
     <% category.products.each do |product| %>  
     <%= link_to product.name, product_path(product.id) %>
         <p>Description: <%= product.description.capitalize %></p>
-        <p>Price: $<%= product.price %></p>
-        <p>Stock: <%= product.stock %> units</p>
-      <%#<p>Available: <%= product.available %>
-      <%#<p>User_id: <%= product.user_id %>
-
+        
       <div class="merchant_product_title">
         <img src= <%= product.photo_url %> alt=<%= product.name %> class="category_product_img">
       </div>
