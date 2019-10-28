@@ -14,10 +14,14 @@ Rails.application.routes.draw do
     resources :products, only: [:show]
   end 
   
+  resources :products do 
+    resources :order_items, only: [:create, :destroy, :update]
+  end 
+  
   resources :products
   resources :orders
   resources :reviews 
-  resources :order_items, only: [:create, :destroy, :update]
+  
   
   get "/auth/github", as: "github_login"
   get "/auth/:provider/callback", to: "users#create", as: "callback"
