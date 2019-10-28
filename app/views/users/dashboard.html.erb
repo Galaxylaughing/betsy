@@ -239,7 +239,7 @@
                             <%= oi.quantity %>
                           </td>
                           <td>
-                            $ subtotal <%# oi.subtotal %>
+                            $<%= render_price(oi.subtotal) %>
                           </td>
                         </tr>
                       <% end %>
@@ -248,8 +248,7 @@
                       <td></td>
                       <td></td>
                       <td></td>
-                      <%# order.total_cost %>
-                      <td>$ total</td>
+                      <td>$<%= render_price(order.total) %></td>
                     </tr>
                   </tbody>
                 </table>
