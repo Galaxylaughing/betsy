@@ -68,28 +68,38 @@
         <% end %>
 
         <div class="dashboard__products_container">
+
+          <%# toggle %>
+          <% toggle_num = 0 %>
+
           <% @user.products.each do |product| %>
             <hr class="dashboard__line_break dashboard__product__break"/>
+
+            <%# toggle %>
+            <% toggle = "toggle_" + toggle_num.to_s %>
 
             <div class="dashboard__user_product">
 
               <div class="dashboard__user_product__basic_info">
-                <div class="dashboard__user_product__basic_info__header">
-                  <span class="basic_info__header_item"><%= product.name %></span>
-                  <span class="basic_info__header_item"><%= product.stock %> in stock</span>
-                </div>
-
-                <div class="dashboard__user_product__basic_info__buttons">
-                  <span><i class="fas fa-toggle-off"></i></span>
-                  <span><i class="fas fa-toggle-on"></i></span>
-
-                  <div>
-                    <%= link_to "edit product", edit_product_path(product.id) %>
-                  </div>
-                </div>
+                <span class="basic_info__header_item"><%= product.name %></span>
+                <span class="basic_info__header_item header_item__subtitle"><%= product.stock %> in stock</span>
               </div>
 
+              <div class="hover__product_link">
+                More Info
+              </div>
+
+              <input type="checkbox" id=<%= toggle %>>
+              <label for=<%= toggle %> class="toggle__show_more">
+                <p>more info</p>
+                <span class="toggle_to_on"><i class="fas fa-toggle-off"></i></span>
+                <span class="toggle_to_off"><i class="fas fa-toggle-on"></i></span>
+              </label>
+
               <div class="dashboard__user_product__more_info">
+                <div class="dashboard__edit_product">
+                  <%= link_to "edit product", edit_product_path(product.id), class: "btn btn-light edit_product_button" %>
+                </div>
 
                 <section class="more_info__description_container">
                   <h4 class="more_info__header">Description</h4>
@@ -108,12 +118,18 @@
                     </section>
 
                     <% if product.available %>
-                      <div>
+                      <div class="availability btn btn-primary currently_available">
                         Currently Available
                       </div>
+                      <div class="availability btn btn-danger mark_retired">
+                        Retire Product?
+                      </div>
                     <% else %>
-                      <div>
+                      <div class="availability btn btn-warning unavailable">
                         Retired
+                      </div>
+                      <div class="availability btn btn-danger mark_available">
+                        Mark Available?
                       </div>
                     <% end %>
                   </div> 
@@ -121,13 +137,16 @@
                   <section class="dashboard__user_product__categories">
                     <h4 class="more_info__header">Categories</h4>
                     <% product.categories.each do |category| %>
-                      <div><%= category.name %></div>
+                      <div class="product_category"><%= category.name %></div>
                     <% end %>
                   </section>
                 </div>
               </div>
 
             </div>
+
+            <%# toggle %>
+            <% toggle_num += 1 %>
           <% end %>
         </div>
         <hr class="dashboard__line_break dashboard__product__break"/>
@@ -195,7 +214,7 @@
                   <thead>
                     <tr>
                       <th scope="col">order item</th>
-                      <th scope="col">mark completed</th>
+                      <th scope="col">status</th>
                       <th scope="col">quantity</th>
                       <th scope="col">subtotal</th>
                     </tr>
@@ -203,21 +222,27 @@
 
                   <tbody>
                     <% order.order_items.each do |oi| %>
-                      <tr>
-                        <td>
-                          <% product = Product.find_by(id: oi.product_id) %>
-                          <%= product.name %>
-                        </td>
-                        <td>
-                          <%= link_to "mark completed" %>
-                        </td>
-                        <td>
-                          <%= oi.quantity %>
-                        </td>
-                        <td>
-                          $ subtotal <%# oi.subtotal %>
-                        </td>
-                      </tr>
+                      <% product = Product.find_by(id: oi.product_id) %>
+                      <% if product.user_id == @user.id %>
+                        <tr>
+                          <td>
+                            <%= product.name %>
+                          </td>
+                          <td>
+                            <% if oi.status != "complete" %>
+                              <%= link_to "mark completed", mark_complete_path(oi.id), method: :post %>
+                            <% else %>
+                              <%= oi.status %>
+                            <% end %>
+                          </td>
+                          <td>
+                            <%= oi.quantity %>
+                          </td>
+                          <td>
+                            $ subtotal <%# oi.subtotal %>
+                          </td>
+                        </tr>
+                      <% end %>
                     <% end %>
                   </tbody>
                 </table>
@@ -237,13 +262,13 @@
                       <%= order.email %>
                     </li>
                     <li>
-                      <%= order.address + order.zip %>
+                      <%= order.address %>
                     </li>
                     <li>
                       <%= mask_cc(order.cc_num) %>
                     </li>
                     <li>
-                      cc expiration date <%# order.cc_expiration %>
+                      Card expires on <%= order.exp_date %>
                     </li>
                   <ul>
                 </section>
@@ -251,7 +276,7 @@
               </article>
             <% end %>
             <hr class="dashboard__line_break"/>
-            
+
           <% else %>
             <div class="order__no_orders">
               You do not yet have any orders
