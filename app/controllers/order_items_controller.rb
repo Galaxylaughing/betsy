@@ -9,23 +9,22 @@ class OrderItemsController < ApplicationController
     end
     
     order_items = {
-      product_id: params[:product_id],
-      quantity: params[:quantity],
-      order_id: session[:order_id],
-    }
-    
-    order_item = OrderItem.new(order_items)
-    if order_item.save
-      flash[:success] = "Successfully added item to your cart."
-      redirect_to products_path
-    else
-      
-      flash.now[:failure] = "Failure: Item could not be added to your cart."
-      redirect_to product_path(order_items[:product_id])
-    end
-    
-  end
+    product_id: params[:product_id],
+    quantity: params[:quantity],
+    order_id: session[:order_id],
+  }
   
+  order_item = OrderItem.new(order_items)
+  if order_item.save
+    flash[:success] = "Successfully added item to your cart."
+    redirect_to product_path(order_items[:product_id])
+  else
+    
+    flash.now[:failure] = "Failure: Item could not be added to your cart."
+    redirect_to product_path(order_items[:product_id])
+  end
+end
+
   #Delete is going to be "remove products from my cart."
   
   def destroy
