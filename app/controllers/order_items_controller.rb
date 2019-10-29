@@ -8,20 +8,20 @@ class OrderItemsController < ApplicationController
       session[:order_id] = order.id
     end
     
-    order = Order.find(session[:order_id])
-    
     order_items = {
-      product_id: params[:product_id],
-      quantity: params[:quantity],
+      product_id: params[:product_id].to_i,
+      quantity: params[:quantity].to_i,
       order_id: session[:order_id],
     }
     
+    order = Order.find(session[:order_id])
+    
     order.order_items.each do |oi|
-      if oi.product.id == params[:product_id]
-        oi.quantity += params[:quantity]
+      if oi.product.id == order_items[:product_id]
+        oi.quantity += order_items[:quantity]
         oi.save
         
-        flash[:success] = "Successfully added item to your cart."
+        flash[:success] = "Successfully updated quantity."
         redirect_to product_path(order_items[:product_id])
         return
       end
@@ -32,9 +32,11 @@ class OrderItemsController < ApplicationController
     if order_item.save
       flash[:success] = "Successfully added item to your cart."
       redirect_to product_path(order_items[:product_id])
+      return
     else
       flash[:failure] = "Item could not be added to your cart."
       redirect_to product_path(order_items[:product_id])
+      return
     end
   end
   
