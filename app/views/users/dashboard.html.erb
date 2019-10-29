@@ -157,8 +157,6 @@
         <hr class="dashboard__line_break dashboard__product__break"/>
       </section>
 
-
-
       <section>
         <div class="dashboard__section">
           <a id="orders"><h3>Orders</h3></a>
@@ -168,12 +166,19 @@
         <div class="orders_list">
           <% all_statuses = ["all", "pending", "paid", "cancelled", "complete"] %>
 
+          <%# you can't combine these loops,
+          because weird solutions have weird quirks %>
+
           <!-- list all labels -->
           <% all_statuses.each do |status| %>
+            <% all_orders = @user.find_orders_by_status(status.to_sym) %>
+
             <input id="status_<%= status %>" class="orders__list--toggle" type="radio" name="orders">
             <label for="status_<%= status %>" class="orders__list--toggle__label breadcrumb-item">
               <%= status %>
-              <span class="badge badge-primary badge-pill">#</span>
+              <span class="badge badge-primary badge-pill">
+                <%= all_orders && all_orders.length > 0 ? all_orders.length : 0 %>
+              </span>
             </label>
           <% end %>
 
@@ -184,7 +189,6 @@
             </div>
           <% end %>
         </div>
-
       </section>
     </div>
   </section>
