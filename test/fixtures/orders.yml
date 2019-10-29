@@ -85,3 +85,117 @@ bear_orchid_hollyhock:
   cc_num: 1234-2121-1221-1211
   cvv_code: 444
   zip: 98002
+
+# sort by status testing
+guava_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Guava Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+pineapple_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Pineapple Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+orange_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Orange Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+plum_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Plum Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+peach_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Peach Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+carrot_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Carrot Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+berry_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Berry Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+melon_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Melon Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+grapefruit_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Grapefruit Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+apricot_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Grapefruit Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+mango_shop_complete_1:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Mango Shopper 1
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+mango_shop_complete_2:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Mango Shopper 2
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+mango_shop_cancelled:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Mango Shopper 3
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+mango_shop_paid_1:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Mango Shopper 4
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+mango_shop_paid_2:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Mango Shopper 5
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+mango_shop_pending:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Mango Shopper 6
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002

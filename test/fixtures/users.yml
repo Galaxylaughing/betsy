@@ -18,3 +18,64 @@ rose:
   uid: 999888
   email: ruby_rose@example.com
   username: ruby_rose
+# sort by status testing
+guava:
+  provider: github
+  uid: 999888
+  email: great_guava@example.com
+  username: great_guava
+pineapple:
+  provider: github
+  uid: 999888
+  email: personable_pinapple@example.com
+  username: personable_pinapple
+orange:
+  provider: github
+  uid: 999888
+  email: extraordinary_orange@example.com
+  username: extraordinary_orange
+plum:
+  provider: github
+  uid: 999888
+  email: powerful_plum@example.com
+  username: powerful_plum
+kiwi:
+  provider: github
+  uid: 999888
+  email: kute_kiwi@example.com
+  username: kute_kiwi
+peach:
+  provider: github
+  uid: 999888
+  email: passionate_peach@example.com
+  username: passionate_peach
+carrot:
+  provider: github
+  uid: 999888
+  email: cute_carrot@example.com
+  username: cute_carrot
+berry:
+  provider: github
+  uid: 999888
+  email: beautiful_berry@example.com
+  username: beautiful_berry
+melon:
+  provider: github
+  uid: 999888
+  email: merry_melon@example.com
+  username: merry_melon
+grapefruit:
+  provider: github
+  uid: 999888
+  email: genius_grapefruit@example.com
+  username: genius_grapefruit
+apricot:
+  provider: github
+  uid: 999888
+  email: happy_apricot@example.com
+  username: happy_apricot
+mango:
+  provider: github
+  uid: 999888
+  email: marvelous_mango@example.com
+  username: marvelous_mango
