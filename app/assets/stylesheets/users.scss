@@ -151,10 +151,6 @@ caption {
   color: $lightgreen;
 }
 
-.dashboard_options__account_option + .dashboard_options__account_option::before {
-  content: "|";
-}
-
 .dashboard_options__account_option a:hover {
   text-decoration: none;
   font-weight: bold;
