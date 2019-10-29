@@ -81,7 +81,9 @@
             <div class="dashboard__user_product">
 
               <div class="dashboard__user_product__basic_info">
-                <span class="basic_info__header_item"><%= product.name %></span>
+                <span class="basic_info__header_item">
+                  <%= link_to product.name, product_path(product.id) %>
+                </span>
                 <span class="basic_info__header_item header_item__subtitle"><%= product.stock %> in stock</span>
               </div>
 
@@ -93,7 +95,12 @@
               </label>
 
               <div class="more_info__container">
-                <img src=<%= product.photo_url %> alt=<%= product.name %> class="merchant_product_image">
+                <div class="product_image_container">
+                  <img src=<%= product.photo_url %> alt=<%= product.name %> class="merchant_product_image">
+                  <div class="product_link_middle">
+                    <%= link_to "See more", product_path(product.id), class: "product_link_text" %>
+                  </div>
+                </div>
                 <div class="dashboard__user_product__more_info">
 
                   <div class="more_info__description_container">

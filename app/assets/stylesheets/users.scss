@@ -376,6 +376,10 @@ input[type=checkbox]:checked ~ div {
   height: 10em;
   object-fit: cover;
   border-radius: 1em;
+
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
 }
 
 .more_info__container {
@@ -391,14 +395,42 @@ input[type=checkbox]:checked ~ div {
   margin-bottom: 1rem;
 }
 
-.merchant_product_image {
+.product_image_container {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 3;
+
+  position: relative;
 }
 
+.product_link_middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 45%;
+  left: 17%;
+  text-align: center;
+}
 
+.product_image_container:hover .merchant_product_image {
+  opacity: 0.3;
+}
+
+.product_image_container:hover .product_link_middle {
+  opacity: 1;
+}
+
+.product_link_text {
+  color: white;
+  background-color: $lightgreen;
+  padding: 0.4rem;
+}
+
+.product_link_text:hover {
+  background-color: $whitegreen;
+  color: $darkgreen;
+}
 
 .dashboard__user_product__details_container {
   margin-top: 1.5rem;
