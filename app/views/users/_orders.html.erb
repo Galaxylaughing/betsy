@@ -8,8 +8,7 @@
     <% if given_status == :cancelled %>
       $0.00
     <% else %>
-      <%# render_price(@user.total_revenue_by_status(given_status)) %>
-      <% @user.total_revenue_by_status(given_status) %>
+      $<%= render_price(@user.total_revenue_by_status(given_status)) %>
     <% end %>
   </div>
 
