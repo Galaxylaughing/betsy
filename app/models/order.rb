@@ -1,3 +1,5 @@
+require 'pry'
+
 class Order < ApplicationRecord
   has_many :order_items
   
@@ -17,6 +19,9 @@ class Order < ApplicationRecord
   def update_stock
     self.order_items.each do |oi|
       oi.product.stock -= oi.quantity
+      oi.product.save
+      # binding.pry
     end
+    
   end
-end
+end 
