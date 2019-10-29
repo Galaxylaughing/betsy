@@ -357,22 +357,51 @@ describe User do
       # ducky_bellflower:
       #   quantity: 1
       #   product: bellflower
+      #   status: paid
       #   => total: 12.75
       # bear_hollyhock:
       #   quantity: 2
       #   product: hollyhock
+      #   status: complete
       #   => total: 25.5
       
-      result = user.total_revenue
+      result = user.total_revenue(:all)
       
       expect(result).must_equal 38.25
+    end
+    
+    it "calculates the user's total revenue per status" do
+      # orchid has two orders
+      user = users(:orchid)
+      
+      # hollyhock:
+      #   price: 12.75
+      # bellflower:
+      #   price: 12.75
+      
+      # ducky_bellflower:
+      #   quantity: 1
+      #   product: bellflower
+      #   status: paid
+      #   => total: 12.75
+      # bear_hollyhock:
+      #   quantity: 2
+      #   product: hollyhock
+      #   status: complete
+      #   => total: 25.5
+      
+      complete_result = user.total_revenue(:complete)
+      expect(complete_result).must_equal 25.5
+      
+      paid_result = user.total_revenue(:paid)
+      expect(paid_result).must_equal 12.75
     end
     
     it "returns zero if there are no orders" do
       # rose has one product with no orders
       user = users(:rose)
       
-      result = user.total_revenue
+      result = user.total_revenue(:all)
       
       expect(result).must_equal 0.00
     end
@@ -381,7 +410,7 @@ describe User do
       # petunia has no products
       user = users(:petunia)
       
-      result = user.total_revenue
+      result = user.total_revenue(:all)
       
       expect(result).must_equal 0.00
     end

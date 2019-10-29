@@ -42,14 +42,14 @@ class User < ApplicationRecord
     return matching_orders
   end
   
-  def total_revenue
+  def total_revenue(for_status)
     orders = self.find_orders
     
     total_cost = 0.0
     orders.each do |order|
       order.order_items.each do |oi|
         product = Product.find_by(id: oi.product_id)
-        if product.user_id == self.id
+        if product.user_id == self.id && (oi.status.to_sym == for_status || for_status == :all)
           total_cost += oi.subtotal
         end
       end

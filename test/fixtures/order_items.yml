@@ -2,14 +2,17 @@ ducky_bellflower:
   quantity: 1
   order: ducky_orchid_bellflower
   product: bellflower
+  status: paid
 bear_hollyhock:
   quantity: 2
   order: bear_orchid_hollyhock
   product: hollyhock
+  status: complete
 bear_treeivy:
   quantity: 3
   order: bear_orchid_hollyhock
   product: treeivy
+  status: paid
 # sort by status testing
 guavashop_guava_rockfoil:
   quantity: 1
