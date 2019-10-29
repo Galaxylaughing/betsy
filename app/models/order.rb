@@ -4,4 +4,13 @@ class Order < ApplicationRecord
   validates :address, :name, :cc_num, :cvv_code, :zip, presence: true
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   
+  
+  def total
+    total = 0
+    self.order_items.each do |oi|
+      total += oi.subtotal
+    end
+    
+    return total
+  end
 end
