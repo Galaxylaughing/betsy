@@ -59,8 +59,12 @@ class User < ApplicationRecord
   end
   
   def find_orders_by_status(status)
-    orders_by_status = self.sort_orders_by_status()
-    return orders_by_status[status]
+    if status == :all
+      return self.find_orders
+    else
+      orders_by_status = self.sort_orders_by_status()
+      return orders_by_status[status]
+    end
   end
   
   def sort_orders_by_status()

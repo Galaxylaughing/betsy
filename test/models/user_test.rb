@@ -452,7 +452,6 @@ describe User do
       expect(response[:complete]).must_include orders(:plum_shop_order)
     end
     
-    
     # if a user has one order, half their order_items, and they are all paid & other half is complete (order should be paid)
     #   => {paid: [order]}, peach_shop_order
     it "is paid if all this users's order items are paid" do
@@ -555,6 +554,19 @@ describe User do
       
       expect(response).wont_be_nil
       expect(response.length).must_equal 1
+      expect(response).must_include orders(:mango_shop_pending)
+    end
+    
+    it "returns all orders if you pass in all" do
+      response = user.find_orders_by_status(:all)
+      
+      expect(response).wont_be_nil
+      expect(response.length).must_equal 6
+      expect(response).must_include orders(:mango_shop_complete_1)
+      expect(response).must_include orders(:mango_shop_complete_2)
+      expect(response).must_include orders(:mango_shop_cancelled)
+      expect(response).must_include orders(:mango_shop_paid_1)
+      expect(response).must_include orders(:mango_shop_paid_2)
       expect(response).must_include orders(:mango_shop_pending)
     end
     
