@@ -76,6 +76,16 @@ describe 'custom methods' do
       expect(order.total).must_equal 63.75
     end
   end
+  
+  # describe 'update_stock' do
+  #   let(:order) { orders(:bear_orchid_hollyhock)}
+  
+  #   it 'decreases the stock for a particular item' do
+  
+  
+  #     expect(order.update_stock)  
+  #   end
+  # end
 end
 end
 
