@@ -322,7 +322,6 @@ caption {
 
 // Untoggled State
 .toggle__show_more {
-  // float: right;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -331,29 +330,29 @@ caption {
 }
 
 // hide toggle name from visual user
-input[type=checkbox], input[type=checkbox] ~ label > *:first-child {
+.toggle__product, .toggle__product ~ label > *:first-child {
   display: none;
 }
 
 // hide toggle checkbox (so the font-awesome icons appear as the button)
-input[type=checkbox] ~ div {
+.toggle__product ~ div {
   display: none;
 }
 
-input[type=checkbox] ~ label > .toggle_to_off {
+.toggle__product ~ label > .toggle_to_off {
   display: none;
 }
 
 /* Toggled State */
-input[type=checkbox]:checked ~ label > .toggle_to_on {
+.toggle__product:checked ~ label > .toggle_to_on {
   display: none;
 }
 
-input[type=checkbox]:checked ~ label > .toggle_to_off {
+.toggle__product:checked ~ label > .toggle_to_off {
   display: inline-block;
 }
 
-input[type=checkbox]:checked ~ div {
+.toggle__product:checked ~ div {
   animation: 1.5s ease-in 0s 1 fadeIn;
 
   display: grid;
@@ -453,9 +452,82 @@ input[type=checkbox]:checked ~ div {
   justify-content: center;
 }
 
+// ORDER FULFILLMENT
+
 .dashboard__products_by_status {
   justify-content: center;
 }
+
+
+
+
+
+
+
+
+
+
+// Untoggled State
+.order__show {
+  display: none;
+}
+
+/* Toggled State */
+.toggle__order:checked ~ .order__show {
+  animation: 1.5s ease-in 0s 1 fadeIn;
+
+  display: grid;
+}
+
+
+
+
+
+
+
+
+
+// radio button hack from https://codeburst.io/awesome-checkbox-and-radio-button-css-hacks-a8c24fb15a95
+.orders_list__container {
+  display: block;
+}
+
+.orders_list__container--toggle, 
+.orders_list__container--body {
+  display: none;
+}
+
+.orders_list__container--toggle--text {
+  display: block;
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.orders_list__container--toggle:checked ~ .orders_list__container--body {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .orders__totals_per_status {
   width: 60%;

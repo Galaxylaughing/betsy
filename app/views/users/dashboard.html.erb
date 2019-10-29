@@ -87,7 +87,7 @@
                 <span class="basic_info__header_item header_item__subtitle"><%= product.stock %> in stock</span>
               </div>
 
-              <input type="checkbox" id=<%= toggle %>>
+              <input type="checkbox" id=<%= toggle %> class="toggle__product">
               <label for=<%= toggle %> class="toggle__show_more">
                 <p>more info</p>
                 <span class="toggle_to_on"><i class="fas fa-toggle-off"></i></span>
@@ -179,10 +179,31 @@
           <% end %>
         </nav>
 
-        <%= render partial: "orders", locals: {given_status: :all} %>
-        <% statuses.each do |status| %>
-          <%= render partial: "orders", locals: {given_status: status.to_sym} %>
-        <% end %>
+
+        <% order_toggle_num = 0 %>
+        <%# statuses << "all" %>
+        <div>
+          <% statuses.each do |status| %>
+            <% order_toggle = "order_toggle_" + order_toggle_num.to_s %>
+
+            <div class="orders_list__container">
+
+              <% if status == "all"%>
+                <input id=<%= order_toggle %> class="orders_list__container--toggle" type="radio" name="orders_list" checked>
+              <% else %>
+                <input id=<%= order_toggle %> class="orders_list__container--toggle" type="radio" name="orders_list">
+              <% end %>
+
+              <label for=<%= order_toggle %> class="orders_list__container--toggle--text"><%= status %></label>
+              <div class="orders_list__container--body">
+                <%= render partial: "orders", locals: {given_status: status.to_sym} %>
+              </div>
+            </div>
+
+            <% order_toggle_num += 1 %>
+          <% end %>
+        </div>
+        
 
       </section>
     </div>
