@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
       flash[:error] = "Invalid product."
       redirect_to products_path
       return
-    
+    end
     # if session[:user_id] && session[:user_id] == @product.user_id
     #   render :user_show
     # end
