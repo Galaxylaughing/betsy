@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   
   validates :address, :name, :cc_num, :cvv_code, :zip, presence: true, on: :update
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, on: :update
-  validates :exp_date, presence: true, on: :update
+  validates :exp_date, format: { with: /.*(\d{2}).*(\d{2})/ }, on: :update
   
   def total
     total = 0
