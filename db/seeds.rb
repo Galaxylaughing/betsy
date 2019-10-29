@@ -19,6 +19,7 @@ CSV.foreach(ORDERS_FILE, :headers => true) do |row|
   order.cc_num = row['cc_num']
   order.cvv_code = row['cvv_code']
   order.zip = row['zip']
+  order.exp_date = row['exp_date']
   
   successful = order.save
   if !successful
@@ -163,13 +164,13 @@ products.each do |product|
   end
   if index % 2 != 0 # if it's an odd number, give it two categories - must have an odd number of categories for this to work properly.
     2.times {
+      product.categories << categories[index]
+      index += 1
+    }
+  else
     product.categories << categories[index]
     index += 1
-  }
-else
-  product.categories << categories[index]
-  index += 1
-end
+  end
 end
 
 #------------------------------------------------------------
