@@ -2,11 +2,196 @@ ducky_bellflower:
   quantity: 1
   order: ducky_orchid_bellflower
   product: bellflower
+  status: paid
 bear_hollyhock:
   quantity: 2
   order: bear_orchid_hollyhock
   product: hollyhock
+  status: complete
 bear_treeivy:
   quantity: 3
   order: bear_orchid_hollyhock
   product: treeivy
+  status: complete
+# sort by status testing
+guavashop_guava_rockfoil:
+  quantity: 1
+  order: guava_shop_order
+  product: rockfoil
+  status: paid
+guavashop_guava_obedient:
+  quantity: 1
+  order: guava_shop_order
+  product: obedientplant
+  status: paid
+# ############
+pineappleshop_pineapple_plumbago:
+  quantity: 1
+  order: pineapple_shop_order
+  product: plumbago
+  status: complete
+pineappleshop_pineapple_sage:
+  quantity: 1
+  order: pineapple_shop_order
+  product: sage
+  status: paid
+# ############
+orangeshop_orange_pilea:
+  quantity: 1
+  order: orange_shop_order
+  product: pilea
+  status: complete
+orangeshop_orange_spider:
+  quantity: 1
+  order: orange_shop_order
+  product: spiderflower
+  status: cancelled
+# ############
+plumshop_plum_aster:
+  quantity: 1
+  order: plum_shop_order
+  product: aster
+  status: complete
+plumshop_plum_clematis:
+  quantity: 1
+  order: plum_shop_order
+  product: clematis
+  status: complete
+# ############
+peachshop_peach_lewisia:
+  quantity: 1
+  order: peach_shop_order
+  product: lewisia
+  status: paid
+peachshop_peach_shield:
+  quantity: 1
+  order: peach_shop_order
+  product: persianshield
+  status: paid
+peachshop_kiwi_crossandra:
+  quantity: 1
+  order: peach_shop_order
+  product: crossandra
+  status: complete
+# ############
+carrotshop_carrot_henchicks:
+  quantity: 1
+  order: carrot_shop_order
+  product: henchicks
+  status: complete
+carrotshop_carrot_agastache:
+  quantity: 1
+  order: carrot_shop_order
+  product: agastache
+  status: paid
+carrotshop_kiwi_crossandra:
+  quantity: 1
+  order: carrot_shop_order
+  product: crossandra
+  status: paid
+# ############
+berryshop_berry_foam:
+  quantity: 1
+  order: berry_shop_order
+  product: foamflower
+  status: complete
+berryshop_peach_zebra:
+  quantity: 1
+  order: berry_shop_order
+  product: zebraplant
+  status: cancelled
+berryshop_kiwi_crossandra:
+  quantity: 1
+  order: berry_shop_order
+  product: crossandra
+  status: paid
+# ############
+melonshop_melon_sunflower:
+  quantity: 1
+  order: melon_shop_order
+  product: sunflower
+  status: complete
+melonshop_melon_daisy:
+  quantity: 1
+  order: melon_shop_order
+  product: daisy
+  status: complete
+melonshop_kiwi_crossandra:
+  quantity: 1
+  order: melon_shop_order
+  product: crossandra
+  status: paid
+# ############
+grapefruitshop_grapefruit_thyme:
+  quantity: 1
+  order: grapefruit_shop_order
+  product: thyme
+  status: cancelled
+grapefruitshop_grapefruit_heuchera:
+  quantity: 1
+  order: grapefruit_shop_order
+  product: heuchera
+  status: cancelled
+grapefruitshop_kiwi_crossandra:
+  quantity: 1
+  order: grapefruit_shop_order
+  product: crossandra
+  status: paid
+# ############
+apricotshop_apricot_orchidcactus:
+  quantity: 1
+  order: apricot_shop_order
+  product: orchidcactus
+  status: pending
+apricotshop_apricot_boliviansunset:
+  quantity: 1
+  order: apricot_shop_order
+  product: boliviansunset
+  status: pending
+apricotshop_kiwi_crossandra:
+  quantity: 1
+  order: apricot_shop_order
+  product: crossandra
+  status: pending
+# ############
+mangoshop_mango_complete_1:
+  quantity: 1
+  order: mango_shop_complete_1
+  product: goldenrod
+  status: complete
+mangoshop_mango_complete_2:
+  quantity: 1
+  order: mango_shop_complete_2
+  product: englishdaisy
+  status: complete
+mangoshop_mango_cancelled:
+  quantity: 1
+  order: mango_shop_cancelled
+  product: goldenrod
+  status: cancelled
+mangoshop_mango_paid_1:
+  quantity: 1
+  order: mango_shop_paid_1
+  product: goldenrod
+  status: paid
+mangoshop_mango_paid_2:
+  quantity: 1
+  order: mango_shop_paid_2
+  product: englishdaisy
+  status: paid
+mangoshop_mango_pending:
+  quantity: 1
+  order: mango_shop_pending
+  product: goldenrod
+  status: pending
+# ############
+crabappleshop_crabapple_ghostfern:
+  quantity: 1
+  order: crabapple_shop_order
+  product: ghostfern
+  status: complete
+crabappleshop_crabapple_desertrose:
+  quantity: 1
+  order: crabapple_shop_order
+  product: desertrose
+  status: paid

@@ -167,3 +167,242 @@ teddybearvine:
   available: true
   user: rose
   categories: 
+
+# sort by status testing
+rockfoil:
+  name: Saxifraga spp.
+  description: A unique plant that thrives on hillsides and slopes.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: guava
+  categories: 
+obedientplant:
+  name: Physostegia spp.
+  description: A quick-growing perennial that will easily carpet and area in beautiful purple flowers.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: guava
+  categories: 
+# ############
+plumbago:
+  name: Ceratostigma plumbaginoides
+  description: A summer bloomer that offers dainty blue flowers.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: pineapple
+  categories: 
+sage:
+  name: Salvia spp.
+  description: A gorgeous plant with stalks of beautifully-scented, brightly-colored flowers. Favored by pollinators.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: pineapple
+  categories: 
+# ############
+pilea:
+  name: Pilea spp.
+  description: An easy-to-grow houseplant that offers large, variagated leaves for a unique look.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: orange
+  categories: 
+spiderflower:
+  name: Cleome
+  description: An easy-to-grow flower that bursts into armloads of blooms around slender stamens.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: orange
+  categories: 
+# ############
+aster:
+  name: Aster spp.
+  description: Sun-loving perennials that will blanket garden beds and containers in color.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: plum
+  categories: 
+clematis:
+  name: Clematis spp.
+  description: An easy-to-care-for vine that explodes into large, vivid flowers in the spring and summer.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: plum
+  categories: 
+# ############
+lewisia:
+  name: Lewisia spp.
+  description: Delightful, daisy-shaped flowers.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: peach
+  categories: 
+persianshield:
+  name: Strobilanthes dyerianus
+  description: An easy-growing tropical shrub with iridescent purple foliage.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: peach
+  categories: 
+# ############
+henchicks:
+  name: Sempervivum spp.
+  description: Short plant that produces colorful rosettes.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: carrot
+  categories: 
+agastache:
+  name: Agastache spp.
+  description: A rugged, sun-loving perennial.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: carrot
+  categories: 
+# ############
+foamflower:
+  name: Tiarella cordifolia
+  description: Native to the North American woodlands, this shrub is ideal for shady gardens.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: berry
+  categories: 
+zebraplant:
+  name: Aphelandra squarrosa
+  description: A stunning houseplant with large, striped leaves.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: berry
+  categories: 
+# ############
+sunflower:
+  name: Helianthus annuus
+  description: A fast-growing, cheerful plant with a large, bobbing head of seeds and yellow petals.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: melon
+  categories: 
+daisy:
+  name: Gerbera spp.
+  description: One of the most popular flowers in the world, a daisy speaks for itself.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: melon
+  categories: 
+# ############
+crossandra:
+  name: Crossandra infundibuliformis
+  description: A versatile plant prized for its orange flowers and shiny foliage.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 3
+  available: true
+  user: kiwi
+  categories: 
+# ############
+thyme:
+  name: Thymus spp.
+  description: A short, edible plant with fragrant leaves.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 4
+  available: true
+  user: grapefruit
+  categories:
+heuchera:
+  name: Heuchera spp.
+  description: A shade-loving perennial that comes in a wide variety of bold colors.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 4
+  available: true
+  user: grapefruit
+  categories: 
+# ############
+orchidcactus:
+  name: Epiphyllum guatemalense monstrose
+  description: An easy-to-grow houseplant with long, curling leaves.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 4
+  available: true
+  user: apricot
+  categories:
+boliviansunset:
+  name: Gloxinia sylvatica
+  description: A gorgeous winter-flowering shrub with bright red blooms.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 4
+  available: true
+  user: apricot
+  categories: 
+# ############
+goldenrod:
+  name: Solidago spp.
+  description: Sun-loving perennial that produces long stalks of yellow-gold flowers. A classic.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 12
+  available: true
+  user: mango
+  categories:
+englishdaisy:
+  name: Bellis spp.
+  description: Cheerful, diminutive plant with pom-pom flowers. A classic.
+  price: 18.80
+  photo_url: https://lorempixel.com/300/300
+  stock: 9
+  available: true
+  user: mango
+  categories:
+# ############
+ghostfern:
+  name: Athyrium 'Ghost'
+  description: A lovely, Japanese-hybrid fern. Slow-growing.
+  price: 15.00
+  photo_url: https://lorempixel.com/300/300
+  stock: 12
+  available: true
+  user: crabapple
+  categories:
+desertrose:
+  name: Adenium obesum
+  description: A vibrant, low-water succulent. Not spiky.
+  price: 20.00
+  photo_url: https://lorempixel.com/300/300
+  stock: 9
+  available: true
+  user: crabapple
+  categories:

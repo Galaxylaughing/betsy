@@ -1,0 +1,125 @@
+<% all_orders = @user.find_orders_by_status(given_status) %>
+
+<div class="orders__totals_per_status">
+  <h4 class="orders__total_rev__title">
+    Total Revenue
+  </h4>
+  <div class="orders__total orders__total_rev">
+    <% if given_status == :cancelled %>
+      $0.00
+    <% else %>
+      $<%= render_price(@user.total_revenue_by_status(given_status)) %>
+    <% end %>
+  </div>
+
+  <h4 class="orders__total_orders__title">
+    Number of Orders
+  </h4>
+  <div class="orders__total orders__total_orders">
+    <% if all_orders && all_orders.length > 0 %>
+      <%= all_orders.length %>
+    <% else %>
+      0
+    <% end %>
+  </div>
+</div>
+
+<div class="per_order_info">
+  <% if all_orders && all_orders.length > 0 %>
+    <% all_orders.each do |order| %>
+      <article class="order">
+        <hr class="dashboard__line_break"/>
+
+        <div class="order__header">
+          <h5 class="order__header_title">
+            <span class="order__header_title__item">
+              Order #<%= order.id %>
+            </span>
+            <span class="order__header_title__item">
+              <%= render_date(order.created_at) %>
+            </span>
+          </h5>
+          <div>
+            <%= order.status %>
+          </div>
+        </div>
+
+        <table class="table table-responsive-lg">
+          <thead>
+            <tr>
+              <th scope="col">order item</th>
+              <th scope="col">status</th>
+              <th scope="col" class="order_total">quantity</th>
+              <th scope="col" class="order_total">subtotal</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% order.order_items.each do |oi| %>
+              <% product = Product.find_by(id: oi.product_id) %>
+              <% if product.user_id == @user.id %>
+                <tr>
+                  <td>
+                    <%= link_to product.name, product_path(product.id) %>
+                  </td>
+                  <td>
+                    <% if oi.status != "complete" %>
+                      <%= link_to "mark completed", mark_complete_path(oi.id), method: :post %>
+                    <% else %>
+                      <%= oi.status %>
+                    <% end %>
+                  </td>
+                  <td class="order_total">
+                    <%= oi.quantity %>
+                  </td>
+                  <td class="order_total">
+                    $<%= render_price(oi.subtotal) %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="order_total">$<%= render_price(@user.total_revenue_by_order(order.id)) %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <section class="order__buyer_info_container">
+          <h6>Buyer</h6>
+
+          <ul>
+            <li>
+              <%= order.name %>
+            </li>
+            <li>
+              <%= order.email %>
+            </li>
+            <li>
+              <%= order.address %>
+            </li>
+            <li>
+              <%= mask_cc(order.cc_num) %>
+            </li>
+            <li>
+              Card expires on <%= order.exp_date %>
+            </li>
+          <ul>
+        </section>
+
+      </article>
+    <% end %>
+    <hr class="dashboard__line_break"/>
+
+  <% else %>
+    <div class="order__no_orders">
+      <% if given_status == :all %>
+        You do not yet have any orders
+      <% else %>
+        You do not have any <%= given_status.to_s %> orders
+      <% end %>
+    </div>
+  <% end %>
+</div>

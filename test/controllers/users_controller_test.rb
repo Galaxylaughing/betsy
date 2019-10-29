@@ -107,30 +107,6 @@ describe UsersController do
         expect(flash[:error]).must_equal "Permission denied: you cannot view another merchant's dashboard"
       end
     end
-    
-    describe "edit" do
-      it "can be seen by a logged in user" do
-        user = users(:begonia)
-        perform_login(user)
-        
-        get edit_user_path(user)
-        
-        must_respond_with :success
-      end
-      
-      it "can't be seen by a different logged-in user" do
-        user = users(:begonia)
-        other_user = users(:orchid)
-        
-        perform_login(user)
-        
-        get edit_user_path(other_user)
-        
-        must_respond_with :redirect
-        must_redirect_to root_path
-        expect(flash[:error]).must_equal "Permission denied: you cannot edit another merchant's profile"
-      end
-    end
   end
   
   describe "Guest users" do
@@ -174,18 +150,6 @@ describe UsersController do
         must_respond_with :redirect
         must_redirect_to users_path
         expect(flash[:error]).must_equal "Permission denied: please log in to view your dashboard"
-      end
-    end
-    
-    describe "edit" do
-      it "can't be seen by a guest user'" do
-        user = users(:begonia)
-        
-        get edit_user_path(user)
-        
-        must_respond_with :redirect
-        must_redirect_to root_path
-        expect(flash[:error]).must_equal "Permission denied: please log in"
       end
     end
   end

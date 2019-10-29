@@ -42,21 +42,6 @@ class UsersController < ApplicationController
     @user = get_user
   end
   
-  def edit
-    logged_in_id = logged_in?
-    user = get_user
-    
-    if logged_in_id && (user.id == logged_in_id)
-      @user = user
-    elsif logged_in_id
-      flash[:error] = "Permission denied: you cannot edit another merchant's profile"
-      redirect_to root_path
-    else
-      flash[:error] = "Permission denied: please log in"
-      redirect_to root_path
-    end
-  end
-  
   def dashboard
     # the person logged in
     logged_in_id = logged_in?

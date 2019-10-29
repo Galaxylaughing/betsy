@@ -344,6 +344,33 @@ describe User do
     end
   end
   
+  describe "total_revenue_by_order" do
+    it "calculates the user's total revenue for a given order" do
+      # orchid has two orders
+      user = users(:orchid)
+      
+      order_1_id = orders(:ducky_orchid_bellflower).id
+      order_2_id = orders(:bear_orchid_hollyhock).id
+      
+      # ducky_bellflower:
+      #   quantity: 1
+      #   product: bellflower
+      #   status: paid
+      #   => total: 12.75
+      # bear_hollyhock:
+      #   quantity: 2
+      #   product: hollyhock
+      #   status: complete
+      #   => total: 25.5
+      
+      result_1 = user.total_revenue_by_order(order_1_id)
+      expect(result_1).must_equal 12.75
+      
+      result_2 = user.total_revenue_by_order(order_2_id)
+      expect(result_2).must_equal 25.5
+    end
+  end
+  
   describe "total revenue" do
     it "calculates the user's total revenue" do
       # orchid has two orders
@@ -357,22 +384,24 @@ describe User do
       # ducky_bellflower:
       #   quantity: 1
       #   product: bellflower
+      #   status: paid
       #   => total: 12.75
       # bear_hollyhock:
       #   quantity: 2
       #   product: hollyhock
+      #   status: complete
       #   => total: 25.5
       
-      result = user.total_revenue
+      result = user.total_revenue()
       
-      expect(result).must_equal 25.50
+      expect(result).must_equal 38.25
     end
     
     it "returns zero if there are no orders" do
       # rose has one product with no orders
       user = users(:rose)
       
-      result = user.total_revenue
+      result = user.total_revenue()
       
       expect(result).must_equal 0.00
     end
@@ -381,10 +410,258 @@ describe User do
       # petunia has no products
       user = users(:petunia)
       
-      result = user.total_revenue
+      result = user.total_revenue()
       
       expect(result).must_equal 0.00
     end
+  end
+  
+  describe "total revenue by status" do
+    it "calculates the user's total revenue for their orders per status" do
+      # orchid has two orders
+      user = users(:orchid)
+      
+      # hollyhock:
+      #   price: 12.75
+      # bellflower:
+      #   price: 12.75
+      
+      # ducky_bellflower:
+      #   quantity: 1
+      #   product: bellflower
+      #   status: paid
+      #   => total: 12.75
+      # bear_hollyhock:
+      #   quantity: 2
+      #   product: hollyhock
+      #   status: complete
+      #   => total: 25.5
+      
+      complete_result = user.total_revenue_by_status(:complete)
+      expect(complete_result).must_equal 25.5
+      
+      paid_result = user.total_revenue_by_status(:paid)
+      expect(paid_result).must_equal 12.75
+    end
+    
+    it "calculates the user's total revenue for their orders per status" do
+      # crabapple has one order with two order_items
+      user = users(:crabapple)
+      
+      # one order_item is complete
+      # one is only paid
+      
+      # the order is not complete, so no order_item,
+      # regardless of its individual status,
+      # should count toward this total
+      complete_result = user.total_revenue_by_status(:complete)
+      expect(complete_result).must_equal 0.00
+      
+      # the order is paid, so each order_item,
+      # regardless of its individual status,
+      # should count toward this total
+      paid_result = user.total_revenue_by_status(:paid)
+      expect(paid_result).must_equal 35.00
+    end
+    
+    it "returns 0.00 for any nonexistent statuses" do
+      # crabapple has one order with two order_items
+      user = users(:crabapple)
+      
+      # one order_item is complete
+      # one is only paid
+      
+      complete_result = user.total_revenue_by_status(:pending)
+      expect(complete_result).must_equal 0.00
+      
+      complete_result = user.total_revenue_by_status(:cancelled)
+      expect(complete_result).must_equal 0.00
+    end
+  end
+  
+  describe "sort orders by status" do
+    # if a user has no orders
+    it "returns empty if there are no orders" do
+      # rose has one product with no orders
+      user = users(:rose)
+      
+      response = user.sort_orders_by_status()
+      
+      expect(response).wont_be_nil
+      expect(response.empty?).must_equal true
+    end
+    
+    # if a user has no products
+    it "returns empty if there are no products" do
+      # petunia has no products
+      user = users(:petunia)
+      
+      response = user.sort_orders_by_status()
+      
+      expect(response).wont_be_nil
+      expect(response.empty?).must_equal true
+    end
+    
+    # if a user has one order, all their order_items, and they are all paid (order should be paid)
+    #   => {paid: [order]}, guava_shop_order
+    it "is paid if all the order items are paid" do
+      user = users(:guava)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:paid]).wont_be_nil
+      expect(response[:paid]).must_include orders(:guava_shop_order)
+    end
+    
+    # if a user has one order, all their order_items, and they are all complete but one is paid (order should be paid)
+    #   => {paid: [order]}, pineapple_shop_order
+    # WRONG, pending
+    it "is paid if one order item is complete and one is paid" do
+      user = users(:pineapple)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:paid]).wont_be_nil
+      expect(response[:paid]).must_include orders(:pineapple_shop_order)
+    end
+    
+    # if a user has one order, all their order_items, and they are all complete but one is cancelled (order should be complete)
+    #   => {complete: [order]}, orange_shop_order
+    # WRONG, pending
+    it "is complete if one order item is complete and one is cancelled" do
+      user = users(:orange)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:complete]).wont_be_nil
+      expect(response[:complete]).must_include orders(:orange_shop_order)
+    end
+    
+    # if a user has one order, all their order_items, and they are all complete (order should be complete)
+    #   => {complete: [order]}, plum_shop_order
+    it "is complete if all the order items are complete" do
+      user = users(:plum)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:complete]).wont_be_nil
+      expect(response[:complete]).must_include orders(:plum_shop_order)
+    end
+    
+    # if a user has one order, half their order_items, and they are all paid & other half is complete (order should be paid)
+    #   => {paid: [order]}, peach_shop_order
+    it "is paid if all this users's order items are paid" do
+      user = users(:peach)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:paid]).wont_be_nil
+      expect(response[:paid]).must_include orders(:peach_shop_order)
+    end
+    
+    # if a user has one order, half their order_items, and they are all complete but one is paid & other half is paid (order should be paid)
+    #   => {paid: [order]}, carrot_shop_order
+    # WRONG, pending
+    it "is paid if one of this users's order items is complete and one is paid" do
+      user = users(:carrot)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:paid]).wont_be_nil
+      expect(response[:paid]).must_include orders(:carrot_shop_order)
+    end
+    
+    # if a user has one order, half their order_items, and they are all complete but one is cancelled & other half is paid (order should be complete)
+    #   => {complete: [order]}, berry_shop_order
+    # WRONG, pending
+    it "is paid if one of this users's order items is complete and one is cancelled" do
+      user = users(:berry)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:complete]).wont_be_nil
+      expect(response[:complete]).must_include orders(:berry_shop_order)
+    end
+    
+    # if a user has one order, half their order_items, and they are all complete & other half is paid (order should be complete)
+    #   => {complete: [order]}, melon_shop_order
+    it "is paid if all this users's order items are complete" do
+      user = users(:melon)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:complete]).wont_be_nil
+      expect(response[:complete]).must_include orders(:melon_shop_order)
+    end
+    
+    # if a user has one order, half their order_items, and they are all cancelled & other half is paid (order should be cancelled)
+    #   => {cancelled: [order]}, grapefruit_shop_order
+    it "is cancelled if all this users's order items are cancelled" do
+      user = users(:grapefruit)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:cancelled]).wont_be_nil
+      expect(response[:cancelled]).must_include orders(:grapefruit_shop_order)
+    end
+    
+    # if a user has one order, half their order_items, and they are all pending & other half is paid (order should be pending)
+    #   => {pending: [order]}, apricot_shop_order
+    it "is pending if all this users's order items are pending" do
+      user = users(:apricot)
+      response = user.sort_orders_by_status()
+      
+      expect(response[:pending]).wont_be_nil
+      expect(response[:pending]).must_include orders(:apricot_shop_order)
+    end
+  end
+  
+  describe "find orders by status" do
+    let(:user) {
+      users(:mango)
+    }
+    
+    # if a user has six orders,
+    # and two are complete, one is cancelled, two are paid, one is pending,
+    # they should be able to see a list of all of them
+    it "returns any complete orders" do
+      response = user.find_orders_by_status(:complete)
+      
+      expect(response).wont_be_nil
+      expect(response.length).must_equal 2
+      expect(response).must_include orders(:mango_shop_complete_1)
+      expect(response).must_include orders(:mango_shop_complete_2)
+    end
+    
+    it "returns any cancelled orders" do
+      response = user.find_orders_by_status(:cancelled)
+      
+      expect(response).wont_be_nil
+      expect(response.length).must_equal 1
+      expect(response).must_include orders(:mango_shop_cancelled)
+    end
+    
+    it "returns any paid orders" do
+      response = user.find_orders_by_status(:paid)
+      
+      expect(response).wont_be_nil
+      expect(response.length).must_equal 2
+      expect(response).must_include orders(:mango_shop_paid_1)
+      expect(response).must_include orders(:mango_shop_paid_2)
+    end
+    
+    it "returns any pending orders" do
+      response = user.find_orders_by_status(:pending)
+      
+      expect(response).wont_be_nil
+      expect(response.length).must_equal 1
+      expect(response).must_include orders(:mango_shop_pending)
+    end
+    
+    it "returns all orders if you pass in all" do
+      response = user.find_orders_by_status(:all)
+      
+      expect(response).wont_be_nil
+      expect(response.length).must_equal 6
+      expect(response).must_include orders(:mango_shop_complete_1)
+      expect(response).must_include orders(:mango_shop_complete_2)
+      expect(response).must_include orders(:mango_shop_cancelled)
+      expect(response).must_include orders(:mango_shop_paid_1)
+      expect(response).must_include orders(:mango_shop_paid_2)
+      expect(response).must_include orders(:mango_shop_pending)
+    end
+    
   end
   
 end
