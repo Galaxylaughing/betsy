@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   def update
     if @order.update(order_params)
       session[:order_id] = nil
+      
       flash[:success] = "Your order is complete. Thank you for shopping at Plantsy!"
       
       redirect_to root_path
