@@ -387,3 +387,22 @@ englishdaisy:
   available: true
   user: mango
   categories:
+# ############
+ghostfern:
+  name: Athyrium 'Ghost'
+  description: A lovely, Japanese-hybrid fern. Slow-growing.
+  price: 15.00
+  photo_url: https://lorempixel.com/300/300
+  stock: 12
+  available: true
+  user: crabapple
+  categories:
+desertrose:
+  name: Adenium obesum
+  description: A vibrant, low-water succulent. Not spiky.
+  price: 20.00
+  photo_url: https://lorempixel.com/300/300
+  stock: 9
+  available: true
+  user: crabapple
+  categories:

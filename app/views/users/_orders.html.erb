@@ -8,7 +8,8 @@
     <% if given_status == :cancelled %>
       $0.00
     <% else %>
-      $<%= render_price(@user.total_revenue(given_status)) %>
+      <%# render_price(@user.total_revenue_by_status(given_status)) %>
+      <% @user.total_revenue_by_status(given_status) %>
     <% end %>
   </div>
 
@@ -82,7 +83,7 @@
               <td></td>
               <td></td>
               <td></td>
-              <td class="order_total">$<%= render_price(order.total) %></td>
+              <td class="order_total">$<%= render_price(@user.total_revenue_by_order(order.id)) %></td>
             </tr>
           </tbody>
         </table>

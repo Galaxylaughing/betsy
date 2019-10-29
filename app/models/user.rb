@@ -37,25 +37,58 @@ class User < ApplicationRecord
   #   end
   # end
   
+  def find_order_items
+    matching_order_items = self.products.flat_map{ |prod| prod.order_items }
+    return matching_order_items
+  end
+  
   def find_orders
-    matching_orders = self.products.map{ |prod| prod.order_items }.flatten.map{ |oi| oi.order }.uniq
+    matching_orders = self.products.flat_map{ |prod| prod.order_items }.map{ |oi| oi.order }.uniq
     return matching_orders
   end
   
-  def total_revenue(for_status)
+  def total_revenue_by_order(order_id)
+    order = Order.find(order_id)
+    total_cost = self.order_revenue(order)
+    return total_cost
+  end
+  
+  def order_revenue(order)
+    total_per_order = 0
+    order.order_items.each do |oi|
+      product = Product.find_by(id: oi.product_id)
+      if product.user_id == self.id
+        total_per_order += oi.subtotal
+      end
+    end
+    return total_per_order
+  end
+  
+  def total_revenue()
     orders = self.find_orders
     
     total_cost = 0.0
     orders.each do |order|
-      order.order_items.each do |oi|
-        product = Product.find_by(id: oi.product_id)
-        if product.user_id == self.id && (oi.status.to_sym == for_status || for_status == :all)
-          total_cost += oi.subtotal
-        end
-      end
+      total_cost += self.order_revenue(order)
     end
     
     return total_cost
+  end
+  
+  # I want the total revenue for a set of orders based on status
+  # I have find_orders_by_status, which will return a list of orders by status.
+  # Then I need to find the total revenue for each of those orders, for my merchant
+  def total_revenue_by_status(status)
+    all_orders = self.find_orders_by_status(status)
+    
+    total_revenue = 0.0
+    if all_orders
+      all_orders.each do |order|
+        total_revenue += total_revenue_by_order(order.id)
+      end
+    end
+    
+    return total_revenue
   end
   
   def find_orders_by_status(status)

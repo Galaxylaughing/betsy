@@ -12,7 +12,7 @@ bear_treeivy:
   quantity: 3
   order: bear_orchid_hollyhock
   product: treeivy
-  status: paid
+  status: complete
 # sort by status testing
 guavashop_guava_rockfoil:
   quantity: 1
@@ -184,3 +184,14 @@ mangoshop_mango_pending:
   order: mango_shop_pending
   product: goldenrod
   status: pending
+# ############
+crabappleshop_crabapple_ghostfern:
+  quantity: 1
+  order: crabapple_shop_order
+  product: ghostfern
+  status: complete
+crabappleshop_crabapple_desertrose:
+  quantity: 1
+  order: crabapple_shop_order
+  product: desertrose
+  status: paid

@@ -344,6 +344,33 @@ describe User do
     end
   end
   
+  describe "total_revenue_by_order" do
+    it "calculates the user's total revenue for a given order" do
+      # orchid has two orders
+      user = users(:orchid)
+      
+      order_1_id = orders(:ducky_orchid_bellflower).id
+      order_2_id = orders(:bear_orchid_hollyhock).id
+      
+      # ducky_bellflower:
+      #   quantity: 1
+      #   product: bellflower
+      #   status: paid
+      #   => total: 12.75
+      # bear_hollyhock:
+      #   quantity: 2
+      #   product: hollyhock
+      #   status: complete
+      #   => total: 25.5
+      
+      result_1 = user.total_revenue_by_order(order_1_id)
+      expect(result_1).must_equal 12.75
+      
+      result_2 = user.total_revenue_by_order(order_2_id)
+      expect(result_2).must_equal 25.5
+    end
+  end
+  
   describe "total revenue" do
     it "calculates the user's total revenue" do
       # orchid has two orders
@@ -365,12 +392,32 @@ describe User do
       #   status: complete
       #   => total: 25.5
       
-      result = user.total_revenue(:all)
+      result = user.total_revenue()
       
       expect(result).must_equal 38.25
     end
     
-    it "calculates the user's total revenue per status" do
+    it "returns zero if there are no orders" do
+      # rose has one product with no orders
+      user = users(:rose)
+      
+      result = user.total_revenue()
+      
+      expect(result).must_equal 0.00
+    end
+    
+    it "returns zero if there are no products" do
+      # petunia has no products
+      user = users(:petunia)
+      
+      result = user.total_revenue()
+      
+      expect(result).must_equal 0.00
+    end
+  end
+  
+  describe "total revenue by status" do
+    it "calculates the user's total revenue for their orders per status" do
       # orchid has two orders
       user = users(:orchid)
       
@@ -390,29 +437,45 @@ describe User do
       #   status: complete
       #   => total: 25.5
       
-      complete_result = user.total_revenue(:complete)
+      complete_result = user.total_revenue_by_status(:complete)
       expect(complete_result).must_equal 25.5
       
-      paid_result = user.total_revenue(:paid)
+      paid_result = user.total_revenue_by_status(:paid)
       expect(paid_result).must_equal 12.75
     end
     
-    it "returns zero if there are no orders" do
-      # rose has one product with no orders
-      user = users(:rose)
+    it "calculates the user's total revenue for their orders per status" do
+      # crabapple has one order with two order_items
+      user = users(:crabapple)
       
-      result = user.total_revenue(:all)
+      # one order_item is complete
+      # one is only paid
       
-      expect(result).must_equal 0.00
+      # the order is not complete, so no order_item,
+      # regardless of its individual status,
+      # should count toward this total
+      complete_result = user.total_revenue_by_status(:complete)
+      expect(complete_result).must_equal 0.00
+      
+      # the order is paid, so each order_item,
+      # regardless of its individual status,
+      # should count toward this total
+      paid_result = user.total_revenue_by_status(:paid)
+      expect(paid_result).must_equal 35.00
     end
     
-    it "returns zero if there are no products" do
-      # petunia has no products
-      user = users(:petunia)
+    it "returns 0.00 for any nonexistent statuses" do
+      # crabapple has one order with two order_items
+      user = users(:crabapple)
       
-      result = user.total_revenue(:all)
+      # one order_item is complete
+      # one is only paid
       
-      expect(result).must_equal 0.00
+      complete_result = user.total_revenue_by_status(:pending)
+      expect(complete_result).must_equal 0.00
+      
+      complete_result = user.total_revenue_by_status(:cancelled)
+      expect(complete_result).must_equal 0.00
     end
   end
   

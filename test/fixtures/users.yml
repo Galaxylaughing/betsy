@@ -79,3 +79,8 @@ mango:
   uid: 999888
   email: marvelous_mango@example.com
   username: marvelous_mango
+crabapple:
+  provider: github
+  uid: 999888
+  email: crabby_crabapple@example.com
+  username: crabby_crabapple

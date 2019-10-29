@@ -21,5 +21,13 @@ describe ApplicationHelper do
       
       expect(result).must_equal "57.59"
     end
+    
+    it "displays 0.00 for 0" do
+      price = 0
+      
+      result = render_price(price)
+      
+      expect(result).must_equal "0.00"
+    end
   end
 end

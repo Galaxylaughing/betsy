@@ -199,3 +199,10 @@ mango_shop_pending:
   cc_num: 1234-2121-1221-1211
   cvv_code: 444
   zip: 98002
+crabapple_shop_order:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Crabapple Shopper
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
