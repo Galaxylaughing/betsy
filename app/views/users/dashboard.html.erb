@@ -233,7 +233,7 @@
                       <% if product.user_id == @user.id %>
                         <tr>
                           <td>
-                            <%= product.name %>
+                            <%= link_to product.name, product_path(product.id) %>
                           </td>
                           <td>
                             <% if oi.status != "complete" %>
