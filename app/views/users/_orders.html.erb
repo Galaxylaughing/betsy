@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<div>
+<div class="per_order_info">
   <% if all_orders && all_orders.length > 0 %>
     <% all_orders.each do |order| %>
       <article class="order">
@@ -49,8 +49,8 @@
             <tr>
               <th scope="col">order item</th>
               <th scope="col">status</th>
-              <th scope="col">quantity</th>
-              <th scope="col">subtotal</th>
+              <th scope="col" class="order_total">quantity</th>
+              <th scope="col" class="order_total">subtotal</th>
             </tr>
           </thead>
 
@@ -69,10 +69,10 @@
                       <%= oi.status %>
                     <% end %>
                   </td>
-                  <td>
+                  <td class="order_total">
                     <%= oi.quantity %>
                   </td>
-                  <td>
+                  <td class="order_total">
                     $<%= render_price(oi.subtotal) %>
                   </td>
                 </tr>
@@ -82,7 +82,7 @@
               <td></td>
               <td></td>
               <td></td>
-              <td>$<%= render_price(order.total) %></td>
+              <td class="order_total">$<%= render_price(order.total) %></td>
             </tr>
           </tbody>
         </table>

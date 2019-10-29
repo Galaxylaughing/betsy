@@ -165,45 +165,25 @@
           <hr class="dashboard__line_break dashboard_section__break"/>
         </div>
 
-        <nav class="dashboard__products_by_status breadcrumb">
-          <a href="#all_products" class="breadcrumb-item">
-            <span class="breadcrumb-item">all products</span>
-            <span class="badge badge-primary badge-pill">#</span>
-          </a>
-          <% statuses = ["pending", "paid", "cancelled", "complete"] %>
-          <% statuses.each do |status| %>
-            <a href="#<%= status %>" class="breadcrumb-item">
-              <span><%= status %></span>
+        <div class="orders_list">
+          <% all_statuses = ["all", "pending", "paid", "cancelled", "complete"] %>
+
+          <!-- list all labels -->
+          <% all_statuses.each do |status| %>
+            <input id="status_<%= status %>" class="orders__list--toggle" type="radio" name="orders">
+            <label for="status_<%= status %>" class="orders__list--toggle__label breadcrumb-item">
+              <%= status %>
               <span class="badge badge-primary badge-pill">#</span>
-            </a>
+            </label>
           <% end %>
-        </nav>
 
-
-        <% order_toggle_num = 0 %>
-        <%# statuses << "all" %>
-        <div>
-          <% statuses.each do |status| %>
-            <% order_toggle = "order_toggle_" + order_toggle_num.to_s %>
-
-            <div class="orders_list__container">
-
-              <% if status == "all"%>
-                <input id=<%= order_toggle %> class="orders_list__container--toggle" type="radio" name="orders_list" checked>
-              <% else %>
-                <input id=<%= order_toggle %> class="orders_list__container--toggle" type="radio" name="orders_list">
-              <% end %>
-
-              <label for=<%= order_toggle %> class="orders_list__container--toggle--text"><%= status %></label>
-              <div class="orders_list__container--body">
-                <%= render partial: "orders", locals: {given_status: status.to_sym} %>
-              </div>
+          <!-- list all partials -->
+          <% all_statuses.each do |status| %>
+            <div class="status_<%= status %>">
+              <%= render partial: "orders", locals: {given_status: status.to_sym} %>
             </div>
-
-            <% order_toggle_num += 1 %>
           <% end %>
         </div>
-        
 
       </section>
     </div>

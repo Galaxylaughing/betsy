@@ -458,76 +458,52 @@ caption {
   justify-content: center;
 }
 
+.orders_list {
+  text-align: center;
+  margin-bottom: 3rem;
+}
 
+.orders__list--toggle__label {
+  background-color: rgba(214, 239, 195, 0.6);
+  padding: 0.6rem 1rem;
+  margin: 0;
+  border-radius: 0.2rem;
+}
 
-
-
-
-
-
-
-
-// Untoggled State
-.order__show {
+.orders__list--toggle {
   display: none;
 }
 
-/* Toggled State */
-.toggle__order:checked ~ .order__show {
+.orders__list--toggle:checked + .orders__list--toggle__label {
+  background-color: $lightgreen;
+  font-weight: bold;
+  color: white;
+}
+
+.orders__list--toggle:checked + .orders__list--toggle__label .badge-primary {
+  background-color: $brightgreen;
+  color: $darkgreen;
+}
+
+// from https://codersblock.com/blog/checkbox-trickery-with-css/
+
+.status_all, 
+.status_pending, 
+.status_paid, 
+.status_cancelled, 
+.status_complete {
   animation: 1.5s ease-in 0s 1 fadeIn;
-
-  display: grid;
-}
-
-
-
-
-
-
-
-
-
-// radio button hack from https://codeburst.io/awesome-checkbox-and-radio-button-css-hacks-a8c24fb15a95
-.orders_list__container {
-  display: block;
-}
-
-.orders_list__container--toggle, 
-.orders_list__container--body {
   display: none;
 }
 
-.orders_list__container--toggle--text {
-  display: block;
-  background-color: green;
-  color: #fff;
-  cursor: pointer;
-  font-size: 25px;
-}
-
-.orders_list__container--toggle:checked ~ .orders_list__container--body {
+#status_all:checked ~ .status_all, 
+#status_pending:checked ~ .status_pending, 
+#status_paid:checked ~ .status_paid, 
+#status_cancelled:checked ~ .status_cancelled, 
+#status_complete:checked ~ .status_complete {
+  animation: 1.5s ease-in 0s 1 fadeIn;
   display: block;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .orders__totals_per_status {
   width: 60%;
@@ -540,7 +516,8 @@ caption {
   text-align: center;
   align-items: end;
 
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
 }
 
 @media only screen and (max-width: 900px) {
@@ -555,6 +532,14 @@ caption {
     width: 90%;
     column-gap: 2rem;
   }
+}
+
+.per_order_info {
+  text-align: left;
+}
+
+.order_total {
+  text-align: right;
 }
 
 .orders__total_rev__title {
