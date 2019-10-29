@@ -1,3 +1,4 @@
+
 <h1>Order Summary</h1>
 
 <table class="table">
@@ -9,10 +10,11 @@
       <th>Subtotal</th>
     </tr>
   </thead>
-Order # <%= @order.id %>
+<% order = Order.find_by(id: session[:order_id]) %>
+Order # <%= order.id %>
 <tbody>
 <tr>
-<% @order.order_items.each do |oi| %>
+<% order.order_items.each do |oi| %>
   <td><%= oi.product.name %></td> 
   <td><%= oi.quantity %></td>
   <td>$<%= oi.product.price %></td>
@@ -24,8 +26,10 @@ Order # <%= @order.id %>
   <td></td>
   <td></td>
   <td></td>
-  <td>TOTAL: $<%= @order.total %></td>
+  <td>TOTAL: $<%= order.total %></td>
   </tr>
   </tbody>
 </table>
+<br>
+<%= link_to "CHECKOUT", edit_order_path, method: :get, class: "btn btn-primary" %>
 

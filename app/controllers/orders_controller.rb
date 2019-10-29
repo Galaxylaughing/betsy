@@ -13,6 +13,18 @@ class OrdersController < ApplicationController
   
   def edit ; end
   
+  def update
+    if @order.update(order_params)
+      session[:order_id] = nil
+      flash[:success] = "Your order is complete. Thank you for shopping at Plantsy!"
+      
+      redirect_to root_path
+    else
+      flash[:failure] = "Something went wrong. Your order has not been processed"
+      redirect_to request.referrer
+    end
+  end
+  
   def create
     @order = Order.new(order_params) 
     if @order.save
@@ -33,5 +45,9 @@ class OrdersController < ApplicationController
   
   def find_order
     @order = Order.find_by_id(params[:id])
+    
+    if @order.nil?
+      redirect_to request.referrer
+    end  
   end
 end

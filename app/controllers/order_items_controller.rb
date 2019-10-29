@@ -4,33 +4,33 @@ class OrderItemsController < ApplicationController
   # Create is adding a product to my cart
   def create
     if session[:order_id].nil?
-      order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com")
+      order = Order.create
       session[:order_id] = order.id
     end
     
     order_items = {
-    product_id: params[:product_id],
-    quantity: params[:quantity],
-    order_id: session[:order_id],
-  }
-  
-  order_item = OrderItem.new(order_items)
-  if order_item.save
-    flash[:success] = "Successfully added item to your cart."
-    redirect_to product_path(order_items[:product_id])
-  else
+      product_id: params[:product_id],
+      quantity: params[:quantity],
+      order_id: session[:order_id],
+    }
     
-    flash.now[:failure] = "Failure: Item could not be added to your cart."
-    redirect_to product_path(order_items[:product_id])
+    order_item = OrderItem.new(order_items)
+    if order_item.save
+      flash[:success] = "Successfully added item to your cart."
+      redirect_to product_path(order_items[:product_id])
+    else
+      
+      flash[:failure] = "Item could not be added to your cart."
+      redirect_to product_path(order_items[:product_id])
+    end
   end
-end
-
+  
   #Delete is going to be "remove products from my cart."
   
   def destroy
     @order_item.destroy
     
-    redirect_to products_path
+    redirect_to request.referrer
   end
   
   #Update is going to change the quantity of my cart."
