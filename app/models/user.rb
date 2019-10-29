@@ -47,8 +47,12 @@ class User < ApplicationRecord
     
     total_cost = 0.0
     orders.each do |order|
-      # I need an order.total_cost method
-      # total_cost += order.total_cost
+      order.order_items.each do |oi|
+        product = Product.find_by(id: oi.product_id)
+        if product.user_id == self.id
+          total_cost += oi.subtotal
+        end
+      end
     end
     
     return total_cost

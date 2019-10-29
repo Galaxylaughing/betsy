@@ -365,7 +365,7 @@ describe User do
       
       result = user.total_revenue
       
-      expect(result).must_equal 25.50
+      expect(result).must_equal 38.25
     end
     
     it "returns zero if there are no orders" do
