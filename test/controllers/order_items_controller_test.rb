@@ -24,6 +24,20 @@ describe OrderItemsController do
         
         must_redirect_to product_path(@product_cactus.id)
       end
+
+      it 'does not create a new order_item given invalid data while not logged in, and redirects the user to the products page' do
+        invalid_item_hash = {
+          order_item: {
+            product_id: @product_cactus.id,
+            order_id: @order.id,
+          }
+        }
+        expect {
+          post order_items_path, params: invalid_item_hash[:order_item]
+        }.must_differ 'OrderItem.count', 0
+        
+        must_redirect_to product_path(@product_cactus.id)
+      end
     end
     
     describe 'delete' do
@@ -103,6 +117,20 @@ describe OrderItemsController do
         expect {
           post order_items_path, params: @order_item_hash[:order_item]
         }.must_differ 'OrderItem.count', 1
+        must_redirect_to product_path(@product_cactus.id)
+      end
+
+      it 'does not create a new order_item given invalid data while logged in, and redirects the user to the products page' do
+        invalid_item_hash = {
+          order_item: {
+            product_id: @product_cactus.id,
+            order_id: @order.id,
+          }
+        }
+        expect {
+          post order_items_path, params: invalid_item_hash[:order_item]
+        }.must_differ 'OrderItem.count', 0
+        
         must_redirect_to product_path(@product_cactus.id)
       end
     end
