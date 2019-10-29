@@ -20,7 +20,6 @@ class Order < ApplicationRecord
     self.order_items.each do |oi|
       oi.product.stock -= oi.quantity
       oi.product.save
-      # binding.pry
     end
     
   end

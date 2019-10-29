@@ -8,22 +8,46 @@ class OrderItemsController < ApplicationController
       session[:order_id] = order.id
     end
     
+    order = Order.find(session[:order_id])
+    
     order_items = {
       product_id: params[:product_id],
       quantity: params[:quantity],
       order_id: session[:order_id],
     }
     
+    order.order_items.each do |oi|
+      if oi.product.id == params[:product_id]
+        oi.quantity += params[:quantity]
+        oi.save
+        
+        flash[:success] = "Successfully added item to your cart."
+        redirect_to product_path(order_items[:product_id])
+        return
+      end
+    end
+    
+    
     order_item = OrderItem.new(order_items)
     if order_item.save
       flash[:success] = "Successfully added item to your cart."
       redirect_to product_path(order_items[:product_id])
     else
-      
       flash[:failure] = "Item could not be added to your cart."
       redirect_to product_path(order_items[:product_id])
     end
   end
+  
+  # order_item = OrderItem.new(order_items)
+  # if order_item.save
+  #   flash[:success] = "Successfully added item to your cart."
+  #   redirect_to product_path(order_items[:product_id])
+  # else
+  
+  #   flash[:failure] = "Item could not be added to your cart."
+  #   redirect_to product_path(order_items[:product_id])
+  # end
+  #end
   
   #Delete is going to be "remove products from my cart."
   
