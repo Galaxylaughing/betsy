@@ -43,7 +43,7 @@
     <tbody>
       <% @product.reviews.each do |review| %>
         <tr>
-          <td><%= review.rating %></td>
+          <td><%= render_rating(review.rating) %></td>
           <td><%= review.comment %></td>
         </tr>
       <% end %>
