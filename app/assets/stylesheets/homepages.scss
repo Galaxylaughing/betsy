@@ -17,8 +17,9 @@ $transparent_darkgreen: rgba(46, 94, 26,0.9);
 
 // CAROUSEL
 #homepage_hero_carousel {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  margin-top: 2rem;
+  border-top: 2px solid $green;
+  border-bottom: 2px solid $green;
 }
 
 #homepage_hero_carousel img {
@@ -73,7 +74,6 @@ $transparent_darkgreen: rgba(46, 94, 26,0.9);
 .homepage_category_wrapper {
   margin: 3rem 0;
   border: 2px solid $palegreen;
-  padding-bottom: 0.5em;
 
   text-align: center;
   display: flex;
@@ -90,9 +90,14 @@ $transparent_darkgreen: rgba(46, 94, 26,0.9);
   min-width: 20em;
   margin: 0 1rem;
   text-align: center;
+  border-color: $palegreen;
+  border-radius: 0;
+
+  margin-bottom: -1px;
 }
 
 .card img {
   height: 15em;
   object-fit: cover;
+  border-radius: 0;
 }
