@@ -97,6 +97,7 @@ describe OrdersController do
         get root_path
         must_respond_with :success
       end
+    end
     
     describe "show" do
       it "gives back a successful response" do
