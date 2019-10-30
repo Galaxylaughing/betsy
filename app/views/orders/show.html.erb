@@ -1,6 +1,10 @@
+<main>
+<section class="show_page">
+  <h3 class="show_page__header">
+  Order Summary
+  </h3>
 
-<h1>Order Summary</h1>
-
+<div class="order_data">
 <table class="table">
   <thead>
     <tr>
@@ -10,26 +14,32 @@
       <th>Subtotal</th>
     </tr>
   </thead>
-<% order = Order.find_by(id: session[:order_id]) %>
-Order # <%= order.id %>
-<tbody>
-<tr>
-<% order.order_items.each do |oi| %>
-  <td><%= oi.product.name %></td> 
-  <td><%= oi.quantity %></td>
-  <td>$<%= oi.product.price %></td>
-  <td>$<%= oi.subtotal %></td>
-    </tr>
-<% end %>
-  <tr></tr>
-  <tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td>TOTAL: $<%= order.total %></td>
-  </tr>
-  </tbody>
-</table>
-<br>
-<%= link_to "CHECKOUT", edit_order_path, method: :get, class: "btn btn-primary" %>
 
+<div>  
+<% order = Order.find_by(id: session[:order_id]) %>
+<%# Order # <%= order.id %>
+  </div>
+  <tbody>
+  <tr>
+  <% order.order_items.each do |oi| %>
+    <td><%= oi.product.name %></td> 
+    <td><%= oi.quantity %></td>
+    <td>$<%= oi.product.price %></td>
+    <td>$<%= oi.subtotal %></td>
+    </tr>
+  <% end %>
+    <tr></tr>
+    <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>TOTAL: $<%= order.total %></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="order-checkout-button">
+    <%= link_to "CHECKOUT", edit_order_path, method: :get, class: "btn btn-primary" %>
+  </div>
+</section>
+</main>
