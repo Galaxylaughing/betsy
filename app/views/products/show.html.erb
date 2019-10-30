@@ -31,6 +31,23 @@
     <p><strong>Free shipping</strong></p>
     <p>Free shipping in all orders above $50</p>  
   </div>
+  <p><strong>Ratings summary: <%= render_rating(@product.calculate_average_rating) %></strong></p>
 
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Rating</th>
+        <th>Reviews</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @product.reviews.each do |review| %>
+        <tr>
+          <td><%= render_rating(review.rating) %></td>
+          <td><%= review.comment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </section>
 </main>

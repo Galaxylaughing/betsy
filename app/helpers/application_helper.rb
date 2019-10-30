@@ -10,6 +10,8 @@ module ApplicationHelper
   def render_rating(rating)
     return "no rating" unless rating
     
+    rating = rating.to_i
+
     filled_star = '<i class="fas fa-star"></i>'
     empty_star = '<i class="far fa-star"></i>'
     
