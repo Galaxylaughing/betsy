@@ -51,7 +51,7 @@ class OrderItemsController < ApplicationController
   def destroy
     @order_item.destroy
     
-    redirect_to order_path(@order_item.order_id)
+    # redirect_to request.referrer
   end
   
   #Update is going to change the quantity of my cart."
