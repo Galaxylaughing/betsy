@@ -170,7 +170,7 @@
           <% all_statuses.each do |status| %>
             <% all_orders = @user.find_orders_by_status(status.to_sym) %>
 
-            <input id="status_<%= status %>" class="orders__list--toggle" type="radio" name="orders">
+            <input id="status_<%= status %>" class="orders__list--toggle" type="radio" name="orders" <%= (status == "all") ? "checked" : "" %>>
             <label for="status_<%= status %>" class="orders__list--toggle__label breadcrumb-item">
               <%= status %>
               <span class="badge badge-primary badge-pill">
