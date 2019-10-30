@@ -15,6 +15,11 @@ $whitegreen: #d6efc3;
 $transparent_palegreen: rgba(200,234,175,0.9);
 $transparent_darkgreen: rgba(46, 94, 26,0.9);
 
+#homepage_hero_carousel {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
 #homepage_hero_carousel img {
   height: 35em;
   width: 100%;
