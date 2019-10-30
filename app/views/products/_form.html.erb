@@ -1,16 +1,14 @@
 <main>
-  <h2><%=action_name%> Product</h2>
+  <section class="show_page">
+  <h3 class="show_page__header">
+    <%=action_name%> Product
+  </h3>
   
-  <section>
+  <section class="product-forms">
   <%= form_with model: @product do |f| %>
     <div class="form-group">
-      <label>Category</label>
-      <select class="form-control" name="category.name">
-      
-      <% Category.all.each do |category|%>
-      <option value= <% category.name %>><%= category.name %></option>
-      <%end%>
-      </select>
+      <%= f.label :categories, class:"checkbox-inline" %>
+      <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :name) %>
     </div>
 
     <div class="form-group">
@@ -47,6 +45,6 @@
       <%= f.submit "#{action_name}", class:"btn btn-primary" %>
     </div>
     <%end%>
-  
+  </section>
   </section>
 </main>

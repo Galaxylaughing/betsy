@@ -13,9 +13,6 @@ class ProductsController < ApplicationController
       redirect_to products_path
       return
     end
-    # if session[:user_id] && session[:user_id] == @product.user_id
-    #   render :user_show
-    # end
   end
   
   def new
@@ -47,11 +44,12 @@ class ProductsController < ApplicationController
   end
   
   def update
+    user_id = session[:user_id]
     @product = Product.find_by(id: params[:id])
     
     if @product.update(product_params)
       flash[:success] = "Product successfully updated."
-      redirect_to product_path(@product.id)
+      redirect_to dashboard_path(user_id)
       return
     else
       flash[:warning] = "Can't update product."
@@ -83,6 +81,6 @@ class ProductsController < ApplicationController
   private
   
   def product_params
-    return params.require(:product).permit(:name, :user_id, :description, :price, :photo_url, :stock, :available)
+    return params.require(:product).permit(:name, :user_id, :description, :price, :photo_url, :stock, :available, category_ids: [])
   end
 end
