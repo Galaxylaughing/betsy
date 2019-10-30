@@ -17,6 +17,8 @@ class Order < ApplicationRecord
   def update_stock
     self.order_items.each do |oi|
       oi.product.stock -= oi.quantity
+      oi.product.save
     end
+    
   end
-end
+end 

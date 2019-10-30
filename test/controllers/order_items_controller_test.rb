@@ -24,7 +24,7 @@ describe OrderItemsController do
         
         must_redirect_to product_path(@product_cactus.id)
       end
-
+      
       it 'does not create a new order_item given invalid data while not logged in, and redirects the user to the products page' do
         invalid_item_hash = {
           order_item: {
@@ -119,7 +119,7 @@ describe OrderItemsController do
         }.must_differ 'OrderItem.count', 1
         must_redirect_to product_path(@product_cactus.id)
       end
-
+      
       it 'does not create a new order_item given invalid data while logged in, and redirects the user to the products page' do
         invalid_item_hash = {
           order_item: {
