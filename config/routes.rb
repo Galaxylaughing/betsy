@@ -18,9 +18,11 @@ Rails.application.routes.draw do
     resources :order_items, only: [:create, :destroy, :update]
   end 
   
-  resources :products
+  resources :products do
+    resources :reviews, only: [:create, :show]
+  end
+
   resources :orders
-  resources :reviews 
   
   
   get "/auth/github", as: "github_login"
