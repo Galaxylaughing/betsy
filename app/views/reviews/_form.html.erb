@@ -1,0 +1,17 @@
+<div>
+  <%= form_with model: @review, url: "/products/#{(@product_id)}/reviews", class: "review-input" do |form| %>
+    <div>
+      <div class="dropdown">
+        <label>Rating</label>
+        <%= form.number_field :rating, in: 1..5 %>
+      </div>
+      <div class="form-group">
+        <label>Comment</label>
+        <%= form.text_field :comment, class:"form-control"%>
+      </div>
+      <div class="form-group">
+        <%= form.submit "Submit", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>
