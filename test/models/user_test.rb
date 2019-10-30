@@ -607,6 +607,98 @@ describe User do
     end
   end
   
+  describe "get order status" do  
+    # if a user has one order, all their order_items, and they are all paid (order should be paid)
+    #   => {paid: [order]}, guava_shop_order
+    it "is paid if all the order items are paid" do
+      user = users(:guava)
+      response = user.get_order_status(orders(:guava_shop_order))
+      
+      expect(response).must_equal :paid
+    end
+    
+    # if a user has one order, all their order_items, and they are all complete but one is paid (order should be paid)
+    #   => {paid: [order]}, pineapple_shop_order
+    it "is paid if one order item is complete and one is paid" do
+      user = users(:pineapple)
+      response = user.get_order_status(orders(:pineapple_shop_order))
+      
+      expect(response).must_equal :paid
+    end
+    
+    # if a user has one order, all their order_items, and they are all complete but one is cancelled (order should be complete)
+    #   => {complete: [order]}, orange_shop_order
+    it "is complete if one order item is complete and one is cancelled" do
+      user = users(:orange)
+      response = user.get_order_status(orders(:orange_shop_order))
+      
+      expect(response).must_equal :complete
+    end
+    
+    # if a user has one order, all their order_items, and they are all complete (order should be complete)
+    #   => {complete: [order]}, plum_shop_order
+    it "is complete if all the order items are complete" do
+      user = users(:plum)
+      response = user.get_order_status(orders(:plum_shop_order))
+      
+      expect(response).must_equal :complete
+    end
+    
+    # if a user has one order, half their order_items, and they are all paid & other half is complete (order should be paid)
+    #   => {paid: [order]}, peach_shop_order
+    it "is paid if all this users's order items are paid" do
+      user = users(:peach)
+      response = user.get_order_status(orders(:peach_shop_order))
+      
+      expect(response).must_equal :paid
+    end
+    
+    # if a user has one order, half their order_items, and they are all complete but one is paid & other half is paid (order should be paid)
+    #   => {paid: [order]}, carrot_shop_order
+    it "is paid if one of this users's order items is complete and one is paid" do
+      user = users(:carrot)
+      response = user.get_order_status(orders(:carrot_shop_order))
+      
+      expect(response).must_equal :paid
+    end
+    
+    # if a user has one order, half their order_items, and they are all complete but one is cancelled & other half is paid (order should be complete)
+    #   => {complete: [order]}, berry_shop_order
+    it "is paid if one of this users's order items is complete and one is cancelled" do
+      user = users(:berry)
+      response = user.get_order_status(orders(:berry_shop_order))
+      
+      expect(response).must_equal :complete
+    end
+    
+    # if a user has one order, half their order_items, and they are all complete & other half is paid (order should be complete)
+    #   => {complete: [order]}, melon_shop_order
+    it "is paid if all this users's order items are complete" do
+      user = users(:melon)
+      response = user.get_order_status(orders(:melon_shop_order))
+      
+      expect(response).must_equal :complete
+    end
+    
+    # if a user has one order, half their order_items, and they are all cancelled & other half is paid (order should be cancelled)
+    #   => {cancelled: [order]}, grapefruit_shop_order
+    it "is cancelled if all this users's order items are cancelled" do
+      user = users(:grapefruit)
+      response = user.get_order_status(orders(:grapefruit_shop_order))
+      
+      expect(response).must_equal :cancelled
+    end
+    
+    # if a user has one order, half their order_items, and they are all pending & other half is paid (order should be pending)
+    #   => {pending: [order]}, apricot_shop_order
+    it "is pending if all this users's order items are pending" do
+      user = users(:apricot)
+      response = user.get_order_status(orders(:apricot_shop_order))
+      
+      expect(response).must_equal :pending
+    end
+  end
+  
   describe "find orders by status" do
     let(:user) {
       users(:mango)

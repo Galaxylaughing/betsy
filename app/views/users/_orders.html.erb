@@ -40,7 +40,7 @@
             </span>
           </h5>
           <div>
-            <%= order.status %>
+            <%= @user.get_order_status(order).to_s %>
           </div>
         </div>
 

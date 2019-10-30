@@ -37,11 +37,6 @@ class User < ApplicationRecord
   #   end
   # end
   
-  def find_order_items
-    matching_order_items = self.products.flat_map{ |prod| prod.order_items }
-    return matching_order_items
-  end
-  
   def find_orders
     matching_orders = self.products.flat_map{ |prod| prod.order_items }.map{ |oi| oi.order }.uniq
     return matching_orders
@@ -100,10 +95,21 @@ class User < ApplicationRecord
     end
   end
   
+  def get_order_status(order)
+    result = find_order_statuses()
+    return result[:status_for_orders][order.id]
+  end
+  
   def sort_orders_by_status()
+    result = find_order_statuses()
+    return result[:orders_by_status]
+  end
+  
+  def find_order_statuses()
     orders = self.find_orders()
     
     orders_by_status = {}
+    status_for_orders = {}
     
     orders.each do |order|
       # create a hash of this order's statuses
@@ -126,34 +132,42 @@ class User < ApplicationRecord
           # add order item status to possible order statuses hash
           if orders_by_status[oi_status].nil?
             orders_by_status[oi_status] = []
-          end
-        end
-      end
+          end # if nil?
+        end # if user orderitem
+      end # each orderitem
       
       # now there's hash of the statuses of the order_items
       # calculate the order status based on that
       if oi_count == oi_statuses[:complete]
         # if all members are complete, the order is complete
-        orders_by_status[:complete] << order
+        status = :complete
       elsif oi_count == oi_statuses[:cancelled]
         # if all members are cancelled, the order is cancelled
-        orders_by_status[:cancelled] << order
+        status = :cancelled
       elsif oi_count == oi_statuses[:paid]
         # if all members are paid, the order is paid
-        orders_by_status[:paid] << order
+        status = :paid
       elsif oi_statuses[:cancelled] && oi_statuses[:complete] && oi_statuses[:paid].blank? && oi_statuses[:pending].blank?
         # if some members are complete and some cancelled, the order is complete
-        orders_by_status[:complete] << order
+        status = :complete
       elsif oi_statuses[:paid] && oi_statuses[:complete] && oi_statuses[:cancelled].blank? && oi_statuses[:pending].blank?
         # if some members are paid and some are complete, the order is paid
-        orders_by_status[:paid] << order
-      elsif oi_count == oi_statuses[:pending]
+        status = :paid
+      else
         # if all members are pending, the order is pending
-        orders_by_status[:pending] << order
+        status = :pending
       end
+      
+      orders_by_status[status] << order
+      status_for_orders[order.id] = status
     end
     
-    return orders_by_status
+    result = {
+      orders_by_status: orders_by_status,
+      status_for_orders: status_for_orders,
+    }
+    
+    return result
   end
   
   def self.build_from_github(auth_hash)
