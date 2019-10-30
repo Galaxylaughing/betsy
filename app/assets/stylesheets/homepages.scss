@@ -101,3 +101,28 @@ $transparent_darkgreen: rgba(46, 94, 26,0.9);
   object-fit: cover;
   border-radius: 0;
 }
+
+// Register as Merchant Page
+
+.sign_up {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 8rem 0;
+}
+
+.sign_up h2 {
+  margin-bottom: 2rem;
+}
+
+.sign_up a {
+  width: max-content;
+  margin: auto;
+
+  font-size: 1.5em;
+  margin-top: 2rem;
+}
+
+.sign_up .fa-github {
+  color: white;
+}
