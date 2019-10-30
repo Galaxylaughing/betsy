@@ -51,7 +51,7 @@ describe OrderItemsController do
       it 'can delete an order_item successfully while not logged in' do
         new_order_item = OrderItem.create(product_id: @product_cactus.id, quantity: 3, order_id: @order.id,)
         expect {
-          delete "/products/#{@product_cactus.id}/order_items/#{new_order_item.id}"
+          delete oi_destroy_path(new_order_item.id)
         }.must_change 'OrderItem.count', 1
       end
     end
