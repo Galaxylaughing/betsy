@@ -21,17 +21,19 @@ Rails.application.routes.draw do
   resources :products do
     resources :reviews, only: [:new, :create, :show, :index]
   end
-
+  
   resources :orders
   resources :reviews 
   resources :order_items, only: [:create, :show, :destroy]
-
+  
   get "/auth/github", as: "github_login"
   get "/auth/:provider/callback", to: "users#create", as: "callback"
   delete "/logout", to: "users#destroy", as: "logout"
   
   # post '/order_items/', to: 'order_items#create'
   post '/order_items/:id/', to: 'order_items#complete', as: "mark_complete"
+  
+  get '/register', to: 'homepages#register', as: "register_account"
   
   get "/log_in", to: "users#login_form", as: "log_in"
   post "/log_in", to: "users#login"
