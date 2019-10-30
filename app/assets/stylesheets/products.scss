@@ -22,23 +22,24 @@ $midgreen: #428625;
 }
 
 .product_image_show {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   margin-bottom: 10%;
   margin-left: 10%;
   object-fit: cover;
-  border-radius: 20%;
+  border-radius: 10%;
   opacity: 0.9;
 }
 
 .product_data {
   margin-top: 2%;
-  margin-left: 5%;
+  margin-left: 4%;
+  margin-bottom: 3%;
 }
 
 .product_data_extra {
-  margin-top: 5%;
-  margin-left: 10%;
+  margin-top: 3%;
+  margin-left: 3%;
 }
 
 .index_page_product-container {  
@@ -63,7 +64,7 @@ a:hover {
 .product_image {
   width: 300px;
   height: 300px;
-  border-radius: 20%;
+  border-radius: 10%;
   margin-left: 5%;
   opacity: 0.9;
   object-fit: cover
