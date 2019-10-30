@@ -81,7 +81,7 @@ describe 'custom methods' do
   end
   
   describe 'update_stock' do
-    # let(:order) { orders(:bear_orchid_hollyhock)}
+    ## let(:order) { orders(:bear_orchid_hollyhock)}
     
     it 'decreases the stock for a particular item' do
       product = products(:begonia)
