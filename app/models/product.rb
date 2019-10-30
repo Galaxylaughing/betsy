@@ -30,7 +30,6 @@ class Product < ApplicationRecord
     end
   end
 
-  
   def calculate_average_rating
     product_ratings = []
     
@@ -42,4 +41,7 @@ class Product < ApplicationRecord
     average_rating = total_rating / product_ratings.length
     return average_rating
   end
-end
+  
+  def self.sample_products_for_homepage()
+    return Product.order(Arel.sql("RANDOM()")).limit(5)
+  end
