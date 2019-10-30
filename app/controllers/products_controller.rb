@@ -59,24 +59,25 @@ class ProductsController < ApplicationController
     end
   end
   
-  # def destroy
-  #   product_id = params[:id]
-  #   @product = Product.find_by(id: product_id)
-  
-  #   if @product.nil?
-  #     head :not_found
-  #     return
-  #   end
-  
-  #   if @product.destroy
-  #     flash[:success] = "Product successfully deleted."
-  #     redirect_to products_path
-  #     return
-  #   else
-  #     flash[:warning] = "Can't delete product."
-  #     redirect_to products_path
-  #   end 
-  # end
+  def retire
+    user_id = logged_in?
+    
+    if user_id
+      product_id = params[:id]
+      product_id = Product.find_by(id: product_id)
+      
+      product.available = false
+      
+      if product.save
+        flash[:success] = "Product successfully retired."
+        redirect_to dashboard_path(user_id)
+      else 
+        flash[:warning] = "Can't retire product."
+        redirect_to dashboard_path(user_id)
+      end  
+      return
+    end
+  end
   
   private
   
