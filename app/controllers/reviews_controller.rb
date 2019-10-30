@@ -1,12 +1,8 @@
 class ReviewsController < ApplicationController
-  before_action :find_order, only: [:show, :edit, :update, :destroy]
+  before_action :find_order, only: [:show]
 
   def new
     @review = Review.new
-  end
-  
-  def index
-    @reviews = Review.all
   end
   
   def show ; end
