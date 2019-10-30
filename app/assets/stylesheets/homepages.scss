@@ -1,3 +1,53 @@
 // Place all the styles related to the Homepages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$green: #428625;
+$lightgreen: #68a418;
+$highlight_lightgreen: #5da22c;
+$midgreen: #428625;
+$darkgreen: #2e5e1a;
+$verydarkgreen: #174326;
+$brightgreen: #b7f702;
+$palegreen: #c8eaaf;
+$whitegreen: #d6efc3;
+
+$transparent_palegreen: rgba(200,234,175,0.9);
+$transparent_darkgreen: rgba(46, 94, 26,0.9);
+
+#homepage_hero_carousel img {
+  height: 35em;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  color: white;
+  background-color: $transparent_darkgreen;
+  border-radius: 3rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.carousel-caption h5 {
+  text-decoration: underline;
+}
+
+.carousel-caption:hover {
+  background-color: $transparent_palegreen;
+  color: black;
+}
+
+.carousel-caption:hover > *:last-child {
+  display: none;
+}
+
+.carousel-caption:hover::after {
+  content: "See Product";
+  font-size: 1.2em;
+  color: $brightgreen;
+
+  background-color: $transparent_darkgreen;
+  border-radius: 1.2rem;
+  padding: 0.3rem 1rem;
+}

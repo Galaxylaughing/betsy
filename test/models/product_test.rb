@@ -111,4 +111,18 @@ describe Product do
       assert_not_nil(@product.user_id)
     end
   end
+  
+  describe "sample_products_for_homepage" do
+    it "can get a list of products from the database" do
+      result = Product.sample_products_for_homepage()
+      
+      expect(result).wont_be_nil
+      
+      result.each do |item|
+        expect(item).must_be_instance_of Product
+      end
+      
+      expect(result.length).must_equal 5
+    end
+  end
 end

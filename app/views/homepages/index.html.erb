@@ -1,0 +1,42 @@
+<%# feature carousel %>
+<%# get a selection of products %>
+<% carousel_products = Product.sample_products_for_homepage() %>
+<% first_product = carousel_products.first %>
+
+<div id="homepage_hero_carousel" class="carousel slide" data-ride="carousel">
+  <%# carousel page indicators at bottom of carousel %>
+  <ol class="carousel-indicators">
+    <% num_slides = carousel_products.length %>
+    <% num_slides.times do |index| %>
+        <li data-target="#homepage_hero_carousel" data-slide-to=<%= index %> class=<%= (index == 0) ? "active" : "" %>></li>
+    <% end %>
+  </ol>
+
+  <%# carousel items %>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src=<%= first_product.photo_url %> alt=<%= first_product.name %>>
+      <%= render partial: 'carousel_caption', locals: {product: first_product} %>
+    </div>
+    <% carousel_products[1..-1].each do |product| %>
+      <div class="carousel-item">
+        <img class="d-block" src=<%= product.photo_url %> alt=<%= product.name %>>
+        <%# carousel image captions %>
+        <%= render partial: 'carousel_caption', locals: {product: product} %>
+      </div>
+    <% end %>
+  </div>
+
+  <%# carousel previous-next page controls %>
+  <a class="carousel-control-prev" href="#homepage_hero_carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#homepage_hero_carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<%# product tiles %>
+<%# 'shop for x category' with a row of tiles %>
