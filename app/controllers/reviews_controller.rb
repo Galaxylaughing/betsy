@@ -10,8 +10,6 @@ class ReviewsController < ApplicationController
   end
   
   def show ; end
-  
-  def edit ; end
 
   def create
     @review = Review.new(review_params) 
@@ -25,5 +23,6 @@ class ReviewsController < ApplicationController
       redirect_to root_path
       return
     end
-  end 
+  end
+
 end
