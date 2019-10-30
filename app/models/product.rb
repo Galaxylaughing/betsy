@@ -17,17 +17,16 @@ class Product < ApplicationRecord
   # end
   
   def available_stock(order_id)
-    order = Order.find(order_id)
-    
-    if order_id.nil? || order.order_items.count == 0
-      return self.stock
+    if order_id.nil?
+      return self.stock    
     else
-      
+      order = Order.find(order_id)
       order.order_items.each do |oi|
         if oi.product_id == self.id
           return self.stock - oi.quantity.to_i
-        end
+        end  
       end
+      return self.stock
     end
   end
 end
