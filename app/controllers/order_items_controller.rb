@@ -16,17 +16,23 @@ class OrderItemsController < ApplicationController
     
     order = Order.find(session[:order_id])
     
+    # if order item already exists in cart, increase quantity.
     order.order_items.each do |oi|
       if oi.product.id == order_items[:product_id]
-        oi.quantity += order_items[:quantity]
-        oi.save
-        
-        flash[:success] = "Successfully updated quantity."
-        redirect_to product_path(order_items[:product_id])
-        return
+        if oi.quantity + order_items[:quantity] > oi.product.stock
+          flash[:failure] = "Sorry, there are not enough items in stock."
+          redirect_to product_path(order_items[:product_id])
+          return
+        else
+          oi.quantity += order_items[:quantity]
+          oi.save
+          
+          flash[:success] = "Successfully updated quantity."
+          redirect_to product_path(order_items[:product_id])
+          return
+        end
       end
     end
-    
     
     order_item = OrderItem.new(order_items)
     if order_item.save
