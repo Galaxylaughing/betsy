@@ -1,36 +1,52 @@
-<div>
-  <%= form_with model: @order, class: "ord-input" do |form| %>
-    <div>
-      <div class="form-group">
-        <label>Name</label>
+<main>  
+  <section class="show_page">
+  <h3 class="show_page__header">
+    Checkout
+  </h3>
+
+  <div>
+    <%= form_with model: @order, class: "ord-input" do |form| %>
+  <div>
+  
+  <section class="product-forms">
+    <div class="form-group">
+      <label>Name</label>
         <%= form.text_field :name, class:"form-control" %>
-      </div>
-      <div class="form-group">
-        <label>Address</label>
-        <%= form.text_field :address, class:"form-control"%>
-      </div>
-      <div class="form-group">
-        <label>email</label>
-        <%= form.text_field :email, class:"form-control" %>
-      </div>
-      <div class="form-group">
+    </div>
+    
+    <div class="form-group">
+      <label>Address</label>
+      <%= form.text_field :address, class:"form-control"%>
+    </div>
+    
+    <div class="form-group">
+      <label>Email</label>
+      <%= form.text_field :email, class:"form-control" %>
+    </div>
+    
+    <div class="form-group">
         <label>Credit Card Number</label>
         <%= form.text_field :cc_num, class:"form-control" %>
-      </div>
-      <div class="form-group">
-        <label>Expiration Date</label>
-        <%= form.text_field :exp_date, class:"form-control" %>
-      </div>
-            <div class="form-group">
-        <label>CCV</label>
-        <%= form.text_field :cvv_code, class:"form-control" %>
-      </div>
-            <div class="form-group">
-        <label>Billing Zip Code</label>
-        <%= form.text_field :zip, class:"form-control" %>
-      </div>
-      <div class="form-group">
-        <%= form.submit "Complete Order", class: 'btn btn-primary' %>
-      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Expiration Date</label>
+      <%= form.text_field :exp_date, class:"form-control" %>
+    </div>
+            
+    <div class="form-group">
+      <label>CCV</label>
+      <%= form.text_field :cvv_code, class:"form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <label>Billing Zip Code</label>
+      <%= form.text_field :zip, class:"form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit "Complete Order", class: 'btn btn-primary' %>
+    </div>
     <% end %>
-  </div>
+</section>
+</main>

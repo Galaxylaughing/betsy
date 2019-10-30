@@ -75,3 +75,15 @@ a:hover {
   margin-bottom: 10%;
   text-align: center;
 }
+
+.checkbox-inline {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: -1px;
+}
+
+.product-forms {
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
