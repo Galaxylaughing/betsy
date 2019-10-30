@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   
   post '/order_items/', to: 'order_items#create'
   post '/order_items/:id/', to: 'order_items#complete', as: "mark_complete"
+  delete '/order_items/:id/', to: 'order_items#destroy', as: "oi_destroy"
   
   get "/log_in", to: "users#login_form", as: "log_in"
   post "/log_in", to: "users#login"

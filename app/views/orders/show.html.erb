@@ -19,6 +19,7 @@ Order # <%= order.id %>
   <td><%= oi.quantity %></td>
   <td>$<%= oi.product.price %></td>
   <td>$<%= oi.subtotal %></td>
+  <td><%= link_to "Remove", oi_destroy_path(oi.id), method: :delete %></td>
     </tr>
 <% end %>
   <tr></tr>

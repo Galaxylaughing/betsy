@@ -40,17 +40,6 @@ class OrderItemsController < ApplicationController
     end
   end
   
-  # order_item = OrderItem.new(order_items)
-  # if order_item.save
-  #   flash[:success] = "Successfully added item to your cart."
-  #   redirect_to product_path(order_items[:product_id])
-  # else
-  
-  #   flash[:failure] = "Item could not be added to your cart."
-  #   redirect_to product_path(order_items[:product_id])
-  # end
-  #end
-  
   #Delete is going to be "remove products from my cart."
   
   def destroy

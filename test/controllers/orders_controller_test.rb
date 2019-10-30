@@ -75,13 +75,6 @@ describe OrdersController do
         }.must_differ 'Order.count', 0
       end
     end
-    
-    # describe 'checkout (update)' do
-    #   it 'clears the cart' do
-    
-    
-    #   end
-    # end
   end
   
   describe "Logged in users" do
