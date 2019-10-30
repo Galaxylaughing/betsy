@@ -56,6 +56,26 @@ describe OrdersController do
         }.must_differ 'Order.count', 1
         must_redirect_to root_path
       end
+
+      it "takes the date using the regex in order to create the order" do
+        order_hash = {
+          order: {
+            address: "Redmond", 
+            name: "Georgina", 
+            cc_num: "1111111111111111", 
+            cvv_code: "123", 
+            zip: "98004",
+            exp_date: "10/20", 
+            email: "blank@gmail.com",
+            status: "pending"
+          }
+        }
+
+        new_order = Order.create(order_hash[:order])
+        new_order.update(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", exp_date: "abc10/2020", email: "blank@gmail.com", status: "pending")
+        updated_order = Order.find_by(id: new_order.id)
+        expect(updated_order.exp_date).must_equal "10/20"
+      end
     end
   end
 

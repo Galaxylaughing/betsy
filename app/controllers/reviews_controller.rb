@@ -21,11 +21,11 @@ class ReviewsController < ApplicationController
       }
     @review = Review.new(review_info) 
     if @review.save
-      flash[:success] = "Your review was successfully submited."
+      flash[:success] = "Your review was successfully submitted."
       redirect_to root_path
       return
     else
-      flash[:failure] = "Your review couldn't be submited."
+      flash[:failure] = "Your review couldn't be submitted."
       redirect_to root_path
       return
     end
