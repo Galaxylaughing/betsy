@@ -24,8 +24,8 @@
   <% order.order_items.each do |oi| %>
     <td><%= oi.product.name %></td> 
     <td><%= oi.quantity %></td>
-    <td>$<%= oi.product.price %></td>
-    <td>$<%= oi.subtotal %></td>
+    <td>$<%= render_price(oi.product.price) %></td>
+    <td>$<%= render_price(oi.subtotal) %></td>
     </tr>
   <% end %>
     <tr></tr>
@@ -33,7 +33,7 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>TOTAL: $<%= order.total %></td>
+    <td>TOTAL: $<%= render_price(order.total) %></td>
     </tr>
     </tbody>
   </table>

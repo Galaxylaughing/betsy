@@ -16,9 +16,12 @@ describe OrdersController do
     
     describe "show" do
       it "gives back a successful response" do
-        order = Order.new(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", email: "blank@gmail.com", exp_date: "10/20", status: "pending")
+        order = Order.new
         order.save
-        get order_path(order.id)
+        
+        new_order = Order.find(order.id)
+        
+        get order_path(new_order.id)
         must_respond_with :success
       end
     end
@@ -75,13 +78,6 @@ describe OrdersController do
         }.must_differ 'Order.count', 0
       end
     end
-    
-    # describe 'checkout (update)' do
-    #   it 'clears the cart' do
-    
-    
-    #   end
-    # end
   end
   
   describe "Logged in users" do

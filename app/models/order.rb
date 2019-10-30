@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   has_many :order_items
   
-  validates :address, :name, :cc_num, :cvv_code, :zip, presence: true, on: :update
+  validates :address, :name, :cc_num, :cvv_code, :exp_date, :zip, presence: true, on: :update
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, on: :update
   validates :exp_date, presence: true, on: :update
   

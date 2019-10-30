@@ -15,4 +15,19 @@ class Product < ApplicationRecord
   # def self.sort_by_category(category)
   #   self.where(category: category)
   # end
+  
+  def available_stock(order_id)
+    order = Order.find(order_id)
+    
+    if order_id.nil? || order.order_items.count == 0
+      return self.stock
+    else
+      
+      order.order_items.each do |oi|
+        if oi.product_id == self.id
+          return self.stock - oi.quantity.to_i
+        end
+      end
+    end
+  end
 end
