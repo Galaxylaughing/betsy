@@ -1,5 +1,5 @@
 <div>
-  <%= form_with model: @review, class: "ord-input" do |form| %>
+  <%= form_with model: @review, url: "/products/#{(@product_id)}/reviews", class: "review-input" do |form| %>
     <div>
       <div class="dropdown">
         <label>Rating</label>
@@ -12,5 +12,6 @@
       <div class="form-group">
         <%= form.submit "Submit", class: 'btn btn-primary' %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>

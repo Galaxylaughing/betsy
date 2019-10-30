@@ -1,15 +1,25 @@
 class ReviewsController < ApplicationController
   before_action :find_review, only: [:show]
 
+  def index
+    @reviews = Review.all
+  end
+
   def new
     @review = Review.new
+    @product_id = product_id_param
   end
   
-  def show ; end
+  def show
+  end
 
   def create
-    @review = Review.new(review_params) 
-    
+    review_info = {
+      comment: review_params[:comment],
+      rating: review_params[:rating],
+      product_id: product_id_param
+      }
+    @review = Review.new(review_info) 
     if @review.save
       flash[:success] = "Your review was successfully submited."
       redirect_to root_path
@@ -24,6 +34,10 @@ class ReviewsController < ApplicationController
   private
   def review_params
     params.require(:review).permit(:rating, :comment)
+  end
+
+  def product_id_param
+    params.require(:product_id)
   end
   
   def find_review

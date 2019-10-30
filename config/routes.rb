@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   end 
   
   resources :products do
-    resources :reviews, only: [:create, :show]
+    resources :reviews, only: [:new, :create, :show, :index]
   end
 
   resources :orders
-  
+  resources :reviews #Do not delete! this is needed 
   
   get "/auth/github", as: "github_login"
   get "/auth/:provider/callback", to: "users#create", as: "callback"
