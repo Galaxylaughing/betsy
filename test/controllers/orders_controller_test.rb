@@ -16,8 +16,7 @@ describe OrdersController do
 
     describe "show" do
       it "gives back a successful response" do
-        order = Order.new(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", email: "blank@gmail.com", exp_date: "10/20", status: "pending")
-        order.save
+        order = Order.create(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", email: "blank@gmail.com", exp_date: "10/20", status: "pending")
         get order_path(order.id)
         must_respond_with :success
       end
@@ -45,7 +44,8 @@ describe OrdersController do
             name: "Georgina", 
             cc_num: "1111111111111111", 
             cvv_code: "123", 
-            zip: "98004", 
+            zip: "98004",
+            exp_date: "10/20", 
             email: "blank@gmail.com",
             status: "pending"
           }
@@ -55,24 +55,6 @@ describe OrdersController do
           post orders_path, params: order_hash
         }.must_differ 'Order.count', 1
         must_redirect_to root_path
-      end
-
-
-      it 'creates a new order successfully with valid data while not logged in, and redirects the user to the products page' do
-        order_hash = {
-          order: {
-            address: "Redmond", 
-            cc_num: "1111111111111111", 
-            cvv_code: "123", 
-            zip: "98004", 
-            email: "blank@gmail.com",
-            status: "pending"
-          }
-        }
-
-        expect {
-          post orders_path, params: order_hash
-        }.must_differ 'Order.count', 0
       end
     end
   end
@@ -96,7 +78,7 @@ describe OrdersController do
     
     describe "show" do
       it "gives back a successful response" do
-        order = Order.create(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", email: "blank@gmail.com", status: "pending")
+        order = Order.create(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", email: "blank@gmail.com", status: "pending", exp_date: "10/20")
         get order_path(order.id)
         must_respond_with :success
       end
@@ -112,6 +94,7 @@ describe OrdersController do
             cvv_code: "123", 
             zip: "98004", 
             email: "blank@gmail.com",
+            exp_date: "10/20",
             status: "pending"
           }
         }
@@ -131,6 +114,7 @@ describe OrdersController do
             cvv_code: "123", 
             zip: "98004", 
             email: "blank@gmail.com",
+            exp_date: "10/20",
             status: "pending"
           }
         }

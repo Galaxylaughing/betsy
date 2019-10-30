@@ -7,7 +7,7 @@ describe OrderItemsController do
         @user = User.create(username: "georgina", email: "geor@gmail.com")
         @product_cactus = Product.create(user_id: @user.id, name: "cactus", description: "cool product", price: 1.9, photo_url: "url", stock: 3)
         @product_flower = Product.create(user_id: @user.id, name: "flower", description: "cool flower", price: 1.5, photo_url: "url", stock: 3)
-        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com")
+        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com", exp_date: "10/20")
         @order_item_hash = {
           order_item: {
             product_id: @product_cactus.id,
@@ -45,7 +45,7 @@ describe OrderItemsController do
         @user = User.create(username: "georgina", email: "geor@gmail.com")
         @product_cactus = Product.create(user_id: @user.id, name: "cactus", description: "cool product", price: 1.9, photo_url: "url", stock: 3)
         @product_flower = Product.create(user_id: @user.id, name: "flower", description: "cool flower", price: 1.5, photo_url: "url", stock: 3)
-        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com")
+        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com", exp_date: "10/20")
       end
       
       it 'can delete an order_item successfully while not logged in' do
@@ -61,7 +61,7 @@ describe OrderItemsController do
         @user = User.create(username: "georgina", email: "geor@gmail.com")
         @product_cactus = Product.create(user_id: @user.id, name: "cactus", description: "cool product", price: 1.9, photo_url: "url", stock: 3)
         @product_flower = Product.create(user_id: @user.id, name: "flower", description: "cool flower", price: 1.5, photo_url: "url", stock: 3)
-        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com")
+        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com", exp_date: "10/20")
         @new_order_item = OrderItem.create(product_id: @product_cactus.id, quantity: 3, order_id: @order.id,)
         @updated_order_item_hash = {
           order_item: {
@@ -102,7 +102,7 @@ describe OrderItemsController do
         @user = User.create(username: "georgina", email: "geor@gmail.com")
         @product_cactus = Product.create(user_id: @user.id, name: "cactus", description: "cool product", price: 1.9, photo_url: "url", stock: 3)
         @product_flower = Product.create(user_id: @user.id, name: "flower", description: "cool flower", price: 1.5, photo_url: "url", stock: 3)
-        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com")
+        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com", exp_date: "10/20")
         @order_item_hash = {
           order_item: {
             product_id: @product_cactus.id,
@@ -140,7 +140,7 @@ describe OrderItemsController do
         @user = User.create(username: "georgina", email: "geor@gmail.com")
         @product_cactus = Product.create(user_id: @user.id, name: "cactus", description: "cool product", price: 1.9, photo_url: "url", stock: 3)
         @product_flower = Product.create(user_id: @user.id, name: "flower", description: "cool flower", price: 1.5, photo_url: "url", stock: 3)
-        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com")
+        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com", exp_date: "10/20")
       end
       
       it 'can delete an order_item successfully while logged in' do
@@ -156,7 +156,7 @@ describe OrderItemsController do
         @user = User.create(username: "georgina", email: "geor@gmail.com")
         @product_cactus = Product.create(user_id: @user.id, name: "cactus", description: "cool product", price: 1.9, photo_url: "url", stock: 3)
         @product_flower = Product.create(user_id: @user.id, name: "flower", description: "cool flower", price: 1.5, photo_url: "url", stock: 3)
-        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com")
+        @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com", exp_date: "10/20")
         @new_order_item = OrderItem.create(product_id: @product_cactus.id, quantity: 3, order_id: @order.id,)
         @updated_order_item_hash = {
           order_item: {
