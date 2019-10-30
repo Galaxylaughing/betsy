@@ -26,17 +26,15 @@ class Product < ApplicationRecord
           return self.stock - oi.quantity.to_i
         end  
       end
-      return self.stock
+      return self.stock 
     end
   end
 
   
   def calculate_average_rating(product_id)
-    product = Product.find(product_id)
-    
     product_ratings = []
     
-    product.reviews.each do |review|
+    self.reviews.each do |review|
       product_ratings << review.rating
     end
 
