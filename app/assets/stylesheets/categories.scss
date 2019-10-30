@@ -11,17 +11,17 @@ $midgreen: #428625;
 
 .category_title {
   text-align: center;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
   color: $verydarkgreen;
   border: 2px solid #2e5e1a;
 }
 
 .index_page_category-container {  
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 10%;
+  margin-right: 20%;
   margin-bottom: 2%;
   // border: 2px solid #431c5d;
 }
@@ -30,13 +30,15 @@ $midgreen: #428625;
   text-align: center;
   color: $lightgreen;
   margin-bottom: 5%;
+  margin-left: 18%;
 }
 
 .product_image_category {
   width: 300px;
   height: 300px;
-  border-radius: 20%;
-  margin-left: 10%;
+  border-radius: 10%;
+  margin-left: 27%;
+  margin-right: 10%;
   opacity: 0.9;
   object-fit: cover
 }

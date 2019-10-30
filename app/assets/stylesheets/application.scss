@@ -17,6 +17,10 @@
 /* Import scss content */
 @import "**/*";
 
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 $green: #428625;
 $lightgreen: #68a418;
 $highlight_lightgreen: #5da22c;
