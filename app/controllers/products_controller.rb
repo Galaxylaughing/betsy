@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   end
   
   def show
+    @order = session[:order_id] # added for custom method in model
     product_id = params[:id]
     @product = Product.find_by(id: params[:id])
     

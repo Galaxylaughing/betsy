@@ -24,7 +24,7 @@ describe OrderItemsController do
         
         must_redirect_to product_path(@product_cactus.id)
       end
-
+      
       it 'does not create a new order_item given invalid data while not logged in, and redirects the user to the products page' do
         invalid_item_hash = {
           order_item: {
@@ -51,7 +51,7 @@ describe OrderItemsController do
       it 'can delete an order_item successfully while not logged in' do
         new_order_item = OrderItem.create(product_id: @product_cactus.id, quantity: 3, order_id: @order.id,)
         expect {
-          delete "/products/#{@product_cactus.id}/order_items/#{new_order_item.id}"
+          delete order_item_path(new_order_item.id)
         }.must_change 'OrderItem.count', 1
       end
     end
@@ -71,6 +71,18 @@ describe OrderItemsController do
           }
         }
       end
+      
+      it 'cannot add more items to cart than are available in stock' do
+        @updated_order_item_hash[:order_item][:quantity] = 500
+        
+        expect{ 
+          patch "/products/#{@product_cactus.id}/order_items/#{@new_order_item.id})", params: @updated_order_item_hash
+        }.wont_differ "@order.order_items.count"
+        
+        expect(@order.errors).wont_be_nil
+        
+      end
+      
       it "can update an existing order_item while not logged in" do
         patch "/products/#{@product_cactus.id}/order_items/#{@new_order_item.id})", params: @updated_order_item_hash
         
@@ -119,7 +131,7 @@ describe OrderItemsController do
         }.must_differ 'OrderItem.count', 1
         must_redirect_to product_path(@product_cactus.id)
       end
-
+      
       it 'does not create a new order_item given invalid data while logged in, and redirects the user to the products page' do
         invalid_item_hash = {
           order_item: {
@@ -157,6 +169,7 @@ describe OrderItemsController do
         @product_cactus = Product.create(user_id: @user.id, name: "cactus", description: "cool product", price: 1.9, photo_url: "url", stock: 3)
         @product_flower = Product.create(user_id: @user.id, name: "flower", description: "cool flower", price: 1.5, photo_url: "url", stock: 3)
         @order = Order.create(address: "x", name: "x", cc_num: "x", cvv_code: "x", zip: "x", email: "blank@blank.com", exp_date: "10/20")
+        @order = Order.create
         @new_order_item = OrderItem.create(product_id: @product_cactus.id, quantity: 3, order_id: @order.id,)
         @updated_order_item_hash = {
           order_item: {

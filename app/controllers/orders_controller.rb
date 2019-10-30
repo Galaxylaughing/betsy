@@ -14,15 +14,16 @@ class OrdersController < ApplicationController
   def edit ; end
   
   def update
-    
     if @order.update(order_params)
-      
+      @order.status = "paid"
       session[:order_id] = nil
+      @order.update_stock
+      
       flash[:success] = "Your order is complete. Thank you for shopping at Plantsy!"
       
       redirect_to root_path
     else
-      flash[:failure] = "Something went wrong. Your order has not been processed"
+      flash[:error] = @order.errors.full_messages.to_sentence
       redirect_to request.referrer
     end
   end

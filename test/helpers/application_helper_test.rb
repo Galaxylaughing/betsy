@@ -30,4 +30,37 @@ describe ApplicationHelper do
       expect(result).must_equal "0.00"
     end
   end
+  
+  describe "render_rating" do
+    it "displays a rating of 5 as 5 filled stars" do
+      rating = 5
+      result = render_rating(rating)
+      expect(result).must_equal '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>'
+    end
+    
+    it "displays a rating of 3 as 3 filled stars and 2 empty" do
+      rating = 3
+      result = render_rating(rating)
+      expect(result).must_equal '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
+    end
+    
+    it "displays a rating of 1 as 1 filled star and 4 empty" do
+      rating = 1
+      result = render_rating(rating)
+      # assert_dom_equal(%{<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>}, result)
+      expect(result).must_equal '<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
+    end
+    
+    it "returns 'no rating' if the rating is nil" do
+      rating = nil
+      result = render_rating(rating)
+      expect(result).must_equal "no rating"
+    end
+  end
 end
+
+# test "should return the user's full name" do
+#   user = users(:david)
+
+#   assert_dom_equal %{<a href="/user/#{user.id}">David Heinemeier Hansson</a>}, link_to_user(user)
+# end

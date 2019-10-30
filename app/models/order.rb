@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   has_many :order_items
   
-  validates :address, :name, :cc_num, :cvv_code, :zip, presence: true, on: :update
+  validates :address, :name, :cc_num, :cvv_code, :exp_date, :zip, presence: true, on: :update
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, on: :update
   validates :exp_date, presence: true, format: { with: /\A(\d{2})\/(\d{2})\Z/ }, on: :update 
   
@@ -17,6 +17,8 @@ class Order < ApplicationRecord
   def update_stock
     self.order_items.each do |oi|
       oi.product.stock -= oi.quantity
+      oi.product.save
     end
+    
   end
-end
+end 
