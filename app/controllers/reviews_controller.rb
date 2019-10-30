@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_order, only: [:show]
+  before_action :find_review, only: [:show]
 
   def new
     @review = Review.new
@@ -21,4 +21,12 @@ class ReviewsController < ApplicationController
     end
   end
 
+  private
+  def review_params
+    params.require(:review).permit(:rating, :comment)
+  end
+  
+  def find_review
+    @review = Review.find_by_id(params[:id])
+  end
 end
