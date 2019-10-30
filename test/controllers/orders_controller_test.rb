@@ -76,12 +76,12 @@ describe OrdersController do
       end
     end
     
-    describe 'checkout (update)' do
-      it 'clears the cart' do
-        
-        
-      end
-    end
+    # describe 'checkout (update)' do
+    #   it 'clears the cart' do
+    
+    
+    #   end
+    # end
   end
   
   describe "Logged in users" do
