@@ -30,4 +30,19 @@ class Product < ApplicationRecord
       end
     end
   end
+
+  
+  def calculate_average_rating(product_id)
+    product = Product.find(product_id)
+    
+    product_ratings = []
+    
+    product.reviews.each do |review|
+      product_ratings << review.rating
+    end
+
+    total_rating = product_ratings.sum
+    average_rating = total_rating.to_f / product_ratings.length
+    return average_rating
+  end
 end

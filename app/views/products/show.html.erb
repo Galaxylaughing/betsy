@@ -30,9 +30,9 @@
     </br>
     <p><strong>Free shipping</strong></p>
     <p>Free shipping in all orders above $50</p>  
-
   </div>
-  <p><strong>Reviews</strong></p>
+  <p><strong>Ratings summary: <%= render_rating(@product.calculate_average_rating(@product.id)) %></strong></p>
+
   <table class="table">
     <thead>
       <tr>
