@@ -29,14 +29,14 @@ class Product < ApplicationRecord
       return self.stock 
     end
   end
-
+  
   def calculate_average_rating
     product_ratings = []
     
     self.reviews.each do |review|
       product_ratings << review.rating
     end
-
+    
     total_rating = product_ratings.sum
     average_rating = total_rating / product_ratings.length
     return average_rating
@@ -45,3 +45,4 @@ class Product < ApplicationRecord
   def self.sample_products_for_homepage()
     return Product.order(Arel.sql("RANDOM()")).limit(5)
   end
+end
