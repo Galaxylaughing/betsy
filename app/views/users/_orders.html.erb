@@ -31,6 +31,7 @@
         <hr class="dashboard__line_break"/>
 
         <div class="order__header">
+          <a href=<%= order_path(order.id) %>>
           <h5 class="order__header_title">
             <span class="order__header_title__item">
               Order #<%= order.id %>
@@ -39,6 +40,7 @@
               <%= render_date(order.created_at) %>
             </span>
           </h5>
+          </a>
           <div>
             <%= @user.get_order_status(order).to_s %>
           </div>
