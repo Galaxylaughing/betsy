@@ -36,19 +36,18 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Reviews</th>
         <th>Rating</th>
+        <th>Reviews</th>
       </tr>
     </thead>
     <tbody>
-      <% @product.rates.each do |rate| %>
+      <% @product.reviews.each do |review| %>
         <tr>
-          <td><%= rate.rating %></td>
-          <td><%= rate.coment %></td>
+          <td><%= review.rating %></td>
+          <td><%= review.comment %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
 </section>
 </main>
