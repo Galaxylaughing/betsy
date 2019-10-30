@@ -1,5 +1,4 @@
 <%# feature carousel %>
-<%# get a selection of products %>
 <% carousel_products = Product.sample_products_for_homepage() %>
 <% first_product = carousel_products.first %>
 
@@ -40,3 +39,27 @@
 
 <%# product tiles %>
 <%# 'shop for x category' with a row of tiles %>
+<div class="homepage__shop">
+  <% categories = Category.all %>
+
+  <% categories.each do |category| %>
+    <div class="homepage_category_wrapper">
+      <h3 class="homepage_category_title">
+        Shop for <%= category.name %>
+      </h3>
+
+      <div class="homepage_product_card_wrapper">
+        <% category.products.each do |product| %>
+          <div class="card">
+            <img src=<%= product.photo_url %> alt=<%= product.name %> class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"><%= product.name %></h5>
+              <p class="card-text"><%= product.description %></p>
+              <a href=<%= product_path(product.id) %> class="btn btn-primary">See Plant</a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
