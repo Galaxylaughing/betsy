@@ -30,7 +30,25 @@
     </br>
     <p><strong>Free shipping</strong></p>
     <p>Free shipping in all orders above $50</p>  
+
   </div>
+  <p><strong>Reviews</strong></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Reviews</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @product.rates.each do |rate| %>
+        <tr>
+          <td><%= rate.rating %></td>
+          <td><%= rate.coment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 </section>
 </main>
