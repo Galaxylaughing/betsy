@@ -1,0 +1,16 @@
+bellflower_review_1:
+  rating: 1
+  comment: "dead on arrival"
+  product: bellflower
+bellflower_review_2:
+  rating: 5
+  comment: "my new favorite plant"
+  product: bellflower
+hollyhock_review_1:
+  rating: 4
+  comment: "pretty great"
+  product: hollyhock
+hollyhock_review_2:
+  rating: 5
+  comment: "love it"
+  product: hollyhock
