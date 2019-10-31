@@ -16,9 +16,9 @@ class OrdersController < ApplicationController
   def update
     if @order.update(order_params)
       @order.status = "paid"
-      session[:order_id] = nil
       @order.update_stock
       @order.save
+      session[:order_id] = nil
       
       flash[:success] = "Your order is complete. Thank you for shopping at Plantsy!"
       
@@ -35,9 +35,6 @@ class OrdersController < ApplicationController
       session[:order_id] = @order.id
       flash[:success] = "Your order has been processed" 
       redirect_to root_path
-      return
-    else
-      render :new
       return
     end
   end

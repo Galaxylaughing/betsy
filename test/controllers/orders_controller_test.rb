@@ -16,9 +16,9 @@ describe OrdersController do
     
     describe "show" do
       it "gives back a successful response" do
-        order = Order.create(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", email: "blank@gmail.com", exp_date: "10/20", status: "pending")
-        new_order = Order.find(order.id)    
-        get order_path(new_order.id)
+        order = Order.create
+        get order_path(order.id)
+        
         must_respond_with :success
       end
     end
@@ -77,18 +77,18 @@ describe OrdersController do
         new_order.update(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", exp_date: "abc10/2020", email: "blank@gmail.com", status: "pending")
         updated_order = Order.find_by(id: new_order.id)
         expect(updated_order.exp_date).must_equal "10/20"
-      end
+      end 
     end
     
     describe "update" do
       before do
         @new_order = Order.create
         @product = products(:orchid)
-        @order_item = OrderItem.new(product_id: @product.id, order_id: @new_order.id, quantity: 10)
+        @order_item = OrderItem.create(product_id: @product.id, order_id: @new_order.id, quantity: 10)
         
       end
       
-      it "updates order status to 'paid', and reduce available stock upon purchase" do
+      it "updates order status to 'paid' and reduces the stock quantity" do
         order_hash = {
           order: {
             address: "Redmond", 
@@ -108,7 +108,8 @@ describe OrdersController do
         updated_product = Product.find(@product.id)
         
         expect(updated_order.status).must_equal "paid"
-        #expect(updated_product.stock).must_equal 90
+        expect(updated_product.stock).must_equal 90
+        expect(session[:order_id]).must_equal nil
         must_redirect_to root_path
       end
       
