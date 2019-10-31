@@ -21,4 +21,16 @@ class Order < ApplicationRecord
     end
     
   end
+  
+  def count_items
+    items = self.order_items
+    
+    if items.nil?
+      count = 0
+    else
+      count = items.count
+    end
+    
+    return count
+  end
 end 

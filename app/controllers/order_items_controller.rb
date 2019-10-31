@@ -16,6 +16,7 @@ class OrderItemsController < ApplicationController
       order_id: session[:order_id],
     }
     
+    order = Order.find(session[:order_id])
     # if order item already exists in cart, increase quantity.
     order.order_items.each do |oi|
       if oi.product.id == order_items[:product_id]
@@ -87,13 +88,8 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.find_by(id: params[:id])
   end
   
-  def logged_in?
-    user_id = session[:user_id]
-    
-    if user_id.nil?
-      return false
-    end
-    
-    return user_id
+  def find_order_item
+    @order_item = OrderItem.find_by(id: params[:id])
   end
+  
 end

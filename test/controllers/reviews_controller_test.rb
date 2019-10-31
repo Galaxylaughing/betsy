@@ -13,4 +13,5 @@ describe ReviewsController do
         must_respond_with :success
       end
     end
+  end
 end
