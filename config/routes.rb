@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :reviews 
   resources :order_items, only: [:create, :show, :destroy]
   
+  get "/orders/:id/checkout", to: "orders#checkout_show", as: "checkout_show" 
   get "/auth/github", as: "github_login"
   get "/auth/:provider/callback", to: "users#create", as: "callback"
   delete "/logout", to: "users#destroy", as: "logout"

@@ -1,0 +1,47 @@
+<h1>Order Confirmation</h1>
+<div>
+  <% order = Order.find_by(id: params[:id]) %>
+</div>
+<div>
+  <h3> Personal Information</h3>
+  <p>Name: <%= order.name %></p>
+  <p>Address: <%= order.address %></p>
+  <p>Zip code: <%= order.zip %></p>
+  <p>email: <%= order.email %></p>
+</div>
+<div>
+  <h3> Payment Information</h3>
+  <p>Credit Card Number: <%= order.cc_num %></p>
+  <p>Expiration Date: <%= order.exp_date %></p>
+  <p>CVV: <%= order.cvv_code %></p>
+</div>
+<div>
+  <h3> Order Summary</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% order.order_items.each do |oi| %>
+          <td><%= oi.product.name %></td>
+          <td><%= oi.quantity %></td>
+          <td>$<%= render_price(oi.product.price) %></td>
+          <td>$<%= render_price(oi.subtotal) %></td>
+        </tr>
+      <% end %>
+      <tr></tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>TOTAL: $<%= render_price(order.total) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
