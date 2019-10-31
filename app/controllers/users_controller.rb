@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   def create
     auth_hash = request.env["omniauth.auth"]
     
-    user = User.find_by(uid: auth_hash[:uid], provider: "github")
+    # user = User.find_by(uid: auth_hash[:uid], provider: "github")
+    
+    # you need this to be able to login as a seed
+    # otherwise, you'll get an 'email already in use' error
+    user = User.find_by(email: auth_hash[:info][:email])
     
     if user
       flash[:success] = "Successfully logged in as returning user #{user.username}"

@@ -38,11 +38,13 @@
               <%# badge will show count of items in cart %>
               <%# badge should only show up if there is at least one item in cart %>
               <% order = Order.find_by(id: session[:order_id]) %>
-              <% count = order.count_items() %>
-              <% if count > 0 %>
-                <span class="badge badge-primary badge-pill">
-                  <%= count %>
-                </span>
+              <% if order %>
+                <% count = order.count_items() %>
+                <% if count > 0 %>
+                  <span class="badge badge-primary badge-pill">
+                    <%= count %>
+                  </span>
+                <% end %>
               <% end %>
             </a>
           <% end %>
