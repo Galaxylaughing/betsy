@@ -33,12 +33,18 @@
             <a href=<%= github_login_path %> class="btn btn-light"><i class="fab fa-github"></i>  Login with Github</a>
           <% end %>
           <% if session[:order_id] != nil %>
-          <a href=<%= order_path(session[:order_id]) %> class="btn btn-light shopping-cart">
-            <i class="fas fa-shopping-cart"></i>
-            <%# badge will show count of items in cart %>
-            <%# badge should only show up if there is at least one item in cart %>
-            <span class="badge badge-primary badge-pill">#</span>
-          </a>
+            <a href=<%= order_path(session[:order_id]) %> class="btn btn-light shopping-cart">
+              <i class="fas fa-shopping-cart"></i>
+              <%# badge will show count of items in cart %>
+              <%# badge should only show up if there is at least one item in cart %>
+              <% order = Order.find_by(id: session[:order_id]) %>
+              <% count = order.count_items() %>
+              <% if count > 0 %>
+                <span class="badge badge-primary badge-pill">
+                  <%= count %>
+                </span>
+              <% end %>
+            </a>
           <% end %>
         </div>
       </nav>
