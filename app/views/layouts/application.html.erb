@@ -83,7 +83,11 @@
 
     <footer class="footer">
       <div class="footer__site_buttons">
-        <%= link_to "About Us", root_path, class: "btn btn-secondary" %>
+        <div>
+          <%= link_to "About Us", about_path, class: "btn btn-secondary" %>
+
+          <a href="<%= about_path %>#faq" class="btn btn-secondary">FAQ</a>
+        </div>
         <%= link_to "Register as Merchant", register_account_path, class: "btn btn-secondary" %>
       </div>
       <div class="footer__offsite_buttons">

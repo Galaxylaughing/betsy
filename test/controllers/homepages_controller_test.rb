@@ -7,6 +7,12 @@ describe HomepagesController do
     must_respond_with :success
   end
   
+  it "can get the about_us path" do
+    get about_path
+    
+    must_respond_with :success
+  end
+  
   describe "register as merchant" do
     it "can get the register-as-merchant page" do
       get register_account_path
