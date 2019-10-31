@@ -4,16 +4,19 @@ describe Order do
   let (:order) {
     Order.create
   }
-  let (:update_hash) { {
-    name: "georgina", 
-    address: "bellevue", 
-    cc_num: "1111111111111111", 
-    cvv_code: "111", 
-    zip: "98003",
-    exp_date: "10/20",
-    email: "geo@fake.com"
+  
+  let (:update_hash) {
+    {
+      name: "georgina", 
+      address: "bellevue", 
+      cc_num: "1111111111111111", 
+      cvv_code: "111", 
+      zip: "98003",
+      exp_date: "10/20",
+      email: "geo@fake.com"
+    }
   }
-  }
+  
   describe 'validations' do
     it 'is valid when all fields are present' do
       edit_order = order.update(update_hash)
@@ -23,33 +26,33 @@ describe Order do
     it "is not valid without an email" do
       invalid_order = order.update(name: "georgina", address: "bellevue", cc_num: "1111111111111111", cvv_code: "111", zip: "98003", exp_date: "10/20")
       expect(invalid_order).must_equal false
-      # expect(invalid_order.errors.messages).must_include :email
+      expect(order.errors.full_messages.to_sentence).must_include "Email"
     end
     
     it "is not valid without an address" do
       invalid_order = order.update(email: "geob@gmail.com", name: "georgina", cc_num: "1111111111111111", cvv_code: "111", zip: "98003", exp_date: "10/20")
       expect(invalid_order).must_equal false
-      # expect(invalid_order.errors.messages).must_include :address
+      expect(order.errors.full_messages.to_sentence).must_include "Address"
     end
     
     it "is not valid without an cc_num" do
       invalid_order = order.update(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", zip: "98003", exp_date: "10/20")
       expect(invalid_order).must_equal false
-      # expect(invalid_order.errors.messages).must_include :cc_num
+      expect(order.errors.full_messages.to_sentence).must_include "Cc num"
     end
     
     it "is not valid without an cvv_code" do
       invalid_order = order.update(email: "geob@gmail.com", name: "georgina", cc_num: "1111111111111111", address: "bellevue", zip: "98003", exp_date: "10/20")
       expect(invalid_order).must_equal false
-      # expect(invalid_order.errors.messages).must_include :cvv_code
+      expect(order.errors.full_messages.to_sentence).must_include "Cvv code"
     end
     
     it "is not valid without an zip" do
       invalid_order = order.update(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", cc_num: "1111111111111111", exp_date: "10/20")
       expect(invalid_order).must_equal false
-      # expect(invalid_order.errors.messages).must_include :zip
+      expect(order.errors.full_messages.to_sentence).must_include "Zip"
     end
-  
+    
     it "is not valid without an email" do
       update_hash[:email] = nil
       
@@ -58,31 +61,13 @@ describe Order do
       expect(order.errors.full_messages.to_sentence).must_include "Email"
     end
     
-    it "is not valid without an address" do
-      invalid_order = order.update(email: "geob@gmail.com", name: "georgina", cc_num: "1111111111111111", cvv_code: "111", zip: "98003")
+    it "is not valid without an exp_date" do
+      invalid_order = order.update(email: "geob@gmail.com", name: "georgina", address: "bellevue", cc_num: "1111111111111111", cvv_code: "111", zip: "98003")
       expect(invalid_order).must_equal false
-      expect(order.errors.full_messages.to_sentence).must_include "Address"
-    end
-    
-    it "is not valid without an cc_num" do
-      invalid_order = order.update(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", zip: "98003")
-      expect(invalid_order).must_equal false
-      expect(order.errors.full_messages.to_sentence).must_include "Cc num"
-    end
-    
-    it "is not valid without an cvv_code" do
-      invalid_order = order.update(email: "geob@gmail.com", name: "georgina", cc_num: "1111111111111111", address: "bellevue", zip: "98003")
-      expect(invalid_order).must_equal false
-      expect(invalid_order.errors.messages).must_include "Cvv code"
-    end
-    
-    it "is not valid without an zip" do
-      invalid_order = order.update(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", cc_num: "1111111111111111")
-      expect(invalid_order).must_equal false
-      expect(invalid_order.errors.messages).must_include "Zip"
+      expect(order.errors.full_messages.to_sentence).must_include "Exp Date"
     end
   end
-
+  
   describe "relationships" do
     it "has many order_items" do
       # Arrange
@@ -99,7 +84,7 @@ describe Order do
       end
     end
   end
-
+  
   describe 'custom methods' do
     describe 'total' do
       let(:order) { orders(:bear_orchid_hollyhock)}
@@ -108,7 +93,7 @@ describe Order do
         expect(order.total).must_equal 63.75
       end
     end
-  
+    
     describe 'update_stock' do
       # let(:order) { orders(:bear_orchid_hollyhock)}
       it 'decreases the stock for a particular item' do
@@ -122,8 +107,27 @@ describe Order do
         
         product.reload
         expect(product.stock).must_equal 190
+        
+      end
+    end
+    
+    describe "count_items" do
+      it "can total the number of order-items in the order" do
+        order = orders(:bear_orchid_hollyhock)
+        # this order has two order-items
+        
+        count = order.count_items()
+        
+        expect(count).must_equal 2
+      end
+      
+      it "returns zero if the order is empty" do
+        order = Order.create()
+        
+        count = order.count_items()
+        
+        expect(count).must_equal 0
       end
     end
   end
 end
-

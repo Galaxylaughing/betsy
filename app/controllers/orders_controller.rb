@@ -19,13 +19,14 @@ class OrdersController < ApplicationController
       
       session[:order_id] = nil
       @order.update_stock
+      @order.save
       
       flash[:success] = "Your order is complete. Thank you for shopping at Plantsy!"
       
       redirect_to checkout_show_path(@order.id)
     else
-      flash[:error] = @order.errors.full_messages.to_sentence
-      redirect_to request.referrer
+      flash[:error] = @order.errors.full_messages  
+      render :edit
     end
   end
   
