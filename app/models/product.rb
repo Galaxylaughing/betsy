@@ -17,17 +17,14 @@ class Product < ApplicationRecord
   # end
   
   def available_stock(order_id)
-    if order_id.nil?
-      return self.stock    
-    else
-      order = Order.find(order_id)
-      order.order_items.each do |oi|
-        if oi.product_id == self.id
-          return self.stock - oi.quantity.to_i
-        end  
-      end
-      return self.stock 
+    order = Order.find_by(id: order_id)
+    return self.stock if order.nil?
+    order.order_items.each do |oi|
+      if oi.product_id == self.id
+        return self.stock - oi.quantity.to_i
+      end  
     end
+    return self.stock 
   end
   
   def calculate_average_rating

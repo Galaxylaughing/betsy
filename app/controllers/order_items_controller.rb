@@ -3,7 +3,9 @@ class OrderItemsController < ApplicationController
   
   # Create is adding a product to my cart
   def create
-    if session[:order_id].nil?
+    order = Order.find_by(id: session[:order_id])
+    
+    if session[:order_id].nil? || order.nil?
       order = Order.create
       session[:order_id] = order.id
     end
@@ -15,7 +17,6 @@ class OrderItemsController < ApplicationController
     }
     
     order = Order.find(session[:order_id])
-    
     # if order item already exists in cart, increase quantity.
     order.order_items.each do |oi|
       if oi.product.id == order_items[:product_id]
@@ -81,6 +82,10 @@ class OrderItemsController < ApplicationController
   private
   def order_items_params
     params.require(:order_item).permit(:quantity, :product_id, :order_id)
+  end
+  
+  def find_order_item
+    @order_item = OrderItem.find_by(id: params[:id])
   end
   
   def find_order_item
