@@ -55,4 +55,3 @@ describe Review do
     end
   end
 end
-
