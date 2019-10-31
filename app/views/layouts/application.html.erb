@@ -65,9 +65,14 @@
           </div>
         <% else %>
           <div class="flash alert alert-warning">
-            <% flash.each do |name, message| %>
-              <%= name.capitalize %>: <%= message %>
+            <div>
+              <strong>A problem occurred:</strong>
+            </div>
+          <ul>
+            <% flash[:error].each do |name, message| %>
+              <li><%= name.capitalize %>: <%= message %></li>
             <% end %>
+            </ul>
           </div>
         <% end %>
       </section>
