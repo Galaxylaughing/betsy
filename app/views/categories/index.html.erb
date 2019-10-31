@@ -14,9 +14,9 @@
 <% category.products.each do |product| %>   
   <% if product.available %>
   <section class="category_data_index">
-    <div>
+    <a href=<%= product_path(product.id) %>>    
       <img src= <%= product.photo_url %> alt=<%= product.name %> class="product_image_category">
-    </div>
+    </a>
     
     <div class="category_text">
       <h4><%= link_to product.name, product_path(product.id) %></h4>
