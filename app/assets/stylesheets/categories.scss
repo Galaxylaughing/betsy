@@ -8,12 +8,16 @@ $darkgreen: #2e5e1a;
 $verydarkgreen: #174326;
 $brightgreen: #b7f702;
 $midgreen: #428625;
+$palegreen: #c8eaaf;
 
 .category_title {
   text-align: center;
   margin-bottom: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
   color: $verydarkgreen;
-  border: 2px solid #2e5e1a;
+  // border: 1px solid;
+  background-color: $palegreen;
 }
 
 .index_page_category-container {  
