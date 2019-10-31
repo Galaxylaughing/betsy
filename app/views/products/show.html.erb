@@ -48,5 +48,9 @@
       <% end %>
     </tbody>
   </table>
+
+  <% if session[:user_id].nil? || session[:user_id] != @product.user_id %>
+    <%=render partial: 'shared/review_form'%>
+  <% end %>
 </section>
 </main>

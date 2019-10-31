@@ -75,7 +75,7 @@
               <strong>A problem occurred:</strong>
             </div>
           <ul>
-            <% flash[:error].each do |name, message| %>
+            <% flash.each do |name, message| %>
               <li><%= name.capitalize %>: <%= message %></li>
             <% end %>
             </ul>
