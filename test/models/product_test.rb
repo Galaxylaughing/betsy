@@ -112,6 +112,36 @@ describe Product do
     end
   end
   
+  describe "calculate average rating" do
+    it "returns an integer average rating from reviews" do
+      product = products(:bellflower)
+      # has two reviews, with a rating of 1 and 5, respectively
+      
+      average = product.calculate_average_rating()
+      
+      expect(average).must_equal 3
+    end
+    
+    it "wont return a float average rating" do
+      product = products(:hollyhock)
+      # has two reviews, with a rating of 4 and 5, respectively
+      
+      average = product.calculate_average_rating()
+      
+      # it should round down from 4.5 to 5
+      expect(average).must_equal 4
+    end
+    
+    it "returns nil if there are no reviews" do
+      product = products(:treeivy)
+      # there are no reviews on treeivy
+      
+      average = product.calculate_average_rating()
+      
+      expect(average).must_be_nil
+    end
+  end
+  
   describe "sample_products_for_homepage" do
     it "can get a list of products from the database" do
       result = Product.sample_products_for_homepage()
