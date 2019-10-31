@@ -15,8 +15,11 @@
     </tr>
   </thead>
 
-<div>  
-  </div>
+<div class="order-num">  
+<% order = Order.find_by(id: session[:order_id]) %>
+<p>Order # <%= order.id %></p>
+</div>
+
   <tbody>
   <tr>
   <% @order.order_items.each do |oi| %>
@@ -38,6 +41,7 @@
   </table>
 
   <div class="order-checkout-button">
+    <%= link_to "CONTINUE SHOPPING", products_path, method: :get, class:"btn btn-primary" %>
     <%= link_to "CHECKOUT", edit_order_path, method: :get, class: "btn btn-primary" %>
   </div>
 </section>

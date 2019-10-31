@@ -3,13 +3,12 @@
   <h2 class="show_page__header">
     Products by Category
   </h2>
-<%# </section> %>
-    
+
 <% @categories.each do |category| %>
-<div class="category_title">
-  <h3><%= category.name.capitalize %></h3>  
-</div>
-  
+  <div class="category_title">
+    <h3><%= category.name.capitalize %></h3>  
+  </div>
+
 <section class="index_page_category-container">  
 <% category.products.each do |product| %>   
   <% if product.available %>

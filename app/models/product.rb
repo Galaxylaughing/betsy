@@ -31,14 +31,21 @@ class Product < ApplicationRecord
   end
   
   def calculate_average_rating
-    product_ratings = []
+    reviews = self.reviews
     
-    self.reviews.each do |review|
-      product_ratings << review.rating
+    if reviews.blank?
+      average_rating = nil
+    else
+      product_ratings = []
+      
+      reviews.each do |review|
+        product_ratings << review.rating
+      end
+      
+      total_rating = product_ratings.sum
+      average_rating = total_rating / product_ratings.length
     end
     
-    total_rating = product_ratings.sum
-    average_rating = total_rating / product_ratings.length
     return average_rating
   end
   

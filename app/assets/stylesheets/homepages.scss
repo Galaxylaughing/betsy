@@ -126,3 +126,91 @@ $transparent_darkgreen: rgba(46, 94, 26,0.9);
 .sign_up .fa-github {
   color: white;
 }
+
+// About page
+
+.about_us > .main_header {
+  margin-top: 3rem;
+  text-align: center;
+
+  padding: 1rem 0;
+  background-color: $palegreen;
+  border-top: 2px solid $green;
+  border-bottom: 2px solid $green;
+}
+
+.about_us > section {
+  width: 90%;
+  margin: 5rem auto;
+}
+
+.about_us .header {
+  border-bottom: 2px solid $lightgreen;
+  margin-bottom: 2rem;
+}
+
+.team_member_photo {
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+.team_member {
+  position: relative;
+}
+
+.team_member_header {
+  position: absolute;
+  bottom: 45px;
+  left: 70px;
+
+  background-color: $green;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.2rem;
+}
+
+.faq_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq_item {
+  margin: 3rem;
+}
+
+.faq_question {
+  font-size: 1.2em;
+  background-color: $palegreen;
+  padding: 1.5rem;
+  border-radius: 0.2rem;
+}
+
+.faq_question::before {
+  content: "Q: "
+}
+
+.about_nav {
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.nav-item {
+  margin: 0 0.5rem;
+}
+
+.nav-item + .nav-item::before {
+  content: "•";
+  color: $darkgreen;
+}
+
+.about_us .go_to_top {
+  display: none;
+  font-size: 0.9em;
+}
+
+.about_us .header:hover .go_to_top {
+  display: inline;
+}
