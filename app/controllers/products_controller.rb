@@ -58,7 +58,8 @@ class ProductsController < ApplicationController
     end
   end
   
-  def retire
+  # Method to retire a product
+  def destroy
     user_id = logged_in?
     
     if user_id
