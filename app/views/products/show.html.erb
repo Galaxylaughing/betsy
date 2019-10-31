@@ -7,11 +7,11 @@
   
   <div class="product_data">
     <h4><strong><%= @product.name %></strong></h4>
+    <p><strong>Ratings summary: <%= render_rating(@product.calculate_average_rating) %></strong></p>
     </br>
     <p>Description: <%= @product.description.capitalize %></p>
     <p>Stock: <%= @product.available_stock(session[:order_id]) %> units</p>
     <p>Price: $<%= @product.price %></p>
-    </br>
     <%= form_with model: @order_items, url: product_order_items_path(@product.id) do |f| %>
       <%= f.select :quantity, (1..10) %>
       <%= f.submit "ADD TO CART", class:"btn btn-primary" %>
@@ -29,9 +29,8 @@
     </br>
     </br>
     <p><strong>Free shipping</strong></p>
-    <p>Free shipping in all orders above $50</p>  
+    <p>Free shipping in orders above $50</p>  
   </div>
-  <p><strong>Ratings summary: <%= render_rating(@product.calculate_average_rating) %></strong></p>
 
   <table class="table">
     <thead>
