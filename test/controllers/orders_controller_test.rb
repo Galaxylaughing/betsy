@@ -59,7 +59,7 @@ describe OrdersController do
       end
       
       it "takes the date using the regex in order to create the order" do
-
+        
         order_hash = {
           order: {
             address: "Redmond", 
@@ -72,14 +72,53 @@ describe OrdersController do
             status: "pending"
           }
         }
-
+        
         new_order = Order.create(order_hash[:order])
         new_order.update(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", exp_date: "abc10/2020", email: "blank@gmail.com", status: "pending")
         updated_order = Order.find_by(id: new_order.id)
         expect(updated_order.exp_date).must_equal "10/20"
       end
     end
+    
+    describe "update" do
+      before do
+        @new_order = Order.create
+        @product = products(:orchid)
+        @order_item = OrderItem.new(product_id: @product.id, order_id: @new_order.id, quantity: 10)
+        
+      end
+      
+      it "updates order status to 'paid', and reduce available stock upon purchase" do
+        order_hash = {
+          order: {
+            address: "Redmond", 
+            name: "Georgina", 
+            cc_num: "1111111111111111", 
+            cvv_code: "123", 
+            zip: "98004", 
+            exp_date: "10/20", 
+            email: "blank@gmail.com",
+            status: "pending"
+          }
+        }
+        
+        expect { patch order_path(@new_order.id), params: order_hash }.wont_change "Order.count"
+        
+        updated_order = Order.find(@new_order.id)
+        updated_product = Product.find(@product.id)
+        
+        expect(updated_order.status).must_equal "paid"
+        #expect(updated_product.stock).must_equal 90
+        must_redirect_to root_path
+      end
+      
+      it "flashes an error with incomplete input" do
+        invalid_order = @new_order.update(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", cc_num: "1111111111111111", exp_date: "10/20")
+        expect(@new_order.errors.full_messages.to_sentence).must_include "Zip" 
+      end
+    end
   end
+  
   
   describe "Logged in users" do
     before do
@@ -101,12 +140,12 @@ describe OrdersController do
     
     describe "show" do
       it "gives back a successful response" do
-        order = Order.create(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", email: "blank@gmail.com", status: "pending", exp_date: "10/20")
+        order = Order.create
         get order_path(order.id)
         must_respond_with :success
       end
     end
-
+    
     describe "create" do
       it 'creates a new order successfully with valid data while logged in, and redirects the user to the products page' do
         order_hash = {
@@ -121,13 +160,13 @@ describe OrdersController do
             status: "pending"
           }
         }
-
+        
         expect {
           post orders_path, params: order_hash
         }.must_differ 'Order.count', 1
         must_redirect_to root_path
       end
-            
+      
       describe "show" do
         it "gives back a successful response" do
           order = Order.create(address: "Redmond", name: "Georgina", cc_num: "1111111111111111", cvv_code: "123", zip: "98004", email: "blank@gmail.com", status: "pending")
