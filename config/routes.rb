@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post '/order_items/:id/', to: 'order_items#complete', as: "mark_complete"
   
   get '/register', to: 'homepages#register', as: "register_account"
+  get '/about', to: 'homepages#about', as: "about"
   
   get "/log_in", to: "users#login_form", as: "log_in"
   post "/log_in", to: "users#login"

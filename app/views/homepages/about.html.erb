@@ -1,0 +1,99 @@
+<section class="about_us">
+  <h2 class="main_header">About Us</h2>
+
+  <nav class="about_nav nav bg-light nav-pills">
+    <span class="nav-item">
+      <a href="#purpose">Our Purpose</a>
+    </span>
+    <span class="nav-item">
+      <a href="#team">Meet the Team</a>
+    </span>
+    <span class="nav-item">
+      <a href="#faq">FAQ</a>
+    </span>
+  </nav>
+
+  <section class="about__purpose">
+    <a id="purpose"></a>
+    <h3 class="header">Our Purpose</h3>
+
+    <article class="statement_of_purpose">
+      <p>
+        <span class="about__site_name">Plantsy</span> 
+        is dedicated to providing high-quality plants 
+        for the discerning gardener, plant enthusiast, and botanist.
+      </p>
+      <p>
+        Plantsy is the brainchild of one of our founders, Sam. 
+        The site was born in October, 2019, and was created by four students of 
+        <a href="https://adadevelopersacademy.org/">ADA Developer's Academy</a>'s 
+        Cohort 12: Sam, Hallie, Georgina, and Sabrina. 
+        This site was created as part of a class project called bEtsy. 
+      </p>
+      <p>
+        You can read more about Cohort 12's bEtsy project 
+        <a href="https://github.com/Ada-C12/betsy">here</a>.
+      </p>
+    </article>
+  </section>
+
+  <section class="about__team">
+    <a id="team"></a>
+    <h3 class="header">Meet The Team</h3>
+
+    <div class="team_container">
+      <div class="row">
+        <div class="col-sm team_member">
+          <img src="https://placeimg.com/600/400/animals" alt="random animal photo" class="team_member_photo">
+          <h4 class="team_member_header">Georgina</h4>
+        </div>
+        <div class="col-sm team_member">
+          <img src="https://placeimg.com/600/400/animals" alt="random animal photo" class="team_member_photo">
+          <h4 class="team_member_header">Hallie</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm team_member">
+          <img src="https://placeimg.com/600/400/animals" alt="random animal photo" class="team_member_photo">
+          <h4 class="team_member_header">Sabrina</h4>
+        </div>
+        <div class="col-sm team_member">
+          <img src="https://placeimg.com/600/400/animals" alt="random animal photo" class="team_member_photo">
+          <h4 class="team_member_header">Samantha</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about__faq">
+    <a id="faq"></a>
+    <h3 class="header">Frequently Asked Questions</h3>
+
+    <% question = "Is this a real online store?" %>
+    <% answer = "No. It's fake. Please don't give us your real information." %>
+    <%= render partial: 'faq_item', locals: {question: question, answer: answer} %>
+
+    <% question = "My plant did not arrive on time." %>
+    <% answer = "Once we hand our plants to our shipper, they're in hands of fate." %>
+    <%= render partial: 'faq_item', locals: {question: question, answer: answer} %>
+
+    <% question = "I'm looking for a specific plant, but you don't carry it; why not?" %>
+    <% answer = "There are a lot of plants in the world. 
+        At least a hundred plants. 
+        Far too many for any one company to keep stocked, 
+        and we have only a very small warehouse." %>
+    <%= render partial: 'faq_item', locals: {question: question, answer: answer} %>
+
+    <% question = "I noticed you have a picture of x plant labeled as being a y plant; 
+        this is clearly a mistake on your part, and makes it hard to trust your expertise." %>
+    <% answer = "We are not plant experts. We are students." %>
+    <%= render partial: 'faq_item', locals: {question: question, answer: answer} %>
+
+    <% question = "Why don't you have a 'contact us' page?" %>
+    <% answer = "Because--and don't take this the wrong way--we don't want you to contact us." %>
+    <%= render partial: 'faq_item', locals: {question: question, answer: answer} %>
+
+    </div>
+  </section>
+</section>

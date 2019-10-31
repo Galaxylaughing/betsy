@@ -6,4 +6,6 @@ class HomepagesController < ApplicationController
       return
     end
   end
+  
+  def about; end
 end
