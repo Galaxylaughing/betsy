@@ -10,9 +10,13 @@
 
 <% if product.available %>
   <section class="product_data_index">  
-    <div>
-      <img src= <%= product.photo_url %> alt=<%= product.name %> class="product_image">
-    </div>
+
+    <a href=<%= product_path(product.id) %> class="product_img_container">
+      <img src=<%= product.photo_url %> alt=<%= product.name %> class="image product_image">
+      <div class="link">
+        <div class="link_text">See More</div>
+      </div>
+    </a>
     
     <div class="product_text">
       <h4><%= link_to product.name, product_path(product.id) %></h4>
