@@ -10,9 +10,6 @@ class ReviewsController < ApplicationController
     @product_id = product_id_param
   end
   
-  def show
-  end
-
   def create
     review_info = {
       comment: review_params[:comment],
