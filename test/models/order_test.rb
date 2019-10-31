@@ -64,7 +64,7 @@ describe Order do
     it "is not valid without an exp_date" do
       invalid_order = order.update(email: "geob@gmail.com", name: "georgina", address: "bellevue", cc_num: "1111111111111111", cvv_code: "111", zip: "98003")
       expect(invalid_order).must_equal false
-      expect(order.errors.full_messages.to_sentence).must_include "Exp Date"
+      expect(order.errors.full_messages.to_sentence).must_include "Exp date"
     end
   end
   

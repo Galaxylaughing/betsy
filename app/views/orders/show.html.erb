@@ -16,8 +16,7 @@
   </thead>
 
 <div class="order-num">  
-<% order = Order.find_by(id: session[:order_id]) %>
-<p>Order # <%= order.id %></p>
+<p>Order # <%= @order.id %></p>
 </div>
 
   <tbody>
