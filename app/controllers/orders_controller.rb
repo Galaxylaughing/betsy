@@ -16,13 +16,14 @@ class OrdersController < ApplicationController
   def update
     if @order.update(order_params)
       @order.status = "paid"
+      
       session[:order_id] = nil
       @order.update_stock
       @order.save
       
       flash[:success] = "Your order is complete. Thank you for shopping at Plantsy!"
       
-      redirect_to root_path
+      redirect_to checkout_show_path(@order.id)
     else
       flash[:error] = @order.errors.full_messages  
       render :edit
@@ -41,6 +42,9 @@ class OrdersController < ApplicationController
       return
     end
   end
+  
+  # def checkout_show
+  # end
   
   private
   def order_params
