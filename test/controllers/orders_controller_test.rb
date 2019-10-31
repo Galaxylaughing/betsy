@@ -114,7 +114,27 @@ describe OrdersController do
       
       it "flashes an error with incomplete input" do
         invalid_order = @new_order.update(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", cc_num: "1111111111111111", exp_date: "10/20")
+        
         expect(@new_order.errors.full_messages.to_sentence).must_include "Zip" 
+        
+        
+      end
+      
+      it 'renders the same page' do
+        order_hash = {
+          order: {
+            address: "Redmond", 
+            name: "Georgina", 
+            cc_num: "1111111111111111", 
+            cvv_code: "123", 
+            exp_date: "10/20", 
+            email: "blank@gmail.com",
+            status: "pending"
+          }
+        }
+        
+        patch order_path(@new_order.id), params: order_hash
+        assert_template :edit
       end
     end
   end
@@ -194,6 +214,64 @@ describe OrdersController do
           }.must_differ 'Order.count', 1
           must_redirect_to root_path
         end
+      end
+    end
+    
+    describe "update" do
+      before do
+        @new_order = Order.create
+        @product = products(:orchid)
+        @order_item = OrderItem.new(product_id: @product.id, order_id: @new_order.id, quantity: 10)
+        
+      end
+      
+      it "updates order status to 'paid', and reduce available stock upon purchase" do
+        order_hash = {
+          order: {
+            address: "Redmond", 
+            name: "Georgina", 
+            cc_num: "1111111111111111", 
+            cvv_code: "123", 
+            zip: "98004", 
+            exp_date: "10/20", 
+            email: "blank@gmail.com",
+            status: "pending"
+          }
+        }
+        
+        expect { patch order_path(@new_order.id), params: order_hash }.wont_change "Order.count"
+        
+        updated_order = Order.find(@new_order.id)
+        updated_product = Product.find(@product.id)
+        
+        expect(updated_order.status).must_equal "paid"
+        #expect(updated_product.stock).must_equal 90
+        must_redirect_to root_path
+      end
+      
+      it "flashes an error with incomplete input" do
+        invalid_order = @new_order.update(email: "geob@gmail.com", name: "georgina", address: "bellevue", cvv_code: "111", cc_num: "1111111111111111", exp_date: "10/20")
+        
+        expect(@new_order.errors.full_messages.to_sentence).must_include "Zip" 
+        
+        
+      end
+      
+      it 'renders the same page' do
+        order_hash = {
+          order: {
+            address: "Redmond", 
+            name: "Georgina", 
+            cc_num: "1111111111111111", 
+            cvv_code: "123", 
+            exp_date: "10/20", 
+            email: "blank@gmail.com",
+            status: "pending"
+          }
+        }
+        
+        patch order_path(@new_order.id), params: order_hash
+        assert_template :edit
       end
     end
   end
