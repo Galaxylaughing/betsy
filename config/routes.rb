@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   
   resources :categories, only: [:index, :new, :create] 
   
-  resources :products, except: [:delete, :update] do 
+  resources :products, except: [:delete] do 
     resources :order_items, only: [:create]
     resources :reviews, only: [:create, :index]
   end
   
   resources :orders, except: [:delete]
   resources :reviews, only: [:create]
-  resources :order_items, only: [:create, :show, :destroy]
+  resources :order_items, only: [:create, :show, :destroy, :update]
   
   #retiring a product on merchant view
   patch 'product/:id/retire', to: 'products#toggle_retire', as: 'retired'
