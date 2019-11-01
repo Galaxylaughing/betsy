@@ -122,14 +122,14 @@
                           Currently Available
                         </div>
                         <div class="availability btn btn-danger mark_retired">
-                          Retire Product?
+                          <%= link_to "Retire Product", retired_path(product), method: :patch, class: "availability btn btn-danger mark_retired" %>
                         </div>
                       <% else %>
                         <div class="availability btn btn-warning unavailable">
                           Retired
                         </div>
-                        <div class="availability btn btn-danger mark_available">
-                          Mark Available?
+                        <div class="availability btn btn-danger mark_retired">
+                          <%= link_to "Reactivate Product", retired_path(product), method: :patch, class: "availability btn btn-danger mark_available" %>
                         </div>
                       <% end %>
                     </div> 
