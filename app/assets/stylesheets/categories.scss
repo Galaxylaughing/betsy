@@ -10,7 +10,7 @@ $brightgreen: #b7f702;
 $midgreen: #428625;
 $palegreen: #c8eaaf;
 
-.category_title {
+.category_title, .category_nav {
   text-align: center;
   margin-bottom: 2%;
   margin-left: 10%;
@@ -47,3 +47,24 @@ $palegreen: #c8eaaf;
   object-fit: cover
 }
 
+
+.index_page_category-container {
+  column-gap: 1em;
+  row-gap: 3em;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 5rem;
+}
+
+.category_title {
+  margin-bottom: 0;
+}
+
+.category_nav {
+  margin-bottom: 2rem;
+}
+
+.category_nav.nav-pills .nav-link.active, .category_nav.nav-pills .show > .nav-link {
+  background-color: $lightgreen;
+  font-style: italic;
+}
