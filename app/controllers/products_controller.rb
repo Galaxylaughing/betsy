@@ -41,6 +41,13 @@ class ProductsController < ApplicationController
       redirect_to products_path
       return
     end
+    
+    logged_in_id = logged_in?
+    if logged_in_id && @product.user_id != logged_in_id
+      flash[:error] = "You cannot edit another merchant's product"
+      redirect_to product_path(@product.id)
+      return
+    end
   end
   
   def update

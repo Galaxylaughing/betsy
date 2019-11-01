@@ -63,20 +63,20 @@ describe ProductsController do
     describe "create" do
       it "can create a new product with valid information" do 
         product_hash = {
-        product: {
-          user_id: @user.id,
-          name: "new product",
-          description: "new description",
-          price: 1.99,
-          stock: 49,
-          photo_url: "new_photo url"
+          product: {
+            user_id: @user.id,
+            name: "new product",
+            description: "new description",
+            price: 1.99,
+            stock: 49,
+            photo_url: "new_photo url"
           }
         }
-    
+        
         expect {
           post products_path, params: product_hash
         }.must_change "Product.count", 1
-  
+        
         new_product = Product.find_by(name: product_hash[:product][:name])  
         expect(new_product.price).must_equal product_hash[:product][:price]
         expect(new_product.stock).must_equal product_hash[:product][:stock]
@@ -87,11 +87,29 @@ describe ProductsController do
         must_redirect_to product_path(new_product.id)
       end 
     end 
-
+    
     describe "edit" do
       it "can get the edit page for an existing product" do
-        get edit_product_path(@product.id)
+        user = users(:orchid)
+        # hollyhock is orchid's product
+        product = products(:hollyhock)
+        
+        perform_login(user)
+        get edit_product_path(product.id)
+        
         must_respond_with :success
+      end
+      
+      it "cannot get the edit page for someone else's product" do
+        user = users(:orchid)
+        # treeivy is begonia's product
+        product = products(:treeivy)
+        
+        perform_login(user)
+        get edit_product_path(product.id)
+        
+        must_redirect_to product_path(product.id)
+        expect(flash[:error]).must_equal "You cannot edit another merchant's product"
       end
       
       it "won't edit an invalid product id and redirect" do
@@ -99,57 +117,57 @@ describe ProductsController do
         must_respond_with :redirect
       end
     end
-
+    
     describe "update" do 
       it "can update an existing product" do  
         updated_product_hash = {
-        product: {
-          user_id: @user.id,
-          name: "updated product",
-          description: "updated description",
-          price: 2.00,
-          stock: 50,
-          photo_url: "updated photo_url"
+          product: {
+            user_id: @user.id,
+            name: "updated product",
+            description: "updated description",
+            price: 2.00,
+            stock: 50,
+            photo_url: "updated photo_url"
           } 
         } 
-
+        
         expect {
-        patch product_path(@product.id), params: updated_product_hash
+          patch product_path(@product.id), params: updated_product_hash
         }.wont_change "Product.count"
-
+        
         expect(Product.find_by(id: @product.id).name).must_equal "updated product"
         expect(Product.find_by(id: @product.id).description).must_equal "updated description"
         expect(Product.find_by(id: @product.id).photo_url).must_equal "updated photo_url"
         expect(Product.find_by(id: @product.id).price).must_equal 2.00
         expect(Product.find_by(id: @product.id).stock).must_equal 50
-
+        
         must_respond_with :redirect
         must_redirect_to dashboard_path(users(:begonia).id)
       end 
-
+      
       it "can't update an existing product with wrong params" do  
         bad_product_hash = {
-        product: {
-          user_id: @user.id,
-          name: nil,
-          description: nil,
-          price: nil,
-          stock: nil,
-          photo_url: nil
+          product: {
+            user_id: @user.id,
+            name: nil,
+            description: nil,
+            price: nil,
+            stock: nil,
+            photo_url: nil
           } 
         }
-
+        
         patch product_path(@product.id), params: bad_product_hash
         expect(Product.find_by(id: @product.id).name).must_equal "test product"
       end  
-
+      
       it "will redirect to the root page if given an invalid id" do
         get product_path(-1)
         must_respond_with :redirect
       end
     end 
   end 
-
+  
   describe "guest users" do
     it "can not create a product" do
       product_hash = {
@@ -160,14 +178,14 @@ describe ProductsController do
           price: 1.99,
           stock: 49,
           photo_url: "new_photo url"
-          }
         }
-
+      }
+      
       expect {
         post products_path, params: product_hash
       }.wont_change "Product.count"
     end
-
+    
     it "can not update a product" do
       product = products(:orchid)
       product_hash = {
@@ -178,9 +196,9 @@ describe ProductsController do
           price: 14,
           stock: 100,
           photo_url: "new_photo url"
-          }
         }
-        patch "/products/#{product.id}", params: product_hash
+      }
+      patch "/products/#{product.id}", params: product_hash
       expect(flash[:warning]).must_equal "Can't update product."
     end
   end
