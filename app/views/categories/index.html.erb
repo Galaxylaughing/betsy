@@ -5,18 +5,25 @@
   </h2>
 
 <% @categories.each do |category| %>
+  <a id=<%= category.name.gsub(" ", "_") %>></a>
   <div class="category_title">
     <h3><%= category.name.capitalize %></h3>  
   </div>
+
+  <nav class="about_nav category_nav nav nav-pills bg-light justify-content-center">
+    <% @categories.each do |link_category| %>
+      <span class="nav-item category_nav_item">
+        <a href="#<%= link_category.name.gsub(" ", "_") %>" class="nav-link category_nav_link <%= link_category.name == category.name ? "active" : "" %>">
+          <%= link_category.name %>
+        </a>
+      </span>
+    <% end %>
+  </nav>
 
 <section class="index_page_category-container">  
 <% category.products.each do |product| %>   
   <% if product.available %>
   <section class="category_data_index">
-    <!-- <div>
-      <img src= <%= product.photo_url %> alt=<%= product.name %> class="product_image_category">
-    </div> -->
-
     <a href=<%= product_path(product.id) %> class="product_img_container">
       <img src=<%= product.photo_url %> alt=<%= product.name %> class="image product_image">
       <div class="link">
