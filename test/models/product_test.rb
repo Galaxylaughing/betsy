@@ -193,4 +193,35 @@ describe Product do
       expect(sample_list.length).must_equal 5
     end
   end
+  
+  describe "count_sold" do
+    it "will return an integer of items sold" do
+      product = products(:snakeplant)
+      # snakeplant has one complete order
+      
+      count = product.count_sold()
+      
+      expect(count).must_equal 8
+    end
+    
+    it "will only count paid and completed orders" do
+      product = products(:aloe)
+      # aloe has four orders,
+      # one paid, one completed, one cancelled, and one pending
+      # paid and complete have a quantity of 2 and 2
+      # cancelled and pending have a quantity of 3 and 3
+      
+      count = product.count_sold()
+      
+      expect(count).must_equal 4
+    end
+    
+    it "will return zero if there are none sold" do
+      product = products(:knautia)
+      
+      count = product.count_sold()
+      
+      expect(count).must_equal 0
+    end
+  end
 end

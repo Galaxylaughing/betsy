@@ -342,6 +342,15 @@ describe User do
       
       expect(top_product).must_be_nil
     end
+    
+    it "returns nil if the user has no paid/completed orders" do
+      # watercress has one product with one pending order-item
+      user = users(:watercress)
+      
+      top_product = user.top_product
+      
+      expect(top_product).must_be_nil
+    end
   end
   
   describe "total_revenue_by_order" do
