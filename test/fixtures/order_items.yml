@@ -195,3 +195,34 @@ crabappleshop_crabapple_desertrose:
   order: crabapple_shop_order
   product: desertrose
   status: paid
+# ############
+pearshop_pear_aloe_pending:
+  quantity: 3
+  order: pear_shop_aloe_pending
+  product: aloe
+  status: pending
+pearshop_pear_aloe_paid:
+  quantity: 2
+  order: pear_shop_aloe_paid
+  product: aloe
+  status: paid
+pearshop_pear_aloe_complete:
+  quantity: 2
+  order: pear_shop_aloe_complete
+  product: aloe
+  status: complete
+pearshop_pear_aloe_cancelled:
+  quantity: 3
+  order: pear_shop_aloe_cancelled
+  product: aloe
+  status: cancelled
+pearshop_pear_snakeplant:
+  quantity: 8
+  order: pear_shop_snakeplant
+  product: snakeplant
+  status: complete
+watercressshop_watercress_viola:
+  quantity: 5
+  order: watercress_shop_order
+  product: viola
+  status: pending

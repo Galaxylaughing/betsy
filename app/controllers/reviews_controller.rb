@@ -1,16 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :find_review, only: [:show]
   
-  def index
-    @reviews = Review.all
-  end
-  
   def new
     @review = Review.new
     @product_id = product_id_param
-  end
-  
-  def show
   end
   
   def create

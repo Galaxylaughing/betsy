@@ -26,11 +26,7 @@ class Order < ApplicationRecord
     items = self.order_items
     count = nil
     
-    if items.nil?
-      count = 0
-    else
-      count = items.count
-    end
+    count = items.count
     
     return count
   end

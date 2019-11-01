@@ -23,6 +23,7 @@ describe OrderItemsController do
         }.must_differ 'OrderItem.count', 1
         
         must_redirect_to product_path(@product_cactus.id)
+        expect(flash[:success]).must_equal "Successfully added item to your cart."
       end
       
       it 'does not create a new order_item given invalid data while not logged in, and redirects the user to the products page' do
@@ -37,6 +38,49 @@ describe OrderItemsController do
         }.must_differ 'OrderItem.count', 0
         
         must_redirect_to product_path(@product_cactus.id)
+        expect(flash[:failure]).must_equal "Item could not be added to your cart."
+      end
+      
+      it "increments the order_item quantity of an existing product" do
+        @product_cactus.stock = 6
+        @product_cactus.save
+        
+        # add 3 product_cactus to cart
+        post order_items_path, params: @order_item_hash[:order_item]
+        
+        new_order_item = OrderItem.find_by(product_id: @product_cactus.id)
+        expect(new_order_item.quantity).must_equal 3
+        
+        # attempt to add 3 more product_cactus to cart
+        expect {
+          post order_items_path, params: @order_item_hash[:order_item]
+        }.wont_differ 'OrderItem.count'
+        
+        updated_order_item = OrderItem.find_by(product_id: @product_cactus.id)
+        expect(updated_order_item.quantity).must_equal 6
+        
+        must_redirect_to product_path(@product_cactus.id)
+        expect(flash[:success]).must_equal "Successfully updated quantity."
+      end
+      
+      it "gives an error if the order_item quantity is greater than the stock" do
+        # add 3 product_cactus to cart
+        post order_items_path, params: @order_item_hash[:order_item]
+        
+        new_order_item = OrderItem.find_by(product_id: @product_cactus.id)
+        expect(new_order_item.quantity).must_equal 3
+        
+        # attempt to add 3 more product_cactus to cart,
+        # but there aren't three more product_cactus in stock
+        expect {
+          post order_items_path, params: @order_item_hash[:order_item]
+        }.wont_differ 'OrderItem.count'
+        
+        updated_order_item = OrderItem.find_by(product_id: @product_cactus.id)
+        expect(updated_order_item.quantity).must_equal 3
+        
+        must_redirect_to product_path(@product_cactus.id)
+        expect(flash[:failure]).must_equal "Sorry, there are not enough items in stock."
       end
     end
     
@@ -130,6 +174,7 @@ describe OrderItemsController do
           post order_items_path, params: @order_item_hash[:order_item]
         }.must_differ 'OrderItem.count', 1
         must_redirect_to product_path(@product_cactus.id)
+        expect(flash[:success]).must_equal "Successfully added item to your cart."
       end
       
       it 'does not create a new order_item given invalid data while logged in, and redirects the user to the products page' do
@@ -144,6 +189,49 @@ describe OrderItemsController do
         }.must_differ 'OrderItem.count', 0
         
         must_redirect_to product_path(@product_cactus.id)
+        expect(flash[:failure]).must_equal "Item could not be added to your cart."
+      end
+      
+      it "increments the order_item quantity of an existing product" do
+        @product_cactus.stock = 6
+        @product_cactus.save
+        
+        # add 3 product_cactus to cart
+        post order_items_path, params: @order_item_hash[:order_item]
+        
+        new_order_item = OrderItem.find_by(product_id: @product_cactus.id)
+        expect(new_order_item.quantity).must_equal 3
+        
+        # attempt to add 3 more product_cactus to cart
+        expect {
+          post order_items_path, params: @order_item_hash[:order_item]
+        }.wont_differ 'OrderItem.count'
+        
+        updated_order_item = OrderItem.find_by(product_id: @product_cactus.id)
+        expect(updated_order_item.quantity).must_equal 6
+        
+        must_redirect_to product_path(@product_cactus.id)
+        expect(flash[:success]).must_equal "Successfully updated quantity."
+      end
+      
+      it "gives an error if the order_item quantity is greater than the stock" do
+        # add 3 product_cactus to cart
+        post order_items_path, params: @order_item_hash[:order_item]
+        
+        new_order_item = OrderItem.find_by(product_id: @product_cactus.id)
+        expect(new_order_item.quantity).must_equal 3
+        
+        # attempt to add 3 more product_cactus to cart,
+        # but there aren't three more product_cactus in stock
+        expect {
+          post order_items_path, params: @order_item_hash[:order_item]
+        }.wont_differ 'OrderItem.count'
+        
+        updated_order_item = OrderItem.find_by(product_id: @product_cactus.id)
+        expect(updated_order_item.quantity).must_equal 3
+        
+        must_redirect_to product_path(@product_cactus.id)
+        expect(flash[:failure]).must_equal "Sorry, there are not enough items in stock."
       end
     end
     

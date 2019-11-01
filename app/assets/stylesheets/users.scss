@@ -446,6 +446,8 @@ caption {
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  margin: 0.5rem;
 }
 
 // ORDER FULFILLMENT
@@ -534,6 +536,10 @@ caption {
   text-align: left;
 }
 
+.order_table {
+  width: 90%;
+}
+
 .order_total {
   text-align: right;
 }
@@ -575,4 +581,11 @@ caption {
 
 .order__header_title__item + .order__header_title__item::before {
   content: "|";
+}
+
+.order__buyer_info_container {
+  width: 70%;
+  margin-left: 2rem;
+  margin-top: -1rem;
+  margin-bottom: 3rem;
 }

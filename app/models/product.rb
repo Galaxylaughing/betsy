@@ -42,6 +42,16 @@ class Product < ApplicationRecord
     return average_rating
   end
   
+  def count_sold()
+    count = 0
+    self.order_items.each do |oi|
+      if oi.status == "complete" || oi.status == "paid"
+        count += oi.quantity
+      end
+    end
+    return count
+  end
+  
   def self.sample_products_for_homepage()
     product_list = Product.order(Arel.sql("RANDOM()")).to_a
     

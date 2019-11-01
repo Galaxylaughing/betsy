@@ -14,28 +14,16 @@ class User < ApplicationRecord
     max_product = nil
     self.products.each do |product|
       
-      # should be extracted to a product instance method
-      #   total_sold = product.total_sold
-      total_sold = 0
-      product.order_items.each do |item|
-        total_sold += item.quantity
-      end
+      total_sold = product.count_sold()
       
       if total_sold > max
         max = total_sold
         max_product = product
       end
     end
+    
     return max_product 
   end
-  
-  # PRODUCT METHOD TO CALL
-  # def total_sold
-  #   total_sold = 0
-  #   self.order_items.each do |item|
-  #     total_sold += item.quantity
-  #   end
-  # end
   
   def find_orders
     matching_orders = self.products.flat_map{ |prod| prod.order_items }.map{ |oi| oi.order }.uniq
