@@ -49,7 +49,7 @@ describe ProductsController do
       
       it "will redirect for an invalid product id" do
         get product_path(-1111)
-        must_respond_with :redirect
+        must_redirect_to products_path
       end
     end  
     
