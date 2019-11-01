@@ -85,3 +85,9 @@ crabapple:
   uid: 999888
   email: crabby_crabapple@example.com
   username: crabby_crabapple
+# #########
+cherry:
+  provider: github
+  uid: 999888
+  email: cheerful_cherry@example.com
+  username: cheerful_cherry

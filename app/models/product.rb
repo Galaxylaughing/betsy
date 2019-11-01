@@ -47,7 +47,7 @@ class Product < ApplicationRecord
     
     sample_products_list = []
     
-    while sample_products_list.length < 5 || product_list.empty?
+    while sample_products_list.length < 5 && !product_list.empty?
       product = product_list.pop()
       
       if product.available == true
