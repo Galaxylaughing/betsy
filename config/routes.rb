@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   resources :reviews 
   resources :order_items, only: [:create, :show, :destroy]
   
+  #retiring a product on merchant view
+  patch 'product/:id/retire', to: 'products#toggle_retire', as: 'retired'
+  
   get "/orders/:id/checkout", to: "orders#checkout_show", as: "checkout_show" 
   get "/auth/github", as: "github_login"
   get "/auth/:provider/callback", to: "users#create", as: "callback"
