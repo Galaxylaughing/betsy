@@ -154,5 +154,43 @@ describe Product do
       
       expect(result.length).must_equal 5
     end
+    
+    it "won't return an unavailable product and won't return more than five" do
+      all_yml_order_items = OrderItem.all
+      all_yml_order_items.each do |oi|
+        oi.delete()
+      end
+      
+      all_yml_reviews = Review.all
+      all_yml_reviews.each do |review|
+        review.delete()
+      end
+      
+      all_yml_products = Product.all
+      all_yml_products.each do |product|
+        product.delete()
+      end
+      
+      user = users(:cherry)
+      
+      available_product_1 = Product.create(name: "plant 1", description: "a cool plant", price: 12.00, photo_url: "https://lorempixel.com/300/300", stock: 5, available: true, user_id: user.id)
+      available_product_2 = Product.create(name: "plant 2", description: "a cool plant", price: 12.00, photo_url: "https://lorempixel.com/300/300", stock: 5, available: true, user_id: user.id)
+      available_product_3 = Product.create(name: "plant 3", description: "a cool plant", price: 12.00, photo_url: "https://lorempixel.com/300/300", stock: 5, available: true, user_id: user.id)
+      unavailable_product = Product.create(name: "plant unavailable", description: "a cool plant", price: 12.00, photo_url: "https://lorempixel.com/300/300", stock: 5, available: false, user_id: user.id)
+      
+      sample_list = Product.sample_products_for_homepage()
+      
+      expect(sample_list).wont_include unavailable_product
+      expect(sample_list).must_include available_product_1
+      expect(sample_list).must_include available_product_2
+      expect(sample_list).must_include available_product_3
+      
+      available_product_4 = Product.create(name: "plant 4", description: "a cool plant", price: 12.00, photo_url: "https://lorempixel.com/300/300", stock: 5, available: true, user_id: user.id)
+      available_product_5 = Product.create(name: "plant 5", description: "a cool plant", price: 12.00, photo_url: "https://lorempixel.com/300/300", stock: 5, available: true, user_id: user.id)
+      available_product_6 = Product.create(name: "plant 6", description: "a cool plant", price: 12.00, photo_url: "https://lorempixel.com/300/300", stock: 5, available: true, user_id: user.id)
+      
+      sample_list = Product.sample_products_for_homepage()
+      expect(sample_list.length).must_equal 5
+    end
   end
 end

@@ -43,6 +43,18 @@ class Product < ApplicationRecord
   end
   
   def self.sample_products_for_homepage()
-    return Product.order(Arel.sql("RANDOM()")).limit(5)
+    product_list = Product.order(Arel.sql("RANDOM()")).to_a
+    
+    sample_products_list = []
+    
+    while sample_products_list.length < 5 && !product_list.empty?
+      product = product_list.pop()
+      
+      if product.available == true
+        sample_products_list << product
+      end
+    end
+    
+    return sample_products_list
   end
 end
