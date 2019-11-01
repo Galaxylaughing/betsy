@@ -31,9 +31,4 @@ Rails.application.routes.draw do
   
   get '/register', to: 'homepages#register', as: "register_account"
   get '/about', to: 'homepages#about', as: "about"
-  
-  # temp login/logout routes for testing
-  get "/log_in", to: "users#login_form", as: "log_in"
-  post "/log_in", to: "users#login"
-  post "/log_out", to: "users#logout", as: "log_out"
 end
