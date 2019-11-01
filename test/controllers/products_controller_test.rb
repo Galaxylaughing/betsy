@@ -147,7 +147,15 @@ describe ProductsController do
         get product_path(-1)
         must_respond_with :redirect
       end
-    end 
+    end
+    
+    describe "toggle" do
+      it "retires a product" do
+        product = products(:orchid)
+          patch retired_path(product.id)
+        expect(Product.find_by(id: product.id).available).wont_equal true
+      end
+    end
   end 
 
   describe "guest users" do
