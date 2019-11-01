@@ -209,7 +209,16 @@ describe ProductsController do
         get edit_product_path(product.id)
         
         must_redirect_to product_path(product.id)
-        expect(flash[:error]).must_equal "You cannot edit a product"
+        expect(flash[:error]).must_equal "A guest cannot edit a product"
+      end
+    end
+    
+    describe "new" do      
+      it "cannot get the new page for a product" do
+        get new_product_path
+        
+        must_redirect_to products_path
+        expect(flash[:error]).must_equal "A guest cannot create a product"
       end
     end
   end
