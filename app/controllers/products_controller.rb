@@ -16,7 +16,14 @@ class ProductsController < ApplicationController
   end
   
   def new
-    @product = Product.new
+    logged_in_id = logged_in?
+    if !logged_in_id
+      flash[:error] = "A guest cannot create a product"
+      redirect_to products_path
+      return
+    else
+      @product = Product.new
+    end
   end
   
   def create
@@ -39,6 +46,17 @@ class ProductsController < ApplicationController
     if @product.nil?
       flash[:warning] = "Can't edit, invalid product."
       redirect_to products_path
+      return
+    end
+    
+    logged_in_id = logged_in?
+    if logged_in_id && @product.user_id != logged_in_id
+      flash[:error] = "You cannot edit another merchant's product"
+      redirect_to product_path(@product.id)
+      return
+    elsif !logged_in_id
+      flash[:error] = "A guest cannot edit a product"
+      redirect_to product_path(@product.id)
       return
     end
   end
