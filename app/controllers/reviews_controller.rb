@@ -1,22 +1,14 @@
 class ReviewsController < ApplicationController
   before_action :find_review, only: [:show]
   
-  def index
-    @reviews = Review.all
-  end
-  
   def new
     @review = Review.new
     @product_id = product_id_param
   end
   
-  def show
-  end
-  
   def create
     logged_in_id = logged_in?
     product = Product.find_by(id: product_id_param)
-    
     
     if logged_in_id && logged_in_id == product.user_id
       flash[:error] = "You cannot review your own product"
