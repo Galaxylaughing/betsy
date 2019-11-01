@@ -12,9 +12,6 @@ Rails.application.routes.draw do
   
   resources :products do 
     resources :order_items, only: [:create, :destroy, :update]
-  end 
-  
-  resources :products do
     resources :reviews, only: [:new, :create, :show, :index]
   end
   
@@ -26,16 +23,18 @@ Rails.application.routes.draw do
   patch 'product/:id/retire', to: 'products#toggle_retire', as: 'retired'
   
   get "/orders/:id/checkout", to: "orders#checkout_show", as: "checkout_show" 
+  
+  # oath login and logout paths
   get "/auth/github", as: "github_login"
   get "/auth/:provider/callback", to: "users#create", as: "callback"
   delete "/logout", to: "users#destroy", as: "logout"
   
-  # post '/order_items/', to: 'order_items#create'
   post '/order_items/:id/', to: 'order_items#complete', as: "mark_complete"
   
   get '/register', to: 'homepages#register', as: "register_account"
   get '/about', to: 'homepages#about', as: "about"
   
+  # temp login/logout routes for testing
   get "/log_in", to: "users#login_form", as: "log_in"
   post "/log_in", to: "users#login"
   post "/log_out", to: "users#logout", as: "log_out"
