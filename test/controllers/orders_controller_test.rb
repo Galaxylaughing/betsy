@@ -109,8 +109,8 @@ describe OrdersController do
         
         expect(updated_order.status).must_equal "paid"
         expect(updated_product.stock).must_equal 90
-        expect(session[:order_id]).must_equal nil
-        must_redirect_to root_path
+        expect(session[:order_id]).must_be_nil
+        must_redirect_to checkout_show_path(updated_order.id)
       end
       
       it "flashes an error with incomplete input" do
@@ -247,7 +247,7 @@ describe OrdersController do
         
         expect(updated_order.status).must_equal "paid"
         #expect(updated_product.stock).must_equal 90
-        must_redirect_to root_path
+        must_redirect_to checkout_show_path(updated_order.id)
       end
       
       it "flashes an error with incomplete input" do

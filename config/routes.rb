@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :categories, only: [:index, :new, :create] 
   
-  resources :products, except: [:delete, :update] do 
+  resources :products, except: [:delete] do 
     resources :order_items, only: [:create]
     resources :reviews, only: [:create, :index]
   end
