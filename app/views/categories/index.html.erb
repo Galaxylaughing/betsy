@@ -13,11 +13,18 @@
 <% category.products.each do |product| %>   
   <% if product.available %>
   <section class="category_data_index">
-    <div>
+    <!-- <div>
       <img src= <%= product.photo_url %> alt=<%= product.name %> class="product_image_category">
-    </div>
+    </div> -->
+
+    <a href=<%= product_path(product.id) %> class="product_img_container">
+      <img src=<%= product.photo_url %> alt=<%= product.name %> class="image product_image">
+      <div class="link">
+        <div class="link_text">See More</div>
+      </div>
+    </a>
     
-    <div class="category_text">
+    <div class="category_text product_text">
       <h4><%= link_to product.name, product_path(product.id) %></h4>
       <%= product.description.capitalize %>
     </div>

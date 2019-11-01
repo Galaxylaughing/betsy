@@ -110,26 +110,26 @@ a:hover {
 }
 
 @media only screen and (max-width: 1000px) {
-  .index_page_product-container {
+  .index_page_product-container, .index_page_category-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media only screen and (max-width: 650px) {
-  .index_page_product-container {
+  .index_page_product-container, .index_page_category-container {
     display: grid;
     grid-template-columns: 1fr;
   }
 }
 
-.product_data_index {
+.product_data_index, .category_data_index {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.product_data_index * {
+.product_data_index *, .category_data_index * {
   margin: 0;
 }
 
