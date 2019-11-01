@@ -40,6 +40,7 @@ describe ReviewsController do
         new_review = Review.last
         expect(new_review.comment).must_equal params_hash[:review][:comment]
         expect(new_review.rating).must_equal params_hash[:review][:rating]
+        expect(flash[:success]).must_equal "Your review was successfully submitted."
       end
       
       it "does not let a logged in user review their own product" do
