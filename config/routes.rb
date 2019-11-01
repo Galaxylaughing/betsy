@@ -6,17 +6,15 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   get '/users/:id/dashboard', to: "users#dashboard", as: "dashboard"
   
-  resources :categories do 
-    resources :products, only: [:show]
-  end 
+  resources :categories, only: [:index, :new, :create] 
   
-  resources :products do 
-    resources :order_items, only: [:create, :destroy, :update]
-    resources :reviews, only: [:new, :create, :show, :index]
+  resources :products, except: [:delete, :update] do 
+    resources :order_items, only: [:create]
+    resources :reviews, only: [:create, :index]
   end
   
-  resources :orders
-  resources :reviews 
+  resources :orders, except: [:delete]
+  resources :reviews, only: [:create]
   resources :order_items, only: [:create, :show, :destroy]
   
   #retiring a product on merchant view
