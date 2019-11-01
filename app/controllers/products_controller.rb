@@ -64,15 +64,22 @@ class ProductsController < ApplicationController
   def update
     user_id = session[:user_id]
     @product = Product.find_by(id: params[:id])
+    logged_in_id = logged_in?
     
-    if @product.update(product_params)
-      flash[:success] = "Product successfully updated."
-      redirect_to dashboard_path(user_id)
+    if !logged_in_id
+      flash[:error] = "A guest cannot update a product."
+      redirect_to products_path
       return
     else
-      flash[:warning] = "Can't update product."
-      render :edit
-      return
+      if @product.update(product_params)
+        flash[:success] = "Product successfully updated."
+        redirect_to dashboard_path(user_id)
+        return
+      else
+        flash[:warning] = "Can't update product."
+        render :edit
+        return
+      end
     end
   end
   
