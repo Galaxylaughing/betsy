@@ -120,7 +120,7 @@ describe OrderItemsController do
         @updated_order_item_hash[:order_item][:quantity] = 500
         
         expect{ 
-          patch "/products/#{@product_cactus.id}/order_items/#{@new_order_item.id})", params: @updated_order_item_hash
+          patch "/order_items/#{@new_order_item.id}", params: @updated_order_item_hash
         }.wont_differ "@order.order_items.count"
         
         expect(@order.errors).wont_be_nil
@@ -128,7 +128,7 @@ describe OrderItemsController do
       end
       
       it "can update an existing order_item while not logged in" do
-        patch "/products/#{@product_cactus.id}/order_items/#{@new_order_item.id})", params: @updated_order_item_hash
+        patch "/order_items/#{@new_order_item.id}", params: @updated_order_item_hash
         
         expect(OrderItem.find_by(id: @new_order_item.id).quantity).must_equal 5
       end
@@ -246,7 +246,7 @@ describe OrderItemsController do
       it 'can delete an order_item successfully while logged in' do
         new_order_item = OrderItem.create(product_id: @product_cactus.id, quantity: 3, order_id: @order.id,)
         expect {
-          delete "/products/#{@product_cactus.id}/order_items/#{new_order_item.id}"
+          delete "/order_items/#{new_order_item.id}"
         }.must_change 'OrderItem.count', 1
       end
     end
@@ -268,7 +268,7 @@ describe OrderItemsController do
         }
       end
       it "can update an existing order_item while logged in" do
-        patch "/products/#{@product_cactus.id}/order_items/#{@new_order_item.id})", params: @updated_order_item_hash
+        patch "/order_items/#{@new_order_item.id}", params: @updated_order_item_hash
         
         expect(OrderItem.find_by(id: @new_order_item.id).quantity).must_equal 5
       end
