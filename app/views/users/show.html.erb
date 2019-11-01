@@ -10,6 +10,7 @@
   <% else %>
     <div class="show_page__tiles merchant_show__tiles">
       <% @user.products.each do |product| %>
+      <% if product.available %>
         <div class="merchant_product_tile">
           <a href=<%= product_path(product.id) %>>
             <img src=<%= product.photo_url%> alt=<%= product.name %> class="merchant_product_tile__img">
@@ -24,6 +25,7 @@
             </div>
           </a>
         </div>
+      <% end %>
       <% end %>
     </div>
   <% end %>

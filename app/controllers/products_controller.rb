@@ -59,20 +59,19 @@ class ProductsController < ApplicationController
   end
   
   # Method to retire a product
-  def destroy
-    user_id = logged_in?
+  def toggle_retire
+    user_id = session[:user_id]
+    @product = Product.find_by(id: params[:id])
     
-    if user_id
-      product_id = params[:id]
-      product_id = Product.find_by(id: product_id)
-      
-      product.available = false
-      
-      if product.save
-        flash[:success] = "Product successfully retired."
+    if user_id  
+      if @product.available
+        @product.update!(available: false)
+        
+        flash[:success] = "Product #{@product.name} successfully RETIRED."
         redirect_to dashboard_path(user_id)
       else 
-        flash[:warning] = "Can't retire product."
+        @product.update(available: true)
+        flash[:success] = "Product #{@product.name} successfully REACTIVATED."
         redirect_to dashboard_path(user_id)
       end  
       return

@@ -19,7 +19,6 @@ $midgreen: #428625;
 
 .show_page__header {
   background-color: $palegreen;
-  // border: 2px solid #2e5e1a;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -99,8 +98,6 @@ a:hover {
   margin-bottom: 2%;
 }
 
-
-
 .index_page_product-container {
   column-gap: 1em;
   row-gap: 3em;
@@ -176,4 +173,10 @@ a:hover {
   color: white;
   font-size: 1.2em;
   padding: 0.8em 1.4em;
+}
+
+.new_rating {
+  font-weight: bold;
+  margin-left: 5%; 
+  margin-bottom: 3%;
 }
