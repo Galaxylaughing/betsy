@@ -406,3 +406,31 @@ desertrose:
   available: true
   user: crabapple
   categories:
+# ############
+snakeplant:
+  name: Sansevieria trifasciata
+  description: A hardy, indoor favorite.
+  price: 15.00
+  photo_url: https://lorempixel.com/300/300
+  stock: 12
+  available: true
+  user: pear
+  categories:
+aloe:
+  name: Aloe spp.
+  description: An easy-to-care for indoor plant that loves sun.
+  price: 20.00
+  photo_url: https://lorempixel.com/300/300
+  stock: 9
+  available: true
+  user: pear
+  categories:
+knautia:
+  name: Knautia macedonica
+  description: An unsung perennial.
+  price: 20.00
+  photo_url: https://lorempixel.com/300/300
+  stock: 9
+  available: true
+  user: pear
+  categories:

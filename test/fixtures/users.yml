@@ -91,3 +91,9 @@ cherry:
   uid: 999888
   email: cheerful_cherry@example.com
   username: cheerful_cherry
+# #########
+pear:
+  provider: github
+  uid: 999888
+  email: pleasing_pear@example.com
+  username: pleasing_pear

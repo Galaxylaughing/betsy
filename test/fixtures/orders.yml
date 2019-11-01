@@ -206,3 +206,39 @@ crabapple_shop_order:
   cc_num: 1234-2121-1221-1211
   cvv_code: 444
   zip: 98002
+# ##########
+pear_shop_aloe_pending:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Pear Shopper 1
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+pear_shop_aloe_paid:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Pear Shopper 2
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+pear_shop_aloe_complete:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Pear Shopper 3
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+pear_shop_aloe_cancelled:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Pear Shopper 4
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
+pear_shop_snakeplant:
+  email: lilkitten@gmail.com
+  address: Kitten Creek
+  name: Pear Shopper 5
+  cc_num: 1234-2121-1221-1211
+  cvv_code: 444
+  zip: 98002
