@@ -1,7 +1,14 @@
-<h1>Order Confirmation</h1>
+<main>
+  <section class="show_page">
+  <h3 class="show_page__header">
+    Order Confirmation
+  </h3>
+
+<section class="order_confirmation">
 <div>
   <% order = Order.find_by(id: params[:id]) %>
 </div>
+</br>
 <div>
   <h3> Personal Information</h3>
   <p>Name: <%= order.name %></p>
@@ -9,13 +16,17 @@
   <p>Zip code: <%= order.zip %></p>
   <p>email: <%= order.email %></p>
 </div>
+
+</br>
 <div>
   <h3> Payment Information</h3>
   <p>Credit Card Number: <%= order.cc_num %></p>
   <p>Expiration Date: <%= order.exp_date %></p>
   <p>CVV: <%= order.cvv_code %></p>
 </div>
-<div>
+
+</br>
+<div class="order_summary">
   <h3> Order Summary</h3>
   <table class="table">
     <thead>
@@ -45,3 +56,5 @@
     </tbody>
   </table>
 </div>
+</section>
+</section>
