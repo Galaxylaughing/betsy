@@ -64,108 +64,110 @@ describe ProductsController do
       it "can create a new product with valid information" do 
         product_hash = {
         product: {
-        user_id: @user.id,
-        name: "new product",
-        description: "new description",
-        price: 1.99,
-        stock: 49,
-        photo_url: "new_photo url"
-      }
-    }
+          user_id: @user.id,
+          name: "new product",
+          description: "new description",
+          price: 1.99,
+          stock: 49,
+          photo_url: "new_photo url"
+          }
+        }
     
-    expect {
-    post products_path, params: product_hash
-  }.must_change "Product.count", 1
+        expect {
+          post products_path, params: product_hash
+        }.must_change "Product.count", 1
   
-  new_product = Product.find_by(name: product_hash[:product][:name])  
-  expect(new_product.price).must_equal product_hash[:product][:price]
-  expect(new_product.stock).must_equal product_hash[:product][:stock]
-  expect(new_product.photo_url).must_equal product_hash[:product][:photo_url]
-  expect(new_product.description).must_equal product_hash[:product][:description]
-  
-  must_respond_with :redirect
-  must_redirect_to product_path(new_product.id)
-end 
-end 
+        new_product = Product.find_by(name: product_hash[:product][:name])  
+        expect(new_product.price).must_equal product_hash[:product][:price]
+        expect(new_product.stock).must_equal product_hash[:product][:stock]
+        expect(new_product.photo_url).must_equal product_hash[:product][:photo_url]
+        expect(new_product.description).must_equal product_hash[:product][:description]
+        
+        must_respond_with :redirect
+        must_redirect_to product_path(new_product.id)
+      end 
+    end 
 
-describe "edit" do
-  it "can get the edit page for an existing passenger" do
-    get edit_product_path(@product.id)
-    must_respond_with :success
-  end
-  
-  it "won't edit an invalid product id and redirect" do
-    get edit_product_path(-111)
-    must_respond_with :redirect
+    describe "edit" do
+      it "can get the edit page for an existing product" do
+        get edit_product_path(@product.id)
+        must_respond_with :success
+      end
+      
+      it "won't edit an invalid product id and redirect" do
+        get edit_product_path(-111)
+        must_respond_with :redirect
+      end
+    end
+
+    describe "update" do 
+      it "can update an existing product" do  
+        updated_product_hash = {
+        product: {
+          user_id: @user.id,
+          name: "updated product",
+          description: "updated description",
+          price: 2.00,
+          stock: 50,
+          photo_url: "updated photo_url"
+          } 
+        } 
+
+        expect {
+        patch product_path(@product.id), params: updated_product_hash
+        }.wont_change "Product.count"
+
+        expect(Product.find_by(id: @product.id).name).must_equal "updated product"
+        expect(Product.find_by(id: @product.id).description).must_equal "updated description"
+        expect(Product.find_by(id: @product.id).photo_url).must_equal "updated photo_url"
+        expect(Product.find_by(id: @product.id).price).must_equal 2.00
+        expect(Product.find_by(id: @product.id).stock).must_equal 50
+
+        must_respond_with :redirect
+        must_redirect_to dashboard_path(users(:begonia).id)
+      end 
+
+      it "can't update an existing product with wrong params" do  
+        bad_product_hash = {
+        product: {
+          user_id: @user.id,
+          name: nil,
+          description: nil,
+          price: nil,
+          stock: nil,
+          photo_url: nil
+          } 
+        }
+
+        patch product_path(@product.id), params: bad_product_hash
+        expect(Product.find_by(id: @product.id).name).must_equal "test product"
+      end  
+
+      it "will redirect to the root page if given an invalid id" do
+        get product_path(-1)
+        must_respond_with :redirect
+      end
+    end 
+  end 
+
+  describe "gest users" do
+    it "can not create a product" do
+      product_hash = {
+        product: {
+          user_id: @user.id,
+          name: "new product",
+          description: "new description",
+          price: 1.99,
+          stock: 49,
+          photo_url: "new_photo url"
+          }
+        }
+
+        expect {
+          post products_path, params: product_hash
+        }.wont_change "Product.count"
+
+    end
   end
 end
 
-describe "update" do 
-  it "can update an existing passenger" do  
-    updated_product_hash = {
-    product: {
-    user_id: @user.id,
-    name: "updated product",
-    description: "updated description",
-    price: 2.00,
-    stock: 50,
-    photo_url: "updated photo_url"
-  } 
-}
-
-expect {
-patch product_path(@product.id), params: updated_product_hash
-}.wont_change "Product.count"
-
-expect(Product.find_by(id: @product.id).name).must_equal "updated product"
-expect(Product.find_by(id: @product.id).description).must_equal "updated description"
-expect(Product.find_by(id: @product.id).photo_url).must_equal "updated photo_url"
-expect(Product.find_by(id: @product.id).price).must_equal 2.00
-expect(Product.find_by(id: @product.id).stock).must_equal 50
-
-must_respond_with :redirect
-must_redirect_to product_path(@product.id)
-end 
-
-it "can't update an existing trip with wrong params" do  
-  bad_product_hash = {
-  product: {
-  user_id: @user.id,
-  name: nil,
-  description: nil,
-  price: nil,
-  stock: nil,
-  photo_url: nil
-} 
-}
-
-patch product_path(@product.id), params: bad_product_hash
-expect(Product.find_by(id: @product.id).name).must_equal "test product"
-end  
-
-it "will redirect to the root page if given an invalid id" do
-  get product_path(-1)
-  must_respond_with :redirect
-end
-end 
-
-# describe "destroy" do
-#   it "can delete an existing product" do
-#     expect {
-#       delete product_path(@product)
-#     }.must_differ "Product.count", -1
-#   end
-
-#   it "will redirect to the root page if given an invalid id" do
-#     get product_path(-1)
-#     must_respond_with :redirect
-#   end
-# end
-
-# describe "Guest users" do
-
-#   # before do
-#   # end
-# end
-end 
-end 
