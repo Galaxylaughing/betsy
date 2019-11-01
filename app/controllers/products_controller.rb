@@ -47,6 +47,10 @@ class ProductsController < ApplicationController
       flash[:error] = "You cannot edit another merchant's product"
       redirect_to product_path(@product.id)
       return
+    elsif !logged_in_id
+      flash[:error] = "You cannot edit a product"
+      redirect_to product_path(@product.id)
+      return
     end
   end
   

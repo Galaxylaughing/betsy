@@ -201,6 +201,17 @@ describe ProductsController do
       patch "/products/#{product.id}", params: product_hash
       expect(flash[:warning]).must_equal "Can't update product."
     end
+    
+    describe "edit" do      
+      it "cannot get the edit page for a product" do
+        product = products(:treeivy)
+        
+        get edit_product_path(product.id)
+        
+        must_redirect_to product_path(product.id)
+        expect(flash[:error]).must_equal "You cannot edit a product"
+      end
+    end
   end
 end
 
