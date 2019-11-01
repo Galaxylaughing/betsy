@@ -19,7 +19,6 @@ $midgreen: #428625;
 
 .show_page__header {
   background-color: $palegreen;
-  // border: 2px solid #2e5e1a;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -97,4 +96,10 @@ a:hover {
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 2%;
+}
+
+.new_rating {
+  font-weight: bold;
+  margin-left: 5%; 
+  margin-bottom: 3%;
 }
