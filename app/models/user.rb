@@ -26,6 +26,10 @@ class User < ApplicationRecord
         max_product = product
       end
     end
+    
+    if max_product.nil? || max_product.count_sold == 0
+      max_product = nil
+    end
     return max_product 
   end
   

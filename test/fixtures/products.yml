@@ -434,3 +434,12 @@ knautia:
   available: true
   user: pear
   categories:
+viola:
+  name: Viola spp.
+  description: A lovely, purple perennial flower.
+  price: 20.00
+  photo_url: https://lorempixel.com/300/300
+  stock: 9
+  available: true
+  user: watercress
+  categories:

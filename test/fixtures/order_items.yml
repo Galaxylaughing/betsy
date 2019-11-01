@@ -221,3 +221,8 @@ pearshop_pear_snakeplant:
   order: pear_shop_snakeplant
   product: snakeplant
   status: complete
+watercressshop_watercress_viola:
+  quantity: 5
+  order: watercress_shop_order
+  product: viola
+  status: pending
