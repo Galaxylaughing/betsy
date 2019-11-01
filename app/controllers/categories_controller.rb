@@ -4,7 +4,14 @@ class CategoriesController < ApplicationController
   end
   
   def new
-    @category = Category.new
+    logged_in_id = logged_in?
+    if !logged_in_id
+      flash[:error] = "A guest cannot create a category."
+      redirect_to products_path
+      return
+    else
+      @category = Category.new
+    end
   end
   
   def create
