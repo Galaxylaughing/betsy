@@ -177,37 +177,40 @@ describe ProductsController do
   end 
   
   describe "guest users" do
-    it "can not create a product" do
-      product_hash = {
-        product: {
-          user_id: nil,
-          name: "new product",
-          description: "new description",
-          price: 1.99,
-          stock: 49,
-          photo_url: "new_photo url"
+    describe "update" do
+      it "can not create a product" do
+        product_hash = {
+          product: {
+            user_id: nil,
+            name: "new product",
+            description: "new description",
+            price: 1.99,
+            stock: 49,
+            photo_url: "new_photo url"
+          }
         }
-      }
+        
+        expect {
+          post products_path, params: product_hash
+        }.wont_change "Product.count"
+      end
       
-      expect {
-        post products_path, params: product_hash
-      }.wont_change "Product.count"
-    end
-    
-    it "can not update a product" do
-      product = products(:orchid)
-      product_hash = {
-        product: {
-          user_id: nil,
-          name: "new product",
-          description: "new description",
-          price: 14,
-          stock: 100,
-          photo_url: "new_photo url"
+      it "can not update a product" do
+        product = products(:orchid)
+        product_hash = {
+          product: {
+            user_id: nil,
+            name: "new product",
+            description: "new description",
+            price: 14,
+            stock: 100,
+            photo_url: "new_photo url"
+          }
         }
-      }
-      patch "/products/#{product.id}", params: product_hash
-      expect(flash[:warning]).must_equal "Can't update product."
+        
+        patch product_path(product.id), params: product_hash
+        expect(flash[:error]).must_equal "A guest cannot update a product."
+      end
     end
     
     describe "edit" do      
