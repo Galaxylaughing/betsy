@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   def new
     logged_in_id = logged_in?
     if !logged_in_id
-      flash[:error] = "A guest cannot create a product"
+      flash[:error] = "A guest cannot create a product."
       redirect_to products_path
       return
     else
@@ -51,11 +51,11 @@ class ProductsController < ApplicationController
     
     logged_in_id = logged_in?
     if logged_in_id && @product.user_id != logged_in_id
-      flash[:error] = "You cannot edit another merchant's product"
+      flash[:error] = "You cannot edit another merchant's product."
       redirect_to product_path(@product.id)
       return
     elsif !logged_in_id
-      flash[:error] = "A guest cannot edit a product"
+      flash[:error] = "A guest cannot edit a product."
       redirect_to product_path(@product.id)
       return
     end
