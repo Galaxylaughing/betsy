@@ -39,10 +39,8 @@ class OrdersController < ApplicationController
     end
   end
   
-  # def checkout_show
-  # end
-  
   private
+  
   def order_params
     params.require(:order).permit(:email, :address, :name, :cc_num, :cvv_code, :exp_date, :zip)
   end

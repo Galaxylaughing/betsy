@@ -9,12 +9,8 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: {only_float: true, greater_than: 0}
   validates :photo_url, presence: true
   validates :stock, presence: true, numericality: {only_integer: true}
-  validates :available, presence: true
+  validates_inclusion_of :available, in: [true, false] 
   validates :user_id, presence: true
-  
-  # def self.sort_by_category(category)
-  #   self.where(category: category)
-  # end
   
   def available_stock(order_id)
     order = Order.find_by(id: order_id)

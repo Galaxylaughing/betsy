@@ -201,7 +201,7 @@ $transparent_darkgreen: rgba(46, 94, 26,0.9);
   margin: 0 0.5rem;
 }
 
-.nav-item + .nav-item::before {
+.about_nav_item + .about_nav_item::before {
   content: "•";
   color: $darkgreen;
 }
