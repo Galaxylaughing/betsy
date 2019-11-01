@@ -47,11 +47,11 @@
         </div>
 
         <% top_product = @user.top_product %>
-        <% if top_product %>
-          <div class="product_spotlight_container">
-            <section class="product_spotlight">
-              <h4>Top Selling Product</h4>
+        <div class="product_spotlight_container">
+          <section class="product_spotlight">
+            <h4>Top Selling Product</h4>
 
+            <% if top_product %>
               <div class="product_spotlight__top_product">
                 <h5><%= top_product.name %></h5>
                 <ul class="product_spotlight__product_details">
@@ -59,9 +59,11 @@
                   <li><%= top_product.stock %> in stock</li>
                 </ul>
               </div>
-            </section>
-          </div>
-        <% end %>
+            <% else %>
+              <p>You have not sold any products yet</p>
+            <% end %>
+          </section>
+        </div>
 
         <div class="dashboard__products_container">
 
